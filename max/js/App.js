@@ -9,7 +9,6 @@ class App extends Base {
     this.footer = new Footer();
     this.startPage = new StartPage();
     this.aboutUsPage = new AboutUsPage();
-    this.missingPage = new MissingPage();
   }
 
   render() {
@@ -21,10 +20,8 @@ class App extends Base {
         <main class="container my-4">
           ${this.startPage}
           ${this.aboutUsPage}
-          ${this.missingPage}
         </main>
         ${this.footer}
-        ${this.shoppingCart}
       </div>
     `;
   }
