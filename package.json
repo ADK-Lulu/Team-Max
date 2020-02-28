@@ -1,0 +1,21 @@
+{
+  "name": "start-template-js",
+  "version": "3.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node _server/index.js",
+    "sqlitestudio": "node _server/install-sqlitestudio.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "all-that-sass": "^1.0.9",
+    "chokidar": "^3.3.1",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "open": "^7.0.2",
+    "sqlite3": "^4.1.1"
+  }
+}
