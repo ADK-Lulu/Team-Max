@@ -17,11 +17,12 @@ class NavBar extends Base {
               </li>
           ` : /*html*/`
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="${link.route}"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="${link.route}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   ${link.label}
                 </a>
                 <div class="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdownMenuLink">
                   ${link.dropdown.map(item => /*html*/`
+                    <a class="dropdown-item" href="${item.route}">${item.label}</a>
                     <a class="dropdown-item" href="${item.route}">${item.label}</a>
                   `)}
                 </div>
