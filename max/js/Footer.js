@@ -7,8 +7,7 @@ class Footer extends Base {
         <p>
           Adress:
           <a href="https://goo.gl/maps/EXpMJvJwQ3HncHXb7" target="_blank">
-            Liljeholmsgatan 123, Liljeholmen, Stockholm</a
-          >
+            Liljeholmsgatan 123, Liljeholmen, Stockholm</a>
         </p>
         <p>
           Email:
@@ -17,9 +16,7 @@ class Footer extends Base {
         <p>Telefon: +46 23 456 78 90</p>
       </div>
       <div class="col-md-auto">
-        <a href="/kontakt-sida" class="btn btn-info float-left" role="button"
-          >Mer om oss</a
-        >
+        <a href="/kontakt-sida" class="btn btn-info float-left" role="button">Mer om oss</a>
       </div>
     </div>
     <div class="row text-center">
