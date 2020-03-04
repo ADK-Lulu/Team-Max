@@ -29,7 +29,16 @@ class NavBar extends Base {
               </li>
           `)}
           </ul>
-        </div>
+          <div class="col-auto ml-auto">
+           <form class="form-inline">
+             <button type="submit" class="btn btn-default"></button> 
+             <i class="p-3 icofont-search-map icofont-2x"></i>
+             <input type="text" class="form-control pull-left" placeholder="Sök område">
+             
+             
+                </form>
+            </div>
+          </div>
       </nav>
     `
   }
