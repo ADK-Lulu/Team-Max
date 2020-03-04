@@ -33,7 +33,7 @@ class NavBar extends Base {
            <form class="form-inline">
              <button type="submit" class="btn btn-default"></button> 
              <i class="p-3 icofont-search-map icofont-2x"></i>
-             <input type="text" class="form-control pull-left" placeholder="Sök område">
+             <input type="text" class="form-control" placeholder="Sök område">
              
              
                 </form>
