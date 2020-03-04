@@ -10,8 +10,14 @@ class App extends Base {
       { label: 'Söka bostad', route: '/sok-sida' } //Ska bli ett sökfällt senare
 
     ];
+
+    this.footerBarLinks = [
+      { label: 'Mer om oss', route: this.navBarLinks[4].route }
+
+    ];
+
     this.navBar = new NavBar({ links: this.navBarLinks });
-    this.footer = new Footer();
+    this.footer = new Footer({ links: this.footerBarLinks });
     this.startSida = new StartSida();
     this.omOss = new OmOss();
     this.kopSida = new KopSida();
