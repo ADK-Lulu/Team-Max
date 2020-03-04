@@ -2,7 +2,6 @@ class App extends Base {
 
   mount() {
     this.navBarLinks = [
-      { label: 'Välkommen', route: '/' }, //Loggan ska ligga här istaället för "välkommen", alternativt ta bort. 
       { label: 'Sälja bostad', route: '/salj-sida' },
       { label: 'Köpa bostad', route: '/kop-sida' },
       { label: 'Kontakta oss', route: '/kontakt-sida' }, //Ska ligga under en dropdown meny
