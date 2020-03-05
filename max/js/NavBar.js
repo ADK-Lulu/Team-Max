@@ -3,7 +3,9 @@ class NavBar extends Base {
   render() {
     return /*html*/`
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">Dhyr & Rumson</a>
+      <a class="navbar-brand" href="/">
+        <img src="/images/misc/logga_DR.png" width="50" height="50" alt="">
+          </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,7 +30,16 @@ class NavBar extends Base {
               </li>
           `)}
           </ul>
-        </div>
+          <div class="col-auto ml-auto">
+           <form class="form-inline">
+             <button type="submit" class="btn btn-default"></button> 
+             <i class="p-3 icofont-search-map icofont-2x"></i>
+             <input type="text" class="form-control" placeholder="Sök område">
+             
+             
+                </form>
+            </div>
+          </div>
       </nav>
     `
   }
