@@ -9,9 +9,28 @@ class ObjektSida extends Base {
       SELECT * 
       FROM ObjektBilder 
       WHERE ObjektBilder.objektId = $objektSidaId
-    `, {
-      objektSidaId: this.objektId
-    });
+    `,
+      {
+        objektSidaId: this.objektId
+      });
+
+    // Hämta alla detaljer för aktuell SaljObjekt
+    let details = await sql(/*sql*/`
+      SELECT * 
+      FROM SaljObjekt 
+      JOIN ObjektProfiler 
+      ON SaljObjekt.objektProfilId = ObjektProfiler.objektProfilId
+      JOIN Adresser 
+      ON SaljObjekt.adressId = Adresser.adressId
+      JOIN Omraden 
+      ON Omraden.omradeId = Adresser.omradeId
+      WHERE SaljObjekt.objektId = $objektSidaId
+    `,
+      {
+        objektSidaId: this.objektId
+      });
+
+    Object.assign(this, details[0]);
 
     // Hitta bilden som är framsidebild för aktuell SaljObjekt
     this.frontImage = this.images.find(front => front.framsidebild);
@@ -39,6 +58,28 @@ class ObjektSida extends Base {
               </div>
             </div>
             <!--Skriv kod här som inte har med knapparna att göra-->
+
+            <!--Hårdfakta-ruta här-->
+            <div class="col-12 py-2">
+              <div class="row bg-light">
+                <div class="col">Storlek: ${this.kvm} kvm</div>
+                <div class="col">Område: ${this.namn}</div>
+              </div>
+              <div class="row bg-light">
+                <div class="col">Antal rum: ${this.antalRum}</div>
+                <div class="col">Pris: ${this.pris} kr</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+            <div class="col-4">
+            <!-- Mäklarinfo här!-->
+            </div>
+            <div class="col-8">
+            <p>${this.saljText}</p>
+            </div>
+            </div>
+
             <div class="row"><a id="AllaBilder"></a><!--Kod för bilderna-->
               ${this.allPictures.map(image => /*html*/`
                     <img class="img-fluid col-6" src="${image.bildUrl}">
