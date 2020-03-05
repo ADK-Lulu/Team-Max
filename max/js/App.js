@@ -15,8 +15,6 @@ class App extends Base {
     ];
 
 
-
-
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.footer = new Footer({ links: this.navBarLinks });
     this.startSida = new StartSida();
