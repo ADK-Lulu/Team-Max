@@ -14,13 +14,11 @@ class App extends Base {
       },
     ];
 
-    this.footerBarLinks = [
-      { label: 'Mer om oss', route: this.navBarLinks[4].route }
 
-    ];
+
 
     this.navBar = new NavBar({ links: this.navBarLinks });
-    this.footer = new Footer({ links: this.footerBarLinks });
+    this.footer = new Footer({ links: this.navBarLinks });
     this.startSida = new StartSida();
     this.omOss = new OmOss();
     this.kopSida = new KopSida();
