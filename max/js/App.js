@@ -14,9 +14,6 @@ class App extends Base {
       },
     ];
 
-
-
-
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.footer = new Footer({ links: this.navBarLinks });
     this.startSida = new StartSida();
@@ -32,7 +29,7 @@ class App extends Base {
     await sql(/*sql*/`USE max`);
 
     // Konvertera alla SaljObjekt från databasen till en instans av ObjektSida.js
-    this.objektSida = await sql(ObjektSida, /*sql*/`
+    this.objektSidor = await sql(ObjektSida, /*sql*/`
       SELECT objektId FROM SaljObjekt
     `);
   }
@@ -47,7 +44,7 @@ class App extends Base {
           ${this.startSida}
           ${this.omOss}
           ${this.kopSida}
-          ${this.objektSida}
+          ${this.objektSidor}
           ${this.saljSida}
           ${this.sokSida}
           ${this.kontaktSida}
