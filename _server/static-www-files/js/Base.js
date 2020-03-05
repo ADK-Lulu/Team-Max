@@ -78,7 +78,9 @@ class Base {
   }
 
   static updateDom() {
-    let dd = new diffDOM.DiffDOM();
+    let dd = new diffDOM.DiffDOM({
+      valueDiffing: false
+    });
     let tdiff = dd.diff(this.shadowDom2, this.shadowDom);
     dd.apply(this.shadowDom2, tdiff);
     [...this.shadowDom2.querySelectorAll('script')].forEach(s => s.remove());

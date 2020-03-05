@@ -1,4 +1,45 @@
 class NavBar extends Base {
+  mount() {
+    this.foundCities = [];
+    this.selected = -1;
+    sql(/*sql*/`USE max`);
+  }
+
+  clickCity(e) {
+    this.foundCities = [];
+    this.selected = -1;
+    this.chosen = e.target.innerText;
+    this.render();
+  }
+
+  selectWithUpDownArrows(e) {
+    if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
+      e.preventDefault();
+      this.selected += (e.key === 'ArrowDown') - (e.key === 'ArrowUp');
+      if (this.selected < 0) { this.selected = this.foundCities.length - 1; }
+      if (this.selected >= this.foundCities.length) { this.selected = 0; }
+      this.render();
+      return;
+    }
+  }
+
+  async searchCity(e) {
+    if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
+    if (e.key === 'Enter' && this.selected >= 0) {
+      this.chosen = this.foundCities[this.selected].name;
+      this.foundCities = [];
+      this.selected = -1;
+      this.render();
+      return;
+    }
+    this.selected = 0;
+    this.foundCities = e.target.value.length < 1 ? [] : await sql(/*sql*/`
+      SELECT namn FROM Omraden WHERE namn LIKE $name
+    `, {
+      name: e.target.value + '%'
+    });
+    this.render();
+  }
 
   render() {
     return /*html*/`
@@ -30,14 +71,21 @@ class NavBar extends Base {
               </li>
           `)}
           </ul>
-          <div class="col-auto ml-auto">
-           <form class="form-inline">
-             <button type="submit" class="btn btn-default"></button> 
-             <i class="p-3 icofont-search-map icofont-2x"></i>
-             <input type="text" class="form-control" placeholder="Sök område">
-             
-             
-                </form>
+
+
+            <div class="dropdown col-auto ml-auto">
+             <form class="form-inline my-2 my-lg-0">
+              <button class="btn btn-primary" type="submit"><i class="p-3 icofont-search-map icofont-2x"></i></button>
+              <input class="form-control mr-sm-2" type="text" placeholder="Område" keyup="searchCity" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
+              ${this.foundCities.length < 1 ? '' : /*html*/`
+                <div class="dropdown-menu show w-100 position-absolute">
+                  ${this.foundCities.map((city, index) => /*html*/`
+                    <button click="clickCity" class="dropdown-item ${this.selected !== index ? '' : 'bg-primary text-light'}" type="button">${city.namn}</button>
+                   
+                  `)}
+                </div>
+                
+              `}
             </div>
           </div>
       </nav>
