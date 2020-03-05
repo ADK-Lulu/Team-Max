@@ -5,8 +5,14 @@ class App extends Base {
       { label: 'Välkommen', route: '/' }, //Loggan ska ligga här istaället för "välkommen", alternativt ta bort. 
       { label: 'Sälja bostad', route: '/salj-sida' },
       { label: 'Köpa bostad', route: '/kop-sida' },
-      { label: 'Kontakta oss', route: '/kontakt-sida' }, //Ska ligga under en dropdown meny
-      { label: 'Om oss', route: '/om-oss' }, //Ska ligga under en dropdown meny
+      {
+        label: 'Kontakt',
+        route: '#kontakt',
+        dropdown: [
+          { label: 'Kontakta oss', route: '/kontakt-sida' },
+          { label: 'Om oss', route: '/om-oss' }
+        ]
+      },
       { label: 'Söka bostad', route: '/sok-sida' } //Ska bli ett sökfällt senare
 
     ];

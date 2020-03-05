@@ -1,0 +1,122 @@
+// Cursor pointer on all elements with the click attribute
+[click]{ 
+  cursor: pointer;
+}
+
+// Set correct fonts
+p, .serif {
+  font-family: 'Zilla Slab';
+}
+
+.navbar-brand {
+  font-family: 'Odibee Sans';
+  font-size: 25px;
+}
+
+// Brighter links in navbar
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+// Scrollable dropdown
+.scrollable-menu {
+  @media (min-width: 992px) {
+    height: 400px;
+    overflow-y: auto
+  }
+}
+
+// Some styling for book category listings
+.book-image {
+  z-index: 1;
+  overflow: hidden;
+  filter: blur(1) contrast(1.25);
+  opacity: 0.95;
+}
+
+.book-image-in-list {
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
+  @media (min-width: 400px) {
+    height: 300px;
+  }
+}
+
+.book-title-in-list {
+  min-height: 140px;
+  @media (min-width: 768px) {
+    min-height: 80px;
+  }
+}
+
+.book-category a[href^="/book"]{
+  text-decoration: none;
+  color: #333;
+  display:block;
+  opacity:0.9;
+  &:hover {
+    opacity: 1;
+    color:#000;
+  }
+}
+
+// Some styling for the caurosel
+#start-carousel {
+  .carousel-indicators {
+    opacity: 0.7;
+  }
+  .book-image-in-carousel {
+    height: 300px;
+    width: 230px;
+    object-fit: cover;
+  }
+  a {
+    text-decoration: none;
+  }
+  .carousel-item {
+    opacity: 0.9;
+    &:hover {
+      opacity: 1;
+    }
+    h3 {
+      font-size: 3vw;
+    }
+  }
+}
+
+// Some styling for the shopping cart
+.cart-in-menu {
+  position: absolute;
+  top: 2px;
+  right: 70px;
+  color: #fff;
+  // No hamburger bar on big screens
+  // so place further right
+  @media (min-width: 992px) {
+    right: 15px;
+  }
+  span {
+    font-size:40%;
+  }
+}
+
+.w-20 {
+  // Bootstrap only have w-25, w-50 etc...
+  width: 20% !important;
+}
+
+// Checkout form
+
+.checkout-form .input-group-text {
+  // make labels equal in width
+  min-width: 100px;
+}
+
+.checkout-buttons {
+  @media (max-width: 767.98px) {
+    button {
+      width: 100%;
+    }
+  }
+}
