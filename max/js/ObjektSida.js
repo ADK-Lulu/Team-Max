@@ -71,6 +71,15 @@ class ObjektSida extends Base {
               </div>
             </div>
 
+            <div class="col-12">
+            <div class="col-4">
+            <!-- Mäklarinfo här!-->
+            </div>
+            <div class="col-8">
+            <p>${this.saljText}</p>
+            </div>
+            </div>
+
             <div class="row"><a id="AllaBilder"></a><!--Kod för bilderna-->
               ${this.allPictures.map(image => /*html*/`
                     <img class="img-fluid col-6" src="${image.bildUrl}">
