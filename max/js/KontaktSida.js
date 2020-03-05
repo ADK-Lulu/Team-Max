@@ -27,9 +27,23 @@ class KontaktSida extends Base {
 
   render() {
     return /*html*/`
+    <div route="/kontakt-sida" page-title="Kontakta oss">
       <div class="container">
-        <div route="/kontakt-sida" page-title="Kontakta oss">
-          <div class="row">
+        <div class="row mx-md-n5">
+          <div class="col px-md-5">
+            <div class="p-3 border bg-light"><img src="images/misc/kontaktsida_kontorsfasad.jpg" class="card-img-top" alt="">
+          </div>
+          </div>
+            <div class="col px-md-5">
+              <div class="p-3 border bg-light">
+              <h2>Dhyr & Rumson</h2><br>Adress: Liljeholmsgatan 123<br>Liljeholmen<br>Öppettider<br>Måndag-Fredag: 10-16<br>Lördag-Söndag: Stängt
+            <br>Telefon: +46 23 456 78 90<br>Email:<a href="mailto:dhyrochrumson@email.com">dhyrochrumson@email.com</a>
+             </div>
+             </div>
+     </div>
+      </div>
+        
+         <div class="row">
             ${this.formSent ? /*html*/`
               <div class="col-12">
                 <h2>
@@ -39,10 +53,14 @@ class KontaktSida extends Base {
               </div>
                   ` :
                   /*html*/`
-                <div class="col-4">
-                  <h2>Kontakta oss:</h2>
-                </div>
-                <div class="col-8">
+
+                
+          <div class="col px-md-4 mt-5">
+            <div class="float-right">
+                <h4>Kontakta oss:</h4>
+            </div>
+              </div>
+                <div class="col-8 mt-5">
                   <form submit="collectFormData">
                     <div class="form-group">
                       <label class="w-100">Namn:

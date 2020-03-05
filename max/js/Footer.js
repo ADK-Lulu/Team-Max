@@ -16,11 +16,7 @@ class Footer extends Base {
         </p>
         <p>Telefon: +46 23 456 78 90</p>
       </div>
-      <!---<div class="col-md-auto">
-        
-            ${this.links.map(link => /*html*/`<a class="btn btn-info" role="button" href="${link.route}">${link.label}</a>`)}
-      </div>-->
-    </div>
+      
     <div class="row text-center">
       <div class="col">
         <a href="https://www.facebook.com/" target="_blank">
@@ -29,6 +25,12 @@ class Footer extends Base {
         <a href="https://www.instagram.com/" target="_blank">
           <i class="icofont-instagram"></i>
         </a>
+
+          <div>
+            ${app.navBarLinks.find(x => x.label === 'Kontakt').dropdown.map(x => x.label === "Kontakta oss" ?/*html*/`
+            <a class="btn btn-info" role="button" href="${x.route}">${x.label}</a>
+            `: null)}
+          </div>
         <p>© Dhyr & Rumson 2020</p>
       </div>
     </div>
