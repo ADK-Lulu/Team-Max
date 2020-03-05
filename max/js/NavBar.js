@@ -14,8 +14,21 @@ class NavBar extends Base {
     this.foundCities = [];
     this.selected = -1;
     this.chosen = e.target.innerText;
-    document.querySelector('.search').value = this.chosen;
+    document.querySelector('.search').value = this.chosen || '';
     this.render();
+    this.gotoBuyPage();
+  }
+
+  gotoBuyPage(e) {
+    if (!this.chosen) { return; }
+    if (location.pathname === '/kop-sida') {
+      app.kopSida.render();
+    }
+    else {
+      // Tell the framework to go to another page
+      history.pushState(null, null, "/kop-sida");
+      Base.router();
+    }
   }
 
   selectWithUpDownArrows(e) {
@@ -32,11 +45,12 @@ class NavBar extends Base {
   async searchCity(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
     if (e.key === 'Enter' && this.selected >= 0) {
-      this.chosen = this.foundCities[this.selected].namn;
-      document.querySelector('.search').value = this.chosen;
+      this.chosen = this.foundCities[this.selected] && this.foundCities[this.selected].namn;
+      document.querySelector('.search').value = this.chosen || '';
       this.foundCities = [];
       this.selected = -1;
       this.render();
+      this.gotoBuyPage();
       return;
     }
     this.selected = 0;
@@ -82,7 +96,7 @@ class NavBar extends Base {
 
             <div class="dropdown col-auto ml-auto">
              <form class="form-inline my-2 my-lg-0" submit="preventReload">
-              <button class="btn btn-primary" type="submit"><i class="p-3 icofont-search-map icofont-2x"></i></button>
+              <button type="submit" class="btn btn-primary" click="gotoBuyPage"><i class="p-3 icofont-search-map icofont-2x"></i></button>
               <input class="form-control mr-sm-2 search" type="text" placeholder="Område" keyup="searchCity" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
               ${this.foundCities.length < 1 ? '' : /*html*/`
                 <div class="dropdown-menu show w-100 position-absolute">
