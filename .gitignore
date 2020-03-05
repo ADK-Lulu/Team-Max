@@ -2,7 +2,7 @@
 .DS_Store
 
 # Ignore DB max.db
-max/databases/max.db
+max.db
 
 # Logs
 logs
