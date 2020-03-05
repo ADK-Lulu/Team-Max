@@ -89,7 +89,7 @@ class ObjektSida extends Base {
               <img src="${this.planImage.bildUrl}" class="img-fluid" alt="Planritning ${this.objektId}">
             </div>
             <div class="col" id="FaktaOm"><!--Fakta om-->
-              <p>${this.objektBeskrivning}</p>
+            <p>${this.objektBeskrivning}</p>
             </div>
             <div class="col" id="AnmälIntresse"><!--Anmäl intresse-->
             Hej
