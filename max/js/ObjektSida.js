@@ -29,7 +29,7 @@ class ObjektSida extends Base {
       {
         objektSidaId: this.objektId
       });
-
+    
     Object.assign(this, details[0]);
 
     // Hitta bilden som är framsidebild för aktuell SaljObjekt
@@ -86,10 +86,10 @@ class ObjektSida extends Base {
                   `)}
             </div>
             <div class="col" id="Planritning"><!--Planritning-->
-            <img src="${this.planImage.bildUrl}" class="img-fluid" alt="Planritning ${this.objektId}">
+              <img src="${this.planImage.bildUrl}" class="img-fluid" alt="Planritning ${this.objektId}">
             </div>
             <div class="col" id="FaktaOm"><!--Fakta om-->
-            Hej
+              <p>${this.objektBeskrivning}</p>
             </div>
             <div class="col" id="AnmälIntresse"><!--Anmäl intresse-->
             Hej
