@@ -16,11 +16,10 @@ class Footer extends Base {
         </p>
         <p>Telefon: +46 23 456 78 90</p>
       </div>
-      <div class="col-md-auto">
-         <!--Här nedan kan vi fylla på med fler länkar. Lägg länkar i footerBarLink i app och villkora i map hur just dina länkar
-            ska presenteras. Kanske inte som buttons?-->
+      <!---<div class="col-md-auto">
+        
             ${this.links.map(link => /*html*/`<a class="btn btn-info" role="button" href="${link.route}">${link.label}</a>`)}
-      </div>
+      </div>-->
     </div>
     <div class="row text-center">
       <div class="col">
