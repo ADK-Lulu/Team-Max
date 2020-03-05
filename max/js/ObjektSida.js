@@ -91,8 +91,26 @@ class ObjektSida extends Base {
             <div class="col" id="FaktaOm"><!--Fakta om-->
             <p>${this.objektBeskrivning}</p>
             </div>
-            <div class="col" id="AnmälIntresse"><!--Anmäl intresse-->
-            Hej
+            
+            <!--Anmäl intresse-->
+            <div class="container" id="AnmälIntresse">
+              <div class="col-6 mt-2 float-right">
+                <h4>Intresseanmälan:</h4>
+                <form submit="collectFormData">
+                  <div class="form-group">
+                    <label class="w-100">Namn:
+                      <input name="namn" type="text" class="form-control" placeholder="Ditt namn" required pattern=".{2,}">
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label class="w-100">E-post:
+                      <input name="epost" type="email" class="form-control" placeholder="Din e-postadress" required>
+                      </label>
+                    </div>
+                    <input class="btn btn-primary float-right" type="submit" value="Skicka">
+                  </form>
+                </div> 
+              </div>
             </div>
             <div class="col" id="OmOmrådet"><!--Om området-->
             Hej
