@@ -30,23 +30,34 @@ class ObjektSida extends Base {
             <h1 class="text-center">Objekttitel ${this.objektId}</h1> 
             <div class="col text-center sticky-top"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
               <div class="btn-group btn-group-lg" role="group" aria-label="Basic-example"> <!--Kod för button group -->
-                <button type="button" class="btn btn-primary">Alla bilder</button> 
-                <button type="button" class="btn btn-primary">Planritning</button> 
-                <button type="button" class="btn btn-primary">Fakta om</button> 
-                <button type="button" class="btn btn-primary">Anmäl intresse</button> 
-                <button type="button" class="btn btn-primary">Om området</button>
-                <button type="button" class="btn btn-primary">Dela</button>
+                <button type="button" class="btn btn-primary"><a href="#AllaBilder">Alla bilder</a></button>
+                <button type="button" class="btn btn-primary"><a href="#Planritning">Planritning</a></button> 
+                <button type="button" class="btn btn-primary"><a href="#FaktaOm">Fakta om</a></button> 
+                <button type="button" class="btn btn-primary"><a href="#AnmälIntresse">Anmäl intresse</a></button> 
+                <button type="button" class="btn btn-primary"><a href="#OmOmrådet">Om området</a></button>
+                <button type="button" class="btn btn-primary"><a href="#Dela">Dela</a></button>
               </div>
             </div>
             <!--Skriv kod här som inte har med knapparna att göra-->
-            <div class="row"><!--Kod för bilderna-->
+            <div class="row"><a id="AllaBilder"></a><!--Kod för bilderna-->
               ${this.allPictures.map(image => /*html*/`
                     <img class="img-fluid col-6" src="${image.bildUrl}">
                   `)}
-              ${console.log(this.allPictures)}
             </div>
-            <div><!--Planritning-->
+            <div class="col" id="Planritning"><!--Planritning-->
             <img src="${this.planImage.bildUrl}" class="img-fluid" alt="Planritning ${this.objektId}">
+            </div>
+            <div class="col" id="FaktaOm"><!--Fakta om-->
+            Hej
+            </div>
+            <div class="col" id="AnmälIntresse"><!--Anmäl intresse-->
+            Hej
+            </div>
+            <div class="col" id="OmOmrådet"><!--Om området-->
+            Hej
+            </div>
+            <div class="col" id="Dela"><!--Dela-->
+            Hej
             </div>
           </div>
         </div>
