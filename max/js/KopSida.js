@@ -31,6 +31,7 @@ class KopSida extends Base {
                 
                 </form>
                         
+            ${!app.navBar.chosen ? '' : `<p>Du vill köpa bostäder i ${app.navBar.chosen}.</p>`}
           </div>
         </div>
       </div>
