@@ -58,7 +58,6 @@ class ObjektSida extends Base {
               </div>
             </div>
             <!--Skriv kod här som inte har med knapparna att göra-->
-<<<<<<< HEAD
 
             <!--Hårdfakta-ruta här-->
             <div class="col-12 py-2">
@@ -72,8 +71,15 @@ class ObjektSida extends Base {
               </div>
             </div>
 
-=======
->>>>>>> 3d2eb488c0e4cbf2efa5a0b6eca4c0c56e39d978
+            <div class="col-12">
+            <div class="col-4">
+            <!-- Mäklarinfo här!-->
+            </div>
+            <div class="col-8">
+            <p>${this.saljText}</p>
+            </div>
+            </div>
+
             <div class="row"><a id="AllaBilder"></a><!--Kod för bilderna-->
               ${this.allPictures.map(image => /*html*/`
                     <img class="img-fluid col-6" src="${image.bildUrl}">
