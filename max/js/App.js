@@ -12,8 +12,6 @@ class App extends Base {
           { label: 'Om oss', route: '/om-oss' }
         ]
       },
-      { label: 'Söka bostad', route: '/sok-sida' } //Ska bli ett sökfällt senare
-
     ];
 
     this.footerBarLinks = [
@@ -32,7 +30,7 @@ class App extends Base {
     this.kontaktSida = new KontaktSida();
 
 
-    // Läs in databasen nax
+    // Läs in databasen max
     await sql(/*sql*/`USE max`);
 
     // Konvertera alla SaljObjekt från databasen till en instans av ObjektSida.js
