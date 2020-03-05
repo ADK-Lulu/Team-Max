@@ -27,8 +27,7 @@ class KontaktSida extends Base {
 
   render() {
     return /*html*/`
-      <div route="/kontakt-sida" page-title="Kontakta oss">
-        <div class="container">
+      <div class="row" route="/kontakt-sida" page-title="Kontakta oss">
           <div class="row mx-md-n5">
             <div class="col px-md-5">
               <div class="p-3 border bg-light"><img src="images/misc/kontaktsida_kontorsfasad.jpg" class="card-img-top" alt="">
@@ -79,7 +78,6 @@ class KontaktSida extends Base {
             `}
           </div>
         </div>
-      </div>
     `;
   }
 

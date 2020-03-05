@@ -1,8 +1,31 @@
 class KopSida extends Base {
 
+  // Läs in databasen max
+  async mount() {
+    await sql(/*sql*/`USE max`);
+
+    let searchChosen = app.navBar.chosen;
+    let results = await sql(/*sql*/`
+      SELECT * 
+      FROM SaljObjekt 
+      JOIN ObjektProfiler 
+      ON SaljObjekt.objektProfilId = ObjektProfiler.objektProfilId
+      JOIN Adresser 
+      ON SaljObjekt.adressId = Adresser.adressId
+      JOIN Omraden 
+      ON Omraden.omradeId = Adresser.omradeId
+      WHERE Omraden.namn = $sokOmrade
+      `,
+      {
+        sokOmrade: searchChosen
+      });
+
+    Object.assign(this, results[0])
+
+  }
+
   render() {
     return /*html*/`
-      <div class="container">
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
           <div class="col-12">
             <h1>Köpa bostad</h1>
@@ -34,13 +57,12 @@ class KopSida extends Base {
                   <img src="/images/iconer/nybygge.png" alt="nybygge">
                   <input type="checkbox" id="nybygge"></label></div>
               </div>
-                
-                </form>
+              </form>
                         
             ${!app.navBar.chosen ? '' : `<p>Du vill köpa bostäder i ${app.navBar.chosen}.</p>`}
+            ${console.log(this.saljText)}
           </div>
         </div>
-      </div>
     `;
   }
 
