@@ -19,11 +19,12 @@ class ObjektSida extends Base {
 
   render() {
     return /*html*/`
-      <div class="container">
-        <div class="row" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
+      <div class="container" route="/objekt-sida/${this.objektId}">
+        <div class="row" page-title="Visa objekt ${this.objektId}">
           <div class="col-12">
             <img src="${this.frontImage.bildUrl}" class="img-fluid" alt="Frontbild ${this.objektId}">
             <h1 class="text-center">Objekttitel ${this.objektId}</h1>
+            ${console.log(this.images)}
           </div>
         </div>
       </div>

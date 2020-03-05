@@ -17,7 +17,7 @@ class App extends Base {
     ];
 
     this.footerBarLinks = [
-      { label: 'Mer om oss', route: this.navBarLinks[4].route }
+      { label: 'Mer om oss', route: this.navBarLinks[1].route }
 
     ];
 
@@ -32,11 +32,11 @@ class App extends Base {
     this.kontaktSida = new KontaktSida();
 
 
-    // Läs in databasen nax
+    // Läs in databasen max
     await sql(/*sql*/`USE max`);
 
     // Konvertera alla SaljObjekt från databasen till en instans av ObjektSida.js
-    this.objektSida = await sql(ObjektSida, /*sql*/`
+    this.objektSidor = await sql(ObjektSida, /*sql*/`
       SELECT objektId FROM SaljObjekt
     `);
   }
@@ -51,7 +51,7 @@ class App extends Base {
           ${this.startSida}
           ${this.omOss}
           ${this.kopSida}
-          ${this.objektSida}
+          ${this.objektSidor}
           ${this.saljSida}
           ${this.sokSida}
           ${this.kontaktSida}
