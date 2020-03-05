@@ -8,6 +8,12 @@ class KopSida extends Base {
             <h1>Köpa bostad</h1>
             <p>Det här är en sida där du kan köpa bostad</p>
 
+              <div class="input-group py-4">
+                <div class="btn btn-secondary">
+                  <i class="p-3 icofont-search-map icofont-1x"></i>
+                </div>
+                <input type="text" class="form-control mr-sm-2 search" placeholder="Sök område">
+              </div>
     
             	<form>
               <div class="form-row align-items-center">

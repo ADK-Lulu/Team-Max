@@ -29,7 +29,7 @@ class ObjektSida extends Base {
       {
         objektSidaId: this.objektId
       });
-    
+
     Object.assign(this, details[0]);
 
     // Hitta bilden som är framsidebild för aktuell SaljObjekt
