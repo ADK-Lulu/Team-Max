@@ -125,7 +125,7 @@ class ObjektSida extends Base {
             <p>${this.objektBeskrivning}</p>
             </div>
             
-            <!--Aktuell mäklare för objektet presenteras-->
+            <!--Aktuell mäklare för objektet presenteras Marit parprogr med Sören-->
             <div class="container">
               <div class="col-6 mt-2 float-left">
                 <div class="card" style="width: 18rem;">
