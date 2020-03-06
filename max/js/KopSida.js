@@ -13,8 +13,11 @@ class KopSida extends Base {
       maxPris: 9000000
     };
 
-    let searchChosen = app.navBar.chosen;
-    let results = await sql(/*sql*/`
+  }
+
+  async search() {
+
+    this.results = await sql(/*sql*/`
       SELECT * 
       FROM SaljObjekt 
       JOIN ObjektProfiler 
@@ -23,14 +26,16 @@ class KopSida extends Base {
       ON SaljObjekt.adressId = Adresser.adressId
       JOIN Omraden 
       ON Omraden.omradeId = Adresser.omradeId
-      WHERE Omraden.namn = $sokOmrade
-      `,
-      {
-        sokOmrade: searchChosen
-      });
+      WHERE antalRum >= $minRum
+      AND antalRum <= $maxRum
+      AND kvm >= $minKvm
+      AND kvm <= $maxKvm
+      AND pris >= $minPris
+      AND pris <= $maxPris
+      `, this.settings);
 
-
-    Object.assign(this, results[0])
+    this.render();
+    console.log(this.results)
 
   }
   getSliderValue(e) {
@@ -49,6 +54,7 @@ class KopSida extends Base {
     oppoVal = opposite == "max" ? Math.max(val, oppoVal) : Math.min(val, oppoVal);
     this.settings[oppoName] = oppoVal;
 
+    this.search();
     this.render();
   }
 
@@ -129,6 +135,9 @@ class KopSida extends Base {
                     </div>
                   </div>
               </form>
+
+              <pre>${JSON.stringify(this.results, '', ' ')}</pre>
+             
                         
             ${!app.navBar.chosen ? '' : `<p>Du vill köpa bostäder i ${app.navBar.chosen}.</p>`}
             ${console.log(this.saljText)}
