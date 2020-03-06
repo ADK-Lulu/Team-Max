@@ -14,6 +14,10 @@ class ObjektSida extends Base {
     this.render();
   }
 
+  formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
+  }
+
   // Läs in databasen max
   async mount() {
 
@@ -79,7 +83,7 @@ class ObjektSida extends Base {
         <div class="row" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
           <div class="col-12">
             <img src="${this.frontImage.bildUrl}" class="img-fluid" alt="Frontbild ${this.objektId}">
-            <h1 class="text-center">Objekttitel ${this.objektId}</h1> 
+            <h1 class="text-center">${this.saljRubrik}</h1> 
             <div class="col text-center sticky-top"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
               <div class="btn-group btn-group-lg" role="group" aria-label="Basic-example"> <!--Kod för button group -->
                 <button type="button" class="btn btn-primary"><a href="#AllaBilder">Alla bilder</a></button>
@@ -95,27 +99,23 @@ class ObjektSida extends Base {
             <div class="col-12 py-2 align-middle">
               <div class="row bg-light">
                 <div class="col">Storlek: ${this.kvm} kvm</div>
-                <div class="col">Område: ${this.namn}</div>
+                <div class="col">Garage: ${this.garage ? 'finns' : 'finns ej'}</div>
+                <div class="col">Hiss: ${this.hiss ? 'finns' : 'finns ej'}</div>
               </div>
               <div class="row bg-light">
                 <div class="col">Antal rum: ${this.antalRum}</div>
-                <div class="col">Pris: ${this.pris} kr</div>
+                <div class="col">Område: ${this.namn}</div>
+                <div class="col">Pris: ${this.formatNumber(this.pris)} kr</div>
               </div>
             </div>
 
             <div class="col-12">
-            <div class="col-4">
-           
-
-            </div>
-            <div class="col-8">
-            <p>${this.saljText}</p>
-            </div>
+              <p>${this.saljText}</p>
             </div>
 
             <div class="row"><a id="AllaBilder"></a><!--Kod för bilderna-->
               ${this.allPictures.map(image => /*html*/`
-                    <img class="img-fluid col-6" src="${image.bildUrl}">
+                    <img class="img-fluid col-6 py-2" src="${image.bildUrl}">
                   `)}
             </div>
             <div class="col" id="Planritning"><!--Planritning-->
