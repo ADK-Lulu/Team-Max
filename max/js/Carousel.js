@@ -28,7 +28,7 @@ class Carousel extends Base {
               ${this.framsideBilder.map((framsideBilder, index) => /*html*/`
                 <div class="carousel-item ${index === 0 ? 'active' : ''}">
                   <div class="d-flex justify-content-center">
-                    <img class="w-75" src="${framsideBilder.bildUrl}">
+                    <a href="/objekt-sida/${framsideBilder.objektId}"><img class="w-100 img-fluid" src="${framsideBilder.bildUrl}"></a>
                   </div>
                 </div>
               `)}
