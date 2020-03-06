@@ -125,40 +125,41 @@ class ObjektSida extends Base {
             <p>${this.objektBeskrivning}</p>
             </div>
             
-            <!--Aktuell mäklare för objektet presenteras Marit parprogr med Sören-->
-            <div class="container">
-              <div class="col-6 mt-2 float-left">
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="${this.maklare.bildUrl}" alt="Card image cap">
-                  <div class="card-body">
-                    <p class="card-text">${this.maklare.namn}<br>
-                      ${this.maklare.telefonnummer}<br>
-                      ${this.maklare.epost}</p>
+
+              <!--Aktuell mäklare för objektet presenteras Marit parprogr med Sören-->
+              <div class="row">
+                <div class="col-4 mt-2">
+                  <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="${this.maklare.bildUrl}" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text">${this.maklare.namn}<br>
+                        ${this.maklare.telefonnummer}<br>
+                        ${this.maklare.epost}</p>
+                    </div>
                   </div>
+                </div>
+
+              <!--Anmäl intresse-->
+              <div class="col-8" id="AnmälIntresse">
+                <div class="col mt-2">
+                  <h4>Intresseanmälan:</h4>
+                  <form submit="collectFormData">
+                    <div class="form-group">
+                      <label class="w-100">Namn:
+                        <input name="namn" type="text" class="form-control" placeholder="Ditt namn" required pattern=".{2,}">
+                      </label>
+                    </div>
+                    <div class="form-group">
+                      <label class="w-100">E-post:
+                        <input name="epost" type="email" class="form-control" placeholder="Din e-postadress" required>
+                        </label>
+                      </div>
+                      <input class="btn btn-primary float-right" type="submit" value="Skicka">
+                    </form>
+                  </div> 
                 </div>
               </div>
 
-           
-            <!--Anmäl intresse-->
-            <div class="container" id="AnmälIntresse">
-              <div class="col-6 mt-2 float-right">
-                <h4>Intresseanmälan:</h4>
-                <form submit="collectFormData">
-                  <div class="form-group">
-                    <label class="w-100">Namn:
-                      <input name="namn" type="text" class="form-control" placeholder="Ditt namn" required pattern=".{2,}">
-                    </label>
-                  </div>
-                  <div class="form-group">
-                    <label class="w-100">E-post:
-                      <input name="epost" type="email" class="form-control" placeholder="Din e-postadress" required>
-                      </label>
-                    </div>
-                    <input class="btn btn-primary float-right" type="submit" value="Skicka">
-                  </form>
-                </div> 
-              </div>
-            </div>
             <!--Om området-->
             <div class="row" id="OmOmrådet">
              <div class="col-6 mt-3"> 
@@ -169,6 +170,7 @@ class ObjektSida extends Base {
               <img class="img-fluid" src="${this.bildUrl}">
              </div>
             </div>
+
             <div id="Dela">
               <div class="modal-backdrop ${this.shown ? 'show' : 'd-none'}"></div>
               <div class="modal ${this.shown ? 'd-block open' : ''}" tabindex="-1" role="dialog">
