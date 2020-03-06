@@ -101,8 +101,6 @@ class KopSida extends Base {
                   <img src="/images/iconer/nybygge.png" alt="nybygge">
                   <input type="checkbox" id="nybygge"></label></div>
               </div>
-                
-                </form>
               </form>
               <form>
                   <div class="row">
