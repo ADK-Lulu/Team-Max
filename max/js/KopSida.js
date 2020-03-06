@@ -61,6 +61,9 @@ class KopSida extends Base {
                         
             ${!app.navBar.chosen ? '' : `<p>Du vill köpa bostäder i ${app.navBar.chosen}.</p>`}
             ${console.log(this.saljText)}
+
+            </div>
+
           </div>
         </div>
     `;

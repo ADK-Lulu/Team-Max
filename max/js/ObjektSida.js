@@ -32,12 +32,31 @@ class ObjektSida extends Base {
 
     Object.assign(this, details[0]);
 
-    // Hitta bilden som är framsidebild för aktuell SaljObjekt
+    // Hämta mäklarinfo till aktuellt objekt
+    this.maklarinfo = await sql(/*sql*/`
+      SELECT *
+      FROM Maklare
+      JOIN SaljObjekt
+      WHERE SaljObjekt.objektId = $objektSidaId
+      AND SaljObjekt.maklarId=Maklare.maklarId
+      
+    `,
+      {
+        objektSidaId: this.objektId
+      });
+
+
+    //Hämta detaljer
+
+    //Hitta bilden som är framsidebild för aktuell SaljObjekt
     this.frontImage = this.images.find(front => front.framsidebild);
     //Hitta bilden för planritning
     this.planImage = this.images.find(plan => plan.planritning);
     //Hitta alla övriga bilder
     this.allPictures = this.images.filter(pictures => !pictures.framsidebild && !pictures.planritning);
+    //Plocka ut mäklarobjektet
+    this.maklare = this.maklarinfo[0];
+
   }
 
   render() {
@@ -72,7 +91,8 @@ class ObjektSida extends Base {
 
             <div class="col-12">
             <div class="col-4">
-            <!-- Mäklarinfo här!-->
+           
+
             </div>
             <div class="col-8">
             <p>${this.saljText}</p>
@@ -91,6 +111,20 @@ class ObjektSida extends Base {
             <p>${this.objektBeskrivning}</p>
             </div>
             
+            <!--Aktuell mäklare för objektet presenteras-->
+            <div class="container">
+              <div class="col-6 mt-2 float-left">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="${this.maklare.bildUrl}" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text">${this.maklare.namn}<br>
+                      ${this.maklare.telefonnummer}<br>
+                      ${this.maklare.epost}</p>
+                  </div>
+                </div>
+              </div>
+
+           
             <!--Anmäl intresse-->
             <div class="container" id="AnmälIntresse">
               <div class="col-6 mt-2 float-right">
