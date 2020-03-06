@@ -112,7 +112,7 @@ class Base {
   }
 
   static eventListener() {
-    for (let type of ['click', 'submit', 'keyup', 'keydown', 'focus', 'blur']) {
+    for (let type of ['click', 'submit', 'keyup', 'keydown', 'focus', 'blur', 'input', 'change']) {
       document.body.addEventListener(type, e => {
         type === 'click' && document.querySelectorAll('a').forEach(a => a.blur());
         type === 'click' && this.routerLinks(e);

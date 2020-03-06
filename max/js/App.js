@@ -21,7 +21,7 @@ class App extends Base {
     this.kopSida = new KopSida();
     this.objektSida = new ObjektSida();
     this.saljSida = new SaljSida();
-    this.sokSida = new SokSida();
+    this.sokning = new Sokning();
     this.kontaktSida = new KontaktSida();
 
 
@@ -46,7 +46,7 @@ class App extends Base {
           ${this.kopSida}
           ${this.objektSidor}
           ${this.saljSida}
-          ${this.sokSida}
+          ${this.sokning}
           ${this.kontaktSida}
         </main>
         ${this.footer}
