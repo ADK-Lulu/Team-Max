@@ -132,6 +132,10 @@ class ObjektSida extends Base {
               <h4>Om området:</h4>
               ${this.omradesBeskrivning}
              </div>
+             <div class="col-6 mt-3">
+              <img class="img-fluid" src="${this.bildUrl}">
+             </div>
+            </div>
             <div id="Dela">
               <div class="modal-backdrop ${this.shown ? 'show' : 'd-none'}"></div>
               <div class="modal ${this.shown ? 'd-block open' : ''}" tabindex="-1" role="dialog">
@@ -152,12 +156,6 @@ class ObjektSida extends Base {
                   </div>
                 </div>
               </div>
-            
-             <div class="col-6 mt-3">
-              <img class="img-fluid" src="${this.bildUrl}">
-             </div>
-            </div>
-            
           </div>
         </div>
     `;
