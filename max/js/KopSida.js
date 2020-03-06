@@ -33,14 +33,26 @@ class KopSida extends Base {
     Object.assign(this, results[0])
 
   }
-  // 
   getSliderValue(e) {
-    this.settings[e.target.id] = e.target.value / 1;
-    console.log(this.settings);
+    // Deklarera jobbigt långa saker till enkla namn
+    let name = e.target.id;
+    let val = e.target.value / 1;
+    this.settings[name] = val;
+
+    // Deklarera motsats början på namnet (min kontra max)
+    let opposite = name.includes('min') ? 'max' : 'min';
+    // Sätt ihop motsats början med slut delen av namnet i en egen variable(Rum, Kvm, Pris)
+    let oppoName = opposite + name.slice(3);
+    // Deklarera en variable med motsatsens value
+    let oppoVal = this.settings[oppoName];
+    // Om motsatsnamnet börjar på max, sätt motsatsvärdet till det största av värdena. Annars tvärt om.
+    oppoVal = opposite == "max" ? Math.max(val, oppoVal) : Math.min(val, oppoVal);
+    this.settings[oppoName] = oppoVal;
+
     this.render();
   }
 
-  // Sätter värdena till sig själva några ms efter start för att fixa en mysko bugg med startvärdet på slidern
+  // Sätter värdena till sig själva fixa en mysko bugg med startvärdet på slidern
   setSliderValuesHackish() {
     for (let setting in this.settings) {
       document.querySelector('#' + setting).value = this.settings[setting];
