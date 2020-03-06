@@ -1,6 +1,9 @@
 *.css
 .DS_Store
 
+# Ignore DB max.db
+max.db
+
 # Logs
 logs
 *.log
