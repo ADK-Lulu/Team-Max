@@ -3,6 +3,7 @@ class SokSida extends Base {
 
 
 
+
   render() {
     return /*html*/`
         <div class="row" route="/sok-sida" page-title="Söka objekt">

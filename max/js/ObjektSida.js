@@ -1,7 +1,22 @@
 class ObjektSida extends Base {
 
+  showModal() {
+    // Needed to stop scrolling when the modal is shown
+    this.shown = true;
+    setTimeout(() => $('body').addClass('modal-open'), 0);
+    this.render();
+  }
+
+  closeModal() {
+    // Needed to stop scrolling when the modal is shown
+    this.shown = false;
+    setTimeout(() => $('body').removeClass('modal-open'), 0);
+    this.render();
+  }
+
   // Läs in databasen max
   async mount() {
+
     await sql(/*sql*/`USE max`);
 
     // Hämta alla bilder för aktuell SaljObjekt
@@ -38,6 +53,7 @@ class ObjektSida extends Base {
     this.planImage = this.images.find(plan => plan.planritning);
     //Hitta alla övriga bilder
     this.allPictures = this.images.filter(pictures => !pictures.framsidebild && !pictures.planritning);
+
   }
 
   render() {
@@ -53,13 +69,12 @@ class ObjektSida extends Base {
                 <button type="button" class="btn btn-primary"><a href="#FaktaOm">Fakta om</a></button> 
                 <button type="button" class="btn btn-primary"><a href="#AnmälIntresse">Anmäl intresse</a></button> 
                 <button type="button" class="btn btn-primary"><a href="#OmOmrådet">Om området</a></button>
-                <button type="button" class="btn btn-primary"><a href="#Dela">Dela</a></button>
+                <button type="button" class="btn btn-primary" click="showModal">Dela</button>
               </div>
             </div>
             <!--Skriv kod här som inte har med knapparna att göra-->
-
             <!--Hårdfakta-ruta här-->
-            <div class="col-12 py-2">
+            <div class="col-12 py-2 align-middle">
               <div class="row bg-light">
                 <div class="col">Storlek: ${this.kvm} kvm</div>
                 <div class="col">Område: ${this.namn}</div>
@@ -87,7 +102,7 @@ class ObjektSida extends Base {
             <div class="col" id="Planritning"><!--Planritning-->
               <img src="${this.planImage.bildUrl}" class="img-fluid" alt="Planritning ${this.objektId}">
             </div>
-            <div class="col" id="FaktaOm"><!--Fakta om-->
+            <div class="col mt-3" id="FaktaOm"><!--Fakta om-->
             <p>${this.objektBeskrivning}</p>
             </div>
             
@@ -111,12 +126,38 @@ class ObjektSida extends Base {
                 </div> 
               </div>
             </div>
-            <div class="col" id="OmOmrådet"><!--Om området-->
-            Hej
+            <!--Om området-->
+            <div class="row" id="OmOmrådet">
+             <div class="col-6 mt-3"> 
+              <h4>Om området:</h4>
+              ${this.omradesBeskrivning}
+             </div>
+            <div id="Dela">
+              <div class="modal-backdrop ${this.shown ? 'show' : 'd-none'}"></div>
+              <div class="modal ${this.shown ? 'd-block open' : ''}" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Kopiera länk</h5>
+                      <button type="button" class="close" click="closeModal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>${window.location.href}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" click="closeModal">Stäng</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+             <div class="col-6 mt-3">
+              <img class="img-fluid" src="${this.bildUrl}">
+             </div>
             </div>
-            <div class="col" id="Dela"><!--Dela-->
-            Hej
-            </div>
+            
           </div>
         </div>
     `;
