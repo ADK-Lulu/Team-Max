@@ -57,6 +57,8 @@ class KopSida extends Base {
                   <img src="/images/iconer/nybygge.png" alt="nybygge">
                   <input type="checkbox" id="nybygge"></label></div>
               </div>
+                
+                </form>
               </form>
                         
             ${!app.navBar.chosen ? '' : `<p>Du vill köpa bostäder i ${app.navBar.chosen}.</p>`}
