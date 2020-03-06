@@ -74,7 +74,7 @@ class ObjektSida extends Base {
             </div>
             <!--Skriv kod här som inte har med knapparna att göra-->
             <!--Hårdfakta-ruta här-->
-            <div class="col-12 py-2">
+            <div class="col-12 py-2 align-middle">
               <div class="row bg-light">
                 <div class="col">Storlek: ${this.kvm} kvm</div>
                 <div class="col">Område: ${this.namn}</div>
@@ -102,7 +102,7 @@ class ObjektSida extends Base {
             <div class="col" id="Planritning"><!--Planritning-->
               <img src="${this.planImage.bildUrl}" class="img-fluid" alt="Planritning ${this.objektId}">
             </div>
-            <div class="col" id="FaktaOm"><!--Fakta om-->
+            <div class="col mt-3" id="FaktaOm"><!--Fakta om-->
             <p>${this.objektBeskrivning}</p>
             </div>
             
@@ -126,9 +126,12 @@ class ObjektSida extends Base {
                 </div> 
               </div>
             </div>
-            <div class="col" id="OmOmrådet"><!--Om området-->
-            Hej
-            </div>
+            <!--Om området-->
+            <div class="row" id="OmOmrådet">
+             <div class="col-6 mt-3"> 
+              <h4>Om området:</h4>
+              ${this.omradesBeskrivning}
+             </div>
             <div id="Dela">
               <div class="modal-backdrop ${this.shown ? 'show' : 'd-none'}"></div>
               <div class="modal ${this.shown ? 'd-block open' : ''}" tabindex="-1" role="dialog">
@@ -149,7 +152,12 @@ class ObjektSida extends Base {
                   </div>
                 </div>
               </div>
+            
+             <div class="col-6 mt-3">
+              <img class="img-fluid" src="${this.bildUrl}">
+             </div>
             </div>
+            
           </div>
         </div>
     `;
