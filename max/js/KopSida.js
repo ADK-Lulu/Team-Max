@@ -4,7 +4,6 @@ class KopSida extends Base {
   async mount() {
     this.sokning = new Sokning();
     await sql(/*sql*/`USE max`);
-
     this.settings = {
       minRum: 0,
       maxRum: 5,
@@ -20,7 +19,7 @@ class KopSida extends Base {
   async search() {
 
     this.results = await sql(/*sql*/`
-      SELECT * 
+      SELECT *
       FROM SaljObjekt 
       JOIN ObjektProfiler 
       ON SaljObjekt.objektProfilId = ObjektProfiler.objektProfilId
@@ -38,9 +37,7 @@ class KopSida extends Base {
       AND pris <= $maxPris
       AND framsidebild = true
       `, this.settings);
-
     this.render();
-
   }
   getSliderValue(e) {
     // Deklarera jobbigt långa saker till enkla namn
@@ -57,14 +54,14 @@ class KopSida extends Base {
     // Om motsatsnamnet börjar på max, sätt motsatsvärdet till det största av värdena. Annars tvärt om.
     oppoVal = opposite == "max" ? Math.max(val, oppoVal) : Math.min(val, oppoVal);
     this.settings[oppoName] = oppoVal;
-
+    this.search();
     this.render();
   }
 
 
   render() {
+    !this.results ? this.search() : '';
     let s = this.settings;
-    this.search();
     return /*html*/`
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
           <div class="col-12">
@@ -124,15 +121,22 @@ class KopSida extends Base {
                     </div>
                   </div>
               </form>
-              <div class="row" id="resultsDiv">
-              ${this.results.map(object => /*html*/`
-              <p>${object.namn}</p>
-              
+              <div class="card-columns">
+                ${this.results.map(object => /*html*/`<a style="color:black;" href="http://localhost:3000/objekt-sida/${object.objektId}">
+                <div class="card p-0">
+                  <img class="card-img-top h-50" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
+                  <div class="card-body">
+                    <h4 class="card-title">${object.gata} ${object.gatunummer}  <small class="card-subtitle">${object.namn}</small> </h4>
+                    <p class="card-text">Kvm: ${object.kvm} <br>
+                    Pris: ${object.pris} <br>
+                    Rum: ${object.antalRum} <br></p>
+
+                  </div>
+                </div></a>
+
               `)}
               </div>
 
-              <pre>${JSON.stringify(this.results, '', ' ')}</pre>
-             
             ${!app.navBar.chosen ? '' : `<p>Du vill köpa bostäder i ${app.navBar.chosen}.</p>`}
             
             </div>
