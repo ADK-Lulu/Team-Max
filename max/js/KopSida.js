@@ -28,12 +28,15 @@ class KopSida extends Base {
       ON SaljObjekt.adressId = Adresser.adressId
       JOIN Omraden 
       ON Omraden.omradeId = Adresser.omradeId
+      JOIN ObjektBilder
+      ON SaljObjekt.objektId = ObjektBilder.objektId
       WHERE antalRum >= $minRum
       AND antalRum <= $maxRum
       AND kvm >= $minKvm
       AND kvm <= $maxKvm
       AND pris >= $minPris
       AND pris <= $maxPris
+      AND framsidebild = true
       `, this.settings);
 
     this.render();
@@ -55,24 +58,14 @@ class KopSida extends Base {
     oppoVal = opposite == "max" ? Math.max(val, oppoVal) : Math.min(val, oppoVal);
     this.settings[oppoName] = oppoVal;
 
-    this.search();
     this.render();
-  }
-
-  // Sätter värdena till sig själva fixa en mysko bugg med startvärdet på slidern
-  setSliderValuesHackish() {
-    for (let setting in this.settings) {
-      // Sörens fix för en bugg där sidan gav error när man bytte från köpsidan till en annan sida
-      if (document.querySelector("#" + setting) != null) {
-        document.querySelector("#" + setting).value = this.settings[setting];
-      }
-    }
   }
 
 
   render() {
     let s = this.settings;
-    let r =  /*html*/`
+    this.search();
+    return /*html*/`
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
           <div class="col-12">
             <h1>Köpa bostad</h1>
@@ -131,6 +124,12 @@ class KopSida extends Base {
                     </div>
                   </div>
               </form>
+              <div class="row" id="resultsDiv">
+              ${this.results.map(object => /*html*/`
+              <p>${object.namn}</p>
+              
+              `)}
+              </div>
 
               <pre>${JSON.stringify(this.results, '', ' ')}</pre>
              
@@ -141,8 +140,7 @@ class KopSida extends Base {
           </div>
         </div>
     `;
-    setTimeout(() => this.setSliderValuesHackish(), 0);
-    return r;
+
   }
 
 }
