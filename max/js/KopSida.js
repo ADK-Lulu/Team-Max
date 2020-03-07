@@ -16,11 +16,20 @@ class KopSida extends Base {
   }
 
   async search() {
-    this.sokOm = { sokOmrade: this.sokord + '%' }
+    this.sokOm = { sokOmrade: this.sokord ? this.sokord + '%' : '%' }
     this.sokSettings = Object.assign({}, this.settings, this.sokOm)
 
     this.results = await sql(/*sql*/`
-      SELECT *
+      SELECT SaljObjekt.objektId, 
+      SaljObjekt.pris, 
+      SaljObjekt.saljText,
+      ObjektProfiler.kvm, 
+      ObjektProfiler.antalRum, 
+      ObjektBilder.framsidebild, 
+      ObjektBilder.bildUrl, 
+      Omraden.namn, 
+      Adresser.gata, 
+      Adresser.gatunummer
       FROM SaljObjekt 
       JOIN ObjektProfiler 
       ON SaljObjekt.objektProfilId = ObjektProfiler.objektProfilId
