@@ -11,19 +11,14 @@ class KopSida extends Base {
       minKvm: 0,
       maxKvm: 300,
       minPris: 0,
-      maxPris: 9000000
+      maxPris: 9000000,
+      sokOmrade: app.sokning.chosen
     };
 
   }
 
-  // Joinar två objekt för sökning
-  joining() {
-    this.sokFilter = Object.assign({}, this.settings, store.searchSettings);
-  }
-
   async search() {
 
-    this.joining()
     this.results = await sql(/*sql*/`
       SELECT * 
       FROM SaljObjekt 
@@ -39,8 +34,7 @@ class KopSida extends Base {
       AND kvm <= $maxKvm
       AND pris >= $minPris
       AND pris <= $maxPris
-      AND namn LIKE $sokOmrade
-      `, this.sokFilter);
+      `, this.settings);
 
     this.render();
 

@@ -25,8 +25,7 @@ class Sokning extends Base {
     if (!this.chosen) { return; }
     if (location.pathname === '/kop-sida') {
       store.searchSettings.sokOmrade = this.chosen + '%';
-      store.save();
-      app.kopSida.joining();
+      store.save()
       app.kopSida.search();
       app.kopSida.render();
     }
@@ -34,8 +33,7 @@ class Sokning extends Base {
       // Tell the framework to go to another page
       history.pushState(null, null, "/kop-sida");
       store.searchSettings.sokOmrade = this.chosen + '%';
-      store.save();
-      app.kopSida.joining();
+      store.save()
       app.kopSida.search();
       Base.router();
     }
