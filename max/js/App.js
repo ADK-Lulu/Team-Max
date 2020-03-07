@@ -46,7 +46,6 @@ class App extends Base {
           ${this.kopSida}
           ${this.objektSidor}
           ${this.saljSida}
-          ${this.sokning}
           ${this.kontaktSida}
         </main>
         ${this.footer}

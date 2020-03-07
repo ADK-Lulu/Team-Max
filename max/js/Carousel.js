@@ -15,7 +15,6 @@ class Carousel extends Base {
 
   render() {
     let toRender = /*html*/`
-      <div class="row">
         <div class="col-12">
           <h2 class="serif mb-3">Ett urval av våra aktuella bostäder</h2>
           <div id="start-carousel" class="carousel slide bg-dark" data-ride="carousel">
@@ -44,7 +43,6 @@ class Carousel extends Base {
             </a>
           </div>
         </div>
-      </div>
     `;
 
     // start the carousel
