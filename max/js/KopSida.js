@@ -68,6 +68,7 @@ class KopSida extends Base {
   // Sätter värdena till sig själva fixa en mysko bugg med startvärdet på slidern
   setSliderValuesHackish() {
     for (let setting in this.settings) {
+      // Sörens fix för en bugg där sidan gav error när man bytte från köpsidan till en annan sida
       if (document.querySelector("#" + setting) != null) {
         document.querySelector("#" + setting).value = this.settings[setting];
       }
