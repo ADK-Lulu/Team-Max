@@ -40,7 +40,8 @@ class KontaktSida extends Base {
               </div>
             </div>
           </div>
-          <div class="row">
+
+          <div class="row w-100 pt-5">
             ${this.formSent ? /*html*/`
               <div class="col-12">
                 <h2>
@@ -50,12 +51,10 @@ class KontaktSida extends Base {
               </div>
               `:
                 /*html*/`  
-              <div class="col px-md-4 mt-5">
-                <div class="float-right">
+              <div class="col-5">
                   <h4>Kontakta oss:</h4>
-                </div>
               </div>
-              <div class="col-8 mt-5">
+              <div class="col-7">
                 <form submit="collectFormData">
                     <div class="form-group">
                       <label class="w-100">Namn:
