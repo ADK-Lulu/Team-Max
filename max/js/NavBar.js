@@ -1,65 +1,9 @@
 class NavBar extends Base {
   mount() {
+    this.sokning = new Sokning();
     this.foundCities = [];
     this.selected = -1;
     sql(/*sql*/`USE max`);
-  }
-
-  preventReload(e) {
-    // Do not reload the form on submit
-    e.preventDefault();
-  }
-
-  clickCity(e) {
-    this.foundCities = [];
-    this.selected = -1;
-    this.chosen = e.target.innerText;
-    document.querySelector('.search').value = this.chosen || '';
-    this.render();
-    this.gotoBuyPage();
-  }
-
-  gotoBuyPage(e) {
-    if (!this.chosen) { return; }
-    if (location.pathname === '/kop-sida') {
-      app.kopSida.render();
-    }
-    else {
-      // Tell the framework to go to another page
-      history.pushState(null, null, "/kop-sida");
-      Base.router();
-    }
-  }
-
-  selectWithUpDownArrows(e) {
-    if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
-      e.preventDefault();
-      this.selected += (e.key === 'ArrowDown') - (e.key === 'ArrowUp');
-      if (this.selected < 0) { this.selected = this.foundCities.length - 1; }
-      if (this.selected >= this.foundCities.length) { this.selected = 0; }
-      this.render();
-      return;
-    }
-  }
-
-  async searchCity(e) {
-    if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
-    if (e.key === 'Enter' && this.selected >= 0) {
-      this.chosen = this.foundCities[this.selected] && this.foundCities[this.selected].namn;
-      document.querySelector('.search').value = this.chosen || '';
-      this.foundCities = [];
-      this.selected = -1;
-      this.render();
-      this.gotoBuyPage();
-      return;
-    }
-    this.selected = 0;
-    this.foundCities = e.target.value.length < 1 ? [] : await sql(/*sql*/`
-      SELECT namn FROM Omraden WHERE namn LIKE $name
-    `, {
-      name: e.target.value + '%'
-    });
-    this.render();
   }
 
   render() {
@@ -93,21 +37,8 @@ class NavBar extends Base {
           `)}
           </ul>
 
+            <div class="col-2">${this.sokning}</div>
 
-            <div class="dropdown col-auto ml-auto">
-             <form class="form-inline my-2 my-lg-0" submit="preventReload">
-              <button type="submit" class="btn btn-primary" click="gotoBuyPage"><i class="p-3 icofont-search-map icofont-2x"></i></button>
-              <input class="form-control mr-sm-2 search" type="text" placeholder="Område" keyup="searchCity" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
-              ${this.foundCities.length < 1 ? '' : /*html*/`
-                <div class="dropdown-menu show w-100 position-absolute">
-                  ${this.foundCities.map((city, index) => /*html*/`
-                    <button click="clickCity" class="dropdown-item ${this.selected !== index ? '' : 'bg-primary text-light'}" type="button">${city.namn}</button>
-                   
-                  `)}
-                </div>
-                
-              `}
-            </div>
           </div>
       </nav>
     `

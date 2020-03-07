@@ -21,10 +21,11 @@ Written by **Thomas Frank**, © Node Hill 2020. MIT-licensed.
     * *rendering* html to the DOM
     * *routing* (changing which content is shown based on the route/url)
     * *event handling* (listening and reacting to when the user clicks, types etc)
-* There are 3 important global variables:
+* There are 4 important global variables:
     * **store** lets you use *local storage* (persistant storage of user data on the client computer) in an easy way.
     * **sql** lets you query *SQLite* databases from the frontend.
     * **app** gives you access to the *only* instance of the App class (the starting point of your application) anywhere. This makes it easier to communicate between components.
+    * **params** (see the routing section of the documentation).
 
 ### Install es6-string-html
 We recommend that you use *Visual Studio Code* as your editor and that you 
@@ -193,7 +194,7 @@ class StartPage extends Base {
 In this example we set the property **greeting** of the startpage to "Welcome!" in the **mount** method of **App**.
 
 ## Event handling
-You can listen to the events **click**, **submit**, **keyup**, **keydown**, **focus** and **blur** on any HTML element by adding an attribute with the same name as the event to the element. 
+You can listen to the events **click**, **submit**, **keyup**, **keydown**, **focus**, **blur**, **change** and **input** on any HTML element by adding an attribute with the same name as the event to the element. 
 
 Set the attribute value to the name of the method you want to call.
 
@@ -256,7 +257,6 @@ The framework never does a hard reload of the web page. Instead it shows (and re
 ### route
 To *show* content only when you are on a certain route add the attribute **route** to an element (usually the root element of a component).
 
-
 ```html
 <div route="/">
   <h1>Startpage</h1>
@@ -286,6 +286,29 @@ Adding the attribute **route="404"** will show the content of the element when t
 <div route="404">
   <h1>Sorry, no such page!</h1>
 </div>
+```
+
+### Parameters in routes
+If you need to read parameter data from a route you can write the route like
+```html
+<div route="/say-hi/greeting/:greeting/name/:name">
+  <h1>${params.greeting} ${params.name}!</h1>
+</div>
+```
+
+Every part of the route that you start with ":" will become a parameter.
+
+
+This route would match paths like **/say-hi/greeting/Hello/name/Annica/** as well as **/say-hi/greeting/Hi/name/Peter**...
+
+You can then read your parameters as properties of  the global variable **params**. In this case it will have the properties *greeting* and *name*.
+
+### Go to a route programatically
+
+Sometimes you want to tell JavaScript to go to another route. You can do so anywhere in your code:
+
+```js
+app.goto('/any-route');
 ```
 
 ## Document title

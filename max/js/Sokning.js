@@ -3,7 +3,6 @@ class Sokning extends Base {
   async mount() {
     this.foundCities = [];
     this.selected = -1;
-    this.sokOrd = 1;
     sql(/*sql*/`USE max`);
 
   }
@@ -25,11 +24,17 @@ class Sokning extends Base {
   gotoByPage(e) {
     if (!this.chosen) { return; }
     if (location.pathname === '/kop-sida') {
+      store.searchSettings.sokOmrade = this.chosen + '%';
+      store.save();
+      app.kopSida.search();
       app.kopSida.render();
     }
     else {
       // Tell the framework to go to another page
       history.pushState(null, null, "/kop-sida");
+      store.searchSettings.sokOmrade = this.chosen + '%';
+      store.save();
+      app.kopSida.search();
       Base.router();
     }
   }
@@ -52,6 +57,8 @@ class Sokning extends Base {
       document.querySelector('.search').value = this.chosen || '';
       this.foundCities = [];
       this.selected = -1;
+      store.searchSettings.sokOmrade = this.chosen + '%';
+      store.save();
       this.render();
       this.gotoByPage();
       return;

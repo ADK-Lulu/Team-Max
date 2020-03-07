@@ -32,7 +32,6 @@ class Carousel extends Base {
                 </div>
               `)}
             </div>
-            ${console.log(this.framsideBilder)}
             <a class="carousel-control-prev" href="#start-carousel" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>

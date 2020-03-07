@@ -54,6 +54,7 @@ class Base {
   }
 
   static setup() {
+    window.params = {};
     [...document.querySelectorAll('script')].forEach(s => s.remove());
     this.shadowDom = document.createElement('body');
     this.shadowDom2 = document.createElement('body');
@@ -65,6 +66,7 @@ class Base {
     this.eventListener();
     window.onpopstate = () => {
       window.scrollTo(0, 0);
+      window.params = {};
       this.router();
     }
     window.sql = this.sql;
@@ -78,9 +80,7 @@ class Base {
   }
 
   static updateDom() {
-    let dd = new diffDOM.DiffDOM({
-      valueDiffing: false
-    });
+    let dd = new diffDOM.DiffDOM({ valueDiffing: false });
     let tdiff = dd.diff(this.shadowDom2, this.shadowDom);
     dd.apply(this.shadowDom2, tdiff);
     [...this.shadowDom2.querySelectorAll('script')].forEach(s => s.remove());
@@ -112,7 +112,7 @@ class Base {
   }
 
   static eventListener() {
-    for (let type of ['click', 'submit', 'keyup', 'keydown', 'focus', 'blur', 'input', 'change']) {
+    for (let type of ['click', 'submit', 'keyup', 'keydown', 'focus', 'blur', 'change', 'input']) {
       document.body.addEventListener(type, e => {
         type === 'click' && document.querySelectorAll('a').forEach(a => a.blur());
         type === 'click' && this.routerLinks(e);
@@ -150,10 +150,16 @@ class Base {
     let a = e.target.closest('a');
     let href = (a && a.getAttribute('href')) + '';
     if (href[0] !== '/') { return; }
+    window.params = {};
     window.history.pushState(null, null, this.linkCleaner(href));
     window.scrollTo(0, 0);
     this.router();
     e.preventDefault();
+  }
+
+  goto(href) {
+    window.history.pushState(null, null, Base.linkCleaner(href));
+    Base.router();
   }
 
   static router(element = this.shadowDom) {
@@ -193,8 +199,17 @@ class Base {
 
   static routeMatch(route, loose = false) {
     route = encodeURI(this.linkCleaner(route));
-    if (location.pathname === route) { return true; }
-    if (loose && route.length > 1 && location.pathname.slice(1).indexOf(route.slice(1)) === 0) {
+    let orgRoute = route;
+    route = route.split('/');
+    let loc = location.pathname.split('/');
+    let match = true;
+    for (let i = 0; i < route.length; i++) {
+      let isParam = route[i][0] === ':';
+      match = match && (route[i] === loc[i] || isParam);
+      isParam && (window.params[route[i].slice(1)] = loc[i]);
+    }
+    if (match && loc.length === route.length) { return true; }
+    if (loose && orgRoute.length > 1 && location.pathname.slice(1).indexOf(orgRoute.slice(1)) === 0) {
       return true;
     }
   }

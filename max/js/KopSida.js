@@ -2,6 +2,7 @@ class KopSida extends Base {
 
   // Läs in databasen max
   async mount() {
+    this.sokning = new Sokning();
     await sql(/*sql*/`USE max`);
 
     this.settings = {
@@ -15,7 +16,13 @@ class KopSida extends Base {
 
   }
 
+  // Joinar två objekt för sökning
+  joining() {
+    this.sokFilter = Object.assign({}, this.settings, store.searchSettings);
+  }
+
   async search() {
+    this.joining()
 
     this.results = await sql(/*sql*/`
       SELECT * 
@@ -32,10 +39,10 @@ class KopSida extends Base {
       AND kvm <= $maxKvm
       AND pris >= $minPris
       AND pris <= $maxPris
-      `, this.settings);
+      AND namn LIKE $sokOmrade
+      `, this.sokFilter);
 
     this.render();
-    console.log(this.results)
 
   }
   getSliderValue(e) {
@@ -75,12 +82,7 @@ class KopSida extends Base {
             <h1>Köpa bostad</h1>
             <p>Det här är en sida där du kan köpa bostad</p>
 
-              <div class="input-group py-4">
-                <div class="btn btn-secondary">
-                  <i class="p-3 icofont-search-map icofont-1x"></i>
-                </div>
-                <input type="text" class="form-control mr-sm-2 search" placeholder="Sök område">
-              </div>
+             <div class="row py-3">${this.sokning}</div>
     
             	<form>
               <div class="form-row align-items-center">
@@ -136,10 +138,8 @@ class KopSida extends Base {
 
               <pre>${JSON.stringify(this.results, '', ' ')}</pre>
              
-                        
             ${!app.navBar.chosen ? '' : `<p>Du vill köpa bostäder i ${app.navBar.chosen}.</p>`}
-            ${console.log(this.saljText)}
-
+            
             </div>
 
           </div>

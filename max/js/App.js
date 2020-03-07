@@ -14,6 +14,8 @@ class App extends Base {
       },
     ];
 
+    store.use('sok-omrade');
+
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.footer = new Footer({ links: this.navBarLinks });
     this.startSida = new StartSida();
