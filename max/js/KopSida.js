@@ -10,13 +10,14 @@ class KopSida extends Base {
       minKvm: 0,
       maxKvm: 300,
       minPris: 0,
-      maxPris: 9000000,
-      sokOmrade: app.sokning.chosen
+      maxPris: 9000000
     };
 
   }
 
   async search() {
+    this.sokOm = { sokOmrade: this.sokord + '%' }
+    this.sokSettings = Object.assign({}, this.settings, this.sokOm)
 
     this.results = await sql(/*sql*/`
       SELECT *
@@ -36,9 +37,16 @@ class KopSida extends Base {
       AND pris >= $minPris
       AND pris <= $maxPris
       AND framsidebild = true
-      `, this.settings);
+      AND namn LIKE $sokOmrade
+      `, this.sokSettings);
     this.render();
   }
+
+  catch(e) {
+    this.sokord = e;
+  }
+
+
   getSliderValue(e) {
     // Deklarera jobbigt långa saker till enkla namn
     let name = e.target.id;
@@ -65,7 +73,7 @@ class KopSida extends Base {
     return /*html*/`
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
           <div class="col-12">
-            <h1>Köpa bostad</h1>
+            <h1>Köpa bostad ${this.sokord ? 'i ' + this.sokord : ''}</h1>
             <p>Det här är en sida där du kan köpa bostad</p>
 
              <div class="row py-3">${this.sokning}</div>

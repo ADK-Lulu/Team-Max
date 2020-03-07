@@ -18,7 +18,7 @@ class ObjektSida extends Base {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
   }
 
-  // Läs in databasen max
+  // Använd databasen max
   async mount() {
 
     await sql(/*sql*/`USE max`);
