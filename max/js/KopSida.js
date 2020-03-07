@@ -22,8 +22,8 @@ class KopSida extends Base {
   }
 
   async search() {
-    this.joining()
 
+    this.joining()
     this.results = await sql(/*sql*/`
       SELECT * 
       FROM SaljObjekt 
@@ -68,13 +68,14 @@ class KopSida extends Base {
   // Sätter värdena till sig själva fixa en mysko bugg med startvärdet på slidern
   setSliderValuesHackish() {
     for (let setting in this.settings) {
-      document.querySelector('#' + setting).value = this.settings[setting];
+      if (document.querySelector("#" + setting) != null) {
+        document.querySelector("#" + setting).value = this.settings[setting];
+      }
     }
   }
 
 
   render() {
-
     let s = this.settings;
     let r =  /*html*/`
         <div class="row" route="/kop-sida" page-title="Köpa bostad">

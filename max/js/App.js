@@ -15,6 +15,8 @@ class App extends Base {
     ];
 
     store.use('sok-omrade');
+    store.searchSettings = store.searchSettings
+      || { sokOmrade: '' };
 
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.footer = new Footer({ links: this.navBarLinks });
