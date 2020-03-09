@@ -138,18 +138,25 @@ class KopSida extends Base {
                     </div>
                   </div>
               </form>
-              <div class="card-columns">
+              <div class="">
                 ${this.results.map(object => /*html*/`<a style="color:black;" href="/objekt-sida/${object.objektId}">
-                <div class="card p-0">
-                  <img class="card-img-top h-50" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
-                  <div class="card-body">
-                    <h4 class="card-title">${object.gata} ${object.gatunummer}  <small class="card-subtitle">${object.namn}</small> </h4>
-                    <p class="card-text">Kvm: ${object.kvm} <br>
+                <div class="row">
+                  <div class=col-8>
+                   <img class="img-fluid w-100 h-auto" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
+                  </div>
+                  <div class="col-4">
+                    <h1 class="display-4">${object.gata} ${object.gatunummer}<br>
+                    <small>${object.namn}</small> </h1>
+                    <p class="lead">Kvm: ${object.kvm} <br>
                     Pris: ${object.pris} <br>
                     Rum: ${object.antalRum} <br></p>
-
                   </div>
                 </div></a>
+                <div class="row">
+                <div class=col-12>
+                <br>
+                </div>
+                </div>
 
               `)}
               </div>
