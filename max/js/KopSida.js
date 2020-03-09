@@ -2,16 +2,17 @@ class KopSida extends Base {
 
   // Läs in databasen max
   async mount() {
-    this.sokning = new Sokning();
-    await sql(/*sql*/`USE max`);
     this.settings = {
       minRum: 0,
       maxRum: 5,
       minKvm: 0,
       maxKvm: 30,
       minPris: 0,
-      maxPris: 900
+      maxPris: 90,
+      sortering: 'nyast'
     };
+    this.sokning = new Sokning();
+    await sql(/*sql*/`USE max`)
 
   }
 
@@ -20,7 +21,8 @@ class KopSida extends Base {
     this.sokSettings = Object.assign({}, this.settings, this.sokOm)
 
     this.results = await sql(/*sql*/`
-      SELECT SaljObjekt.objektId, 
+    SELECT 
+      SaljObjekt.objektId, 
       SaljObjekt.pris, 
       SaljObjekt.saljText,
       ObjektProfiler.kvm, 
@@ -47,7 +49,15 @@ class KopSida extends Base {
       AND pris <= $maxPris * 100000
       AND framsidebild = true
       AND namn LIKE $sokOmrade
+      ORDER BY 
+        CASE WHEN $sortering='nyast' THEN SaljObjekt.objektId END DESC,
+        CASE WHEN $sortering='aldst' THEN SaljObjekt.objektId END ASC,
+        CASE WHEN $sortering='billigastPris' THEN pris END ASC,
+        CASE WHEN $sortering='dyrastPris' THEN pris END DESC
+        
       `, this.sokSettings);
+    console.log(this.results);
+    console.log(this.settings)
     this.render();
   }
 
@@ -83,6 +93,13 @@ class KopSida extends Base {
         document.querySelector("#" + setting).value = this.settings[setting];
       }
     }
+  }
+
+  sortera(e) {
+    console.log(e.target.value)
+    this.settings.sortering = e.target.value;
+    this.search();
+    this.render();
   }
 
   render() {
@@ -149,16 +166,18 @@ class KopSida extends Base {
               </form>
                             
               <!--Gör en knapp som man kan sortera med-->
-              <label for="sort-by">Sortera efter</label>
-              <select name="objekt" id="sort-by">
-                <option value="Inget" click="">Ingen sortering</option>
-                <option value="Billigast" click="">Billigast först</option>
-                <option value="Dyrast" click="">Dyrast först</option>
-                <option value="Nyast" click="">Nyast först</option>
-                <option value="Äldst" click="">Äldst föst</option>
-              </select>
-             
-              <div>
+              <div class="row w-100">
+                <div class="form-group">
+                <label for="sort-by">Sortera efter</label>
+                  <select class="form-control" id="sort-by" click="sortera">
+                    <option value="nyast">Nyast först</option>
+                    <option value="aldst">Äldst först</option>
+                    <option value="billigastPris">Billigast först</option>
+                    <option value="dyrastPris">Dyrast först</option>
+                  </select>
+                </div>
+              </div>
+              <div class="container">
                 ${this.results.map(object => /*html*/`<a style="color:black;" href="/objekt-sida/${object.objektId}">
                 <div class="row">
                   <div class=col-8>
@@ -188,7 +207,6 @@ class KopSida extends Base {
           </div>
         </div>
     `;
-
   }
 
 }
