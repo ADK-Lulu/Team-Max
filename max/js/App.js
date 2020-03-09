@@ -34,6 +34,11 @@ class App extends Base {
     `);
   }
 
+  // Metod som formaterar pris snyggare
+  formateraPris(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
+  }
+
   render() {
     return /*html*/`
       <div base-title="Dhyr & Rumson - ">

@@ -9,7 +9,11 @@ class KopSida extends Base {
       maxKvm: 30,
       minPris: 0,
       maxPris: 90,
-      sortering: 'nyast'
+      sortering: 'nyast',
+      sokBostadsratt: true,
+      sokRadhus: true,
+      sokVilla: true,
+      sokNybygge: false
     };
     this.sokning = new Sokning();
     this.search();
@@ -32,7 +36,10 @@ class KopSida extends Base {
       ObjektBilder.bildUrl, 
       Omraden.namn, 
       Adresser.gata, 
-      Adresser.gatunummer
+      Adresser.gatunummer,
+      ObjektTyper.typNamn,
+      ObjektTyper.typId,
+      ObjektProfiler.nyproduktion
       FROM SaljObjekt 
       JOIN ObjektProfiler 
       ON SaljObjekt.objektProfilId = ObjektProfiler.objektProfilId
@@ -42,6 +49,8 @@ class KopSida extends Base {
       ON Omraden.omradeId = Adresser.omradeId
       JOIN ObjektBilder
       ON SaljObjekt.objektId = ObjektBilder.objektId
+      JOIN ObjektTyper
+      ON ObjektTyper.typId = SaljObjekt.typId
       WHERE antalRum >= $minRum
       AND antalRum <= $maxRum
       AND kvm >= $minKvm * 10
@@ -50,6 +59,13 @@ class KopSida extends Base {
       AND pris <= $maxPris * 100000
       AND framsidebild = true
       AND namn LIKE $sokOmrade
+      AND ObjektProfiler.nyproduktion IN (CASE WHEN $sokNybygge=false THEN 0 END,1)
+      AND ObjektTyper.typId IN (
+        CASE WHEN $sokBostadsratt=true THEN 2 END, 
+        CASE WHEN $sokRadhus=true THEN 3 END, 
+        CASE WHEN $sokVilla=true THEN 1 END
+        )
+
       ORDER BY 
         CASE WHEN $sortering='nyast' THEN SaljObjekt.objektId END DESC,
         CASE WHEN $sortering='aldst' THEN SaljObjekt.objektId END ASC,
@@ -57,13 +73,21 @@ class KopSida extends Base {
         CASE WHEN $sortering='dyrastPris' THEN pris END DESC
         
       `, this.sokSettings);
-    console.log(this.results);
-    console.log(this.settings)
     this.render();
   }
 
+  // Fånga upp sökordet från Sokning.js
   catch(e) {
     this.sokord = e;
+  }
+
+  // Filtrera efter checkboxar
+  checkBoxFilter(e) {
+    let name = e.target.id;
+    let val = document.getElementById(name).checked;
+    this.settings[name] = val;
+    this.search();
+    this.render();
   }
 
 
@@ -97,7 +121,6 @@ class KopSida extends Base {
   }
 
   sortera(e) {
-    console.log(e.target.value)
     this.settings.sortering = e.target.value;
     this.search();
     this.render();
@@ -118,20 +141,19 @@ class KopSida extends Base {
               <div class="form-row align-items-center">
                   <div class="col-md-3"><label class="btn btn-secondary">
                   <img src="/images/iconer/bostadsratt.png" alt="bostadsratt">
-                  <input type="checkbox"  id="bostadsratt"></label></div>
+                  <input change="checkBoxFilter" value="false" type="checkbox" id="sokBostadsratt" checked></label></div>
 
                   <div class="col-md-3"><label class="btn btn-secondary">
                   <img src="/images/iconer/radhus.png" alt="radhus">
-                  <input type="checkbox" id="radhus" ></label></div>
+                  <input change="checkBoxFilter" value="true" type="checkbox" id="sokRadhus" checked></label></div>
 
                   <div class="col-md-3"><label class="btn btn-secondary">
                   <img src="/images/iconer/hus.png" alt="hus">
-                  <input type="checkbox" id="hus"></label></div>
+                  <input change="checkBoxFilter" value="true" type="checkbox" id="sokVilla" checked></label></div>
               
-
                   <div class="col-md-3"><label class="btn btn-secondary">
                   <img src="/images/iconer/nybygge.png" alt="nybygge">
-                  <input type="checkbox" id="nybygge"></label></div>
+                  <input change="checkBoxFilter" value="false" type="checkbox" id="sokNybygge"></label></div>
               </div>
               </form>
               <form>
@@ -189,7 +211,10 @@ class KopSida extends Base {
                     <small>${object.namn}</small> </h1>
                     <p class="lead">Kvm: ${object.kvm} <br>
                     Pris: ${object.pris} <br>
-                    Rum: ${object.antalRum} <br></p>
+                    Rum: ${object.antalRum} <br>
+                    Typ: ${object.typNamn} <br>
+                    ${object.nyproduktion ? 'Nyproduktion! <br>' : ''}
+                    </p>
                   </div>
                 </div></a>
                 <div class="row">
