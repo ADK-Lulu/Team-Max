@@ -24,16 +24,14 @@ class Sokning extends Base {
   gotoByPage(e) {
     if (!this.chosen) { return; }
     if (location.pathname === '/kop-sida') {
-      store.searchSettings.sokOmrade = this.chosen + '%';
-      store.save()
+      app.kopSida.catch(this.chosen);
       app.kopSida.search();
       app.kopSida.render();
     }
     else {
       // Tell the framework to go to another page
-      history.pushState(null, null, "/kop-sida");
-      store.searchSettings.sokOmrade = this.chosen + '%';
-      store.save()
+      app.goto('/kop-sida');
+      app.kopSida.catch(this.chosen);
       app.kopSida.search();
       Base.router();
     }
@@ -57,8 +55,6 @@ class Sokning extends Base {
       document.querySelector('.search').value = this.chosen || '';
       this.foundCities = [];
       this.selected = -1;
-      store.searchSettings.sokOmrade = this.chosen + '%';
-      store.save();
       this.render();
       this.gotoByPage();
       return;
@@ -78,7 +74,7 @@ class Sokning extends Base {
 
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
-            <span type="submit" class="input-group-text" id="inputGroup-sizing-lg">Sök</span>
+            <button click="gotoByPage" type="submit" class="input-group-text" id="inputGroup-sizing-lg">Sök</button>
           </div>
           <input type="text" class="form-control search" type="text" placeholder="Område" keyup="searchCity" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
            ${this.foundCities.length < 1 ? '' : /*html*/`

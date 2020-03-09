@@ -14,19 +14,6 @@ class App extends Base {
       },
     ];
 
-    store.use('sok-omrade');
-    store.searchSettings = store.searchSettings
-      ||
-    {
-      sokOmrade: '',
-      minRum: 0,
-      maxRum: 5,
-      minKvm: 0,
-      maxKvm: 300,
-      minPris: 0,
-      maxPris: 9000000
-    };
-
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.footer = new Footer({ links: this.navBarLinks });
     this.startSida = new StartSida();
@@ -38,7 +25,7 @@ class App extends Base {
     this.kontaktSida = new KontaktSida();
 
 
-    // Läs in databasen max
+    // Använd databasen max
     await sql(/*sql*/`USE max`);
 
     // Konvertera alla SaljObjekt från databasen till en instans av ObjektSida.js
