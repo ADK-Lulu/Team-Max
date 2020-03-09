@@ -101,6 +101,22 @@ class ObjektSida extends Base {
     this.render();
   }
 
+  kopieraLank() {
+    /* Get the text field */
+    let copyText = document.getElementById("lank")
+    console.log(copyText)
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+
+    document.getElementById("kopieratLank").innerHTML = "Länk kopierad till clipboard!";
+  }
+
+
   render() {
     return /*html*/`
         <div class="row" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
@@ -222,9 +238,11 @@ class ObjektSida extends Base {
                       </button>
                     </div>
                     <div class="modal-body">
-                      <p>${window.location.href}</p>
+                      <input type="text" class="w-100" value="${window.location.href}" id="lank" readonly>
+                      <p id="kopieratLank"></p>
                     </div>
                     <div class="modal-footer">
+                      <button role="button" class="btn btn-primary" click="kopieraLank" aria-label="Copy">Kopiera länk</button>
                       <button type="button" class="btn btn-primary" click="closeModal">Stäng</button>
                     </div>
                   </div>
