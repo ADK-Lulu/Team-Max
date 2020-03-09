@@ -128,13 +128,18 @@ class ObjektSida extends Base {
 
               <!--Aktuell mäklare för objektet presenteras Marit parprogr med Sören-->
               <div class="row">
-                <div class="col-4 mt-2">
-                  <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="${this.maklare.bildUrl}" alt="Card image cap">
+                <div class="col-4">
+                  <div class="card w-75">
+                    <img class="card-img-top" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
                     <div class="card-body">
-                      <p class="card-text">${this.maklare.namn}<br>
-                        ${this.maklare.telefonnummer}<br>
-                        ${this.maklare.epost}</p>
+                      <h5 class="card-title">Aktuell mäklare</h5>
+                      </div>
+                      <div class="card-text">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">${this.maklare.namn}</li>
+                          <li class="list-group-item">${this.maklare.telefonnummer}</li>
+                          <li class="list-group-item">${this.maklare.epost}</li>
+                        </ul>
                     </div>
                   </div>
                 </div>
