@@ -139,7 +139,7 @@ class KopSida extends Base {
                   </div>
               </form>
               <div class="card-columns">
-                ${this.results.map(object => /*html*/`<a style="color:black;" href="http://localhost:3000/objekt-sida/${object.objektId}">
+                ${this.results.map(object => /*html*/`<a style="color:black;" href="/objekt-sida/${object.objektId}">
                 <div class="card p-0">
                   <img class="card-img-top h-50" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
                   <div class="card-body">
