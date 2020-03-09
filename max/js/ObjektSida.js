@@ -65,6 +65,9 @@ class ObjektSida extends Base {
       });
 
 
+
+
+
     //Hämta detaljer
 
     //Hitta bilden som är framsidebild för aktuell SaljObjekt
@@ -76,6 +79,26 @@ class ObjektSida extends Base {
     //Plocka ut mäklarobjektet
     this.maklare = this.maklarinfo[0];
 
+  }
+
+  // Fånga upp infon från formuläret "Anmäl intresse", längre ner i denna komponent
+  async collectFormData(e) {
+    e.preventDefault();
+    let form = e.target;
+    let formData = {};
+    // Loopar elementen från formuläret
+    for (let element of form.elements) {
+      if (!element.name) { continue; }
+      formData[element.name] = element.value;
+
+    }
+    // Sänder till db
+    await sql(/*sql*/`
+      INSERT INTO KopKontakter(namn, epost) VALUES($namn, $epost)
+    `, formData);
+
+    this.formSent = true;
+    this.render();
   }
 
   render() {
@@ -126,52 +149,63 @@ class ObjektSida extends Base {
             </div>
             
 
-              <!--Aktuell mäklare för objektet presenteras Marit parprogr med Sören-->
-              <div class="row">
-                <div class="col-4">
-                  <div class="card w-75">
-                    <img class="card-img-top" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
-                    <div class="card-body">
-                      <h5 class="card-title">Aktuell mäklare</h5>
-                      </div>
+            <!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
+        <div class="container">
+            <div class="row">
+              <div class="col-4">
+               <img class="card-img-top" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
+                  <div class="card-body text-center">
+                    <h5 class="card-title text-center mb-2">Aktuell mäklare</h5>
                       <div class="card-text">
                         <ul class="list-group list-group-flush">
                           <li class="list-group-item">${this.maklare.namn}</li>
                           <li class="list-group-item">${this.maklare.telefonnummer}</li>
                           <li class="list-group-item">${this.maklare.epost}</li>
                         </ul>
-                    </div>
-                  </div>
+                      </div>
                 </div>
+            </div>
 
-              <!--Anmäl intresse-->
-              <div class="col-8" id="AnmälIntresse">
-                <div class="col mt-2">
-                  <h4>Intresseanmälan:</h4>
-                  <form submit="collectFormData">
-                    <div class="form-group">
-                      <label class="w-100">Namn:
+              
+  <!--Tack för visat intresse (svar på intresseformulär)-->
+  
+    ${this.formSent ? /*html*/`
+      <div class="col-8">
+        <h1>Tack för att du kontaktar oss!</h1>
+      </div>
+      ` :
+    //Intresseformulär
+      /*html*/`
+      
+      <div class="col-8" id="AnmälIntresse">
+        <div class="col mt-2">
+          <h4>Intresseanmälan:</h4>
+          <form submit="collectFormData">
+            <div class="form-group">
+              <label class="w-100">Namn:
                         <input name="namn" type="text" class="form-control" placeholder="Ditt namn" required pattern=".{2,}">
                       </label>
                     </div>
-                    <div class="form-group">
-                      <label class="w-100">E-post:
+              <div class="form-group">
+                <label class="w-100">E-post:
                         <input name="epost" type="email" class="form-control" placeholder="Din e-postadress" required>
                         </label>
                       </div>
-                      <input class="btn btn-primary float-right" type="submit" value="Skicka">
+                <input class="btn btn-primary float-right" type="submit" value="Skicka">
                     </form>
-                  </div> 
-                </div>
               </div>
+            `}
+            </div>
+              </div>
+    </div>
 
-            <!--Om området-->
+          <!--Om området-->
             <div class="row" id="OmOmrådet">
-             <div class="col-6 mt-3"> 
+            <div class="col-6 mt-3">
               <h4>Om området:</h4>
               ${this.omradesBeskrivning}
-             </div>
-             <div class="col-6 mt-3">
+            </div>
+            <div class="col-6 mt-3">
               <img class="img-fluid" src="${this.bildUrl}">
              </div>
             </div>
@@ -196,9 +230,9 @@ class ObjektSida extends Base {
                   </div>
                 </div>
               </div>
+            </div>
           </div>
-        </div>
-    `;
+          `;
   }
 
 }
