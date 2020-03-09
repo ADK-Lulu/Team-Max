@@ -147,7 +147,18 @@ class KopSida extends Base {
                     </div>
                   </div>
               </form>
-              <div class="">
+                            
+              <!--Gör en knapp som man kan sortera med-->
+              <label for="sort-by">Sortera efter</label>
+              <select name="objekt" id="sort-by">
+                <option value="Inget" click="">Ingen sortering</option>
+                <option value="Billigast" click="">Billigast först</option>
+                <option value="Dyrast" click="">Dyrast först</option>
+                <option value="Nyast" click="">Nyast först</option>
+                <option value="Äldst" click="">Äldst föst</option>
+              </select>
+             
+              <div>
                 ${this.results.map(object => /*html*/`<a style="color:black;" href="/objekt-sida/${object.objektId}">
                 <div class="row">
                   <div class=col-8>
@@ -169,19 +180,6 @@ class KopSida extends Base {
 
               `)}
               </div>
-
-              
-              <!--Gör en knapp som man kan sortera med-->
-              <label for="sort-by">Sortera efter</label>
-              <select name="objekt" id="sort-by">
-                <option value="Inget" click="">Ingen sortering</option>
-                <option value="Billigast" click="">Billigast först</option>
-                <option value="Dyrast" click="">Dyrast först</option>
-                <option value="Nyast" click="">Nyast först</option>
-                <option value="Äldst" click="">Äldst föst</option>
-              </select>
-             
-              <pre>${JSON.stringify(this.results, '', ' ')}</pre>
 
             ${!app.navBar.chosen ? '' : `<p>Du vill köpa bostäder i ${app.navBar.chosen}.</p>`}
             
