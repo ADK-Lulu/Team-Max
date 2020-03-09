@@ -8,9 +8,9 @@ class KopSida extends Base {
       minRum: 0,
       maxRum: 5,
       minKvm: 0,
-      maxKvm: 300,
+      maxKvm: 30,
       minPris: 0,
-      maxPris: 9000000
+      maxPris: 900
     };
 
   }
@@ -41,10 +41,10 @@ class KopSida extends Base {
       ON SaljObjekt.objektId = ObjektBilder.objektId
       WHERE antalRum >= $minRum
       AND antalRum <= $maxRum
-      AND kvm >= $minKvm
-      AND kvm <= $maxKvm
-      AND pris >= $minPris
-      AND pris <= $maxPris
+      AND kvm >= $minKvm * 10
+      AND kvm <= $maxKvm * 10
+      AND pris >= $minPris * 100000
+      AND pris <= $maxPris * 100000
       AND framsidebild = true
       AND namn LIKE $sokOmrade
       `, this.sokSettings);
@@ -56,7 +56,7 @@ class KopSida extends Base {
   }
 
 
-  getSliderValue(e) {
+  async getSliderValue(e) {
     // Deklarera jobbigt långa saker till enkla namn
     let name = e.target.id;
     let val = e.target.value / 1;
@@ -119,21 +119,21 @@ class KopSida extends Base {
                       </label>
                     </div>
                     <div class="col">
-                      <label class="w-100">Minst boarea: ${s.minKvm} kvm
-                        <input value="${s.minKvm}" type="range" class="form-control-range" min="0" max="300" step="10" id="minKvm" input="getSliderValue">
+                      <label class="w-100">Minst boarea: ${s.minKvm * 10} kvm
+                        <input value="${s.minKvm}" type="range" class="form-control-range" min="0" max="30" step="1" id="minKvm" input="getSliderValue">
                       </label>
                       <div class="w-100"></div>
-                      <label class="w-100">Max. boarea: ${s.maxKvm} kvm
-                        <input value="${s.maxKvm}" type="range" class="form-control-range" min="0" max="300" step="10" id="maxKvm" input="getSliderValue">
+                      <label class="w-100">Max. boarea: ${s.maxKvm * 10} kvm
+                        <input value="${s.maxKvm}" type="range" class="form-control-range" min="0" max="30" step="1" id="maxKvm" input="getSliderValue">
                       </label>
                     </div>
                     <div class="col">
-                      <label class="w-100">Minsta pris: ${s.minPris} kr
-                        <input value="${s.minPris}" type="range" class="form-control-range" min="0" max="9000000" step="100000" id="minPris" input="getSliderValue">
+                      <label class="w-100">Minsta pris: ${s.minPris * 100000} kr
+                        <input value="${s.minPris}" type="range" class="form-control-range" min="0" max="90" step="1" id="minPris" input="getSliderValue">
                       </label>
                       <div class="w-100"></div>
-                      <label class="w-100">Max pris: ${s.maxPris} kr
-                        <input value="${s.maxPris}" type="range" class="form-control-range" min="0" max="9000000" step="100000" id="maxPris" input="getSliderValue">
+                      <label class="w-100">Max pris: ${s.maxPris * 100000} kr
+                        <input value="${s.maxPris}" type="range" class="form-control-range" min="0" max="90" step="1" id="maxPris" input="getSliderValue">
                       </label>
                     </div>
                   </div>
