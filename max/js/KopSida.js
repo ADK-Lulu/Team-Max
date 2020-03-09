@@ -12,6 +12,7 @@ class KopSida extends Base {
       sortering: 'nyast'
     };
     this.sokning = new Sokning();
+    this.search();
     await sql(/*sql*/`USE max`)
 
   }
