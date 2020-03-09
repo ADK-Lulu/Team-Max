@@ -69,7 +69,6 @@ class KopSida extends Base {
     }
   }
 
-
   render() {
     let s = this.settings;
     let r =  /*html*/`
@@ -132,8 +131,19 @@ class KopSida extends Base {
                   </div>
               </form>
 
-              <pre>${JSON.stringify(this.results, '', ' ')}</pre>
+              
+              <!--Gör en knapp som man kan sortera med-->
+              <label for="sort-by">Sortera efter</label>
+              <select name="objekt" id="sort-by">
+                <option value="Inget" click="">Ingen sortering</option>
+                <option value="Billigast" click="">Billigast först</option>
+                <option value="Dyrast" click="">Dyrast först</option>
+                <option value="Nyast" click="">Nyast först</option>
+                <option value="Äldst" click="">Äldst föst</option>
+              </select>
              
+              <pre>${JSON.stringify(this.results, '', ' ')}</pre>
+
             ${!app.navBar.chosen ? '' : `<p>Du vill köpa bostäder i ${app.navBar.chosen}.</p>`}
             
             </div>
