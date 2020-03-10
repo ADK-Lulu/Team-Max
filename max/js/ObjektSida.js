@@ -14,10 +14,6 @@ class ObjektSida extends Base {
     this.render();
   }
 
-  formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
-  }
-
   // Använd databasen max
   async mount() {
 
@@ -63,10 +59,6 @@ class ObjektSida extends Base {
       {
         objektSidaId: this.objektId
       });
-
-
-
-
 
     //Hämta detaljer
 
@@ -144,7 +136,7 @@ class ObjektSida extends Base {
               <div class="row bg-light">
                 <div class="col">Antal rum: ${this.antalRum}</div>
                 <div class="col">Område: ${this.namn}</div>
-                <div class="col">Pris: ${this.formatNumber(this.pris)} kr</div>
+                <div class="col">Pris: ${app.formateraPris(this.pris)} kr</div>
               </div>
             </div>
 
@@ -218,7 +210,7 @@ class ObjektSida extends Base {
           <!--Om området-->
             <div class="row" id="OmOmrådet">
             <div class="col-6 mt-3">
-              <h4>Om området:</h4>
+              <h4>Om ${this.namn}:</h4>
               ${this.omradesBeskrivning}
             </div>
             <div class="col-6 mt-3">

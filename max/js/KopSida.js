@@ -21,8 +21,8 @@ class KopSida extends Base {
 
   }
 
-  async search() {
-    this.sokOm = { sokOmrade: this.sokord ? this.sokord + '%' : '%' }
+  async search(sokord) {
+    this.sokOm = { sokOmrade: sokord ? sokord + '%' : '%' }
     this.sokSettings = Object.assign({}, this.settings, this.sokOm)
 
     this.results = await sql(/*sql*/`
@@ -74,11 +74,6 @@ class KopSida extends Base {
         
       `, this.sokSettings);
     this.render();
-  }
-
-  // Fånga upp sökordet från Sokning.js
-  catch(e) {
-    this.sokord = e;
   }
 
   // Filtrera efter checkboxar
@@ -210,7 +205,7 @@ class KopSida extends Base {
                     <h1 class="display-4">${object.gata} ${object.gatunummer}<br>
                     <small>${object.namn}</small> </h1>
                     <p class="lead">Kvm: ${object.kvm} <br>
-                    Pris: ${object.pris} <br>
+                    Pris: ${app.formateraPris(object.pris)} <br>
                     Rum: ${object.antalRum} <br>
                     Typ: ${object.typNamn} <br>
                     ${object.nyproduktion ? 'Nyproduktion! <br>' : ''}

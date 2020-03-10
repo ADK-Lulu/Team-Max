@@ -21,18 +21,15 @@ class Sokning extends Base {
     this.gotoByPage();
   }
 
-  gotoByPage(e) {
-    if (!this.chosen) { return; }
+  gotoByPage() {
     if (location.pathname === '/kop-sida') {
-      app.kopSida.catch(this.chosen);
-      app.kopSida.search();
+      app.kopSida.search(this.chosen);
       app.kopSida.render();
     }
     else {
       // Tell the framework to go to another page
       app.goto('/kop-sida');
-      app.kopSida.catch(this.chosen);
-      app.kopSida.search();
+      app.kopSida.search(this.chosen);
       Base.router();
     }
   }
@@ -70,7 +67,6 @@ class Sokning extends Base {
 
   render() {
     return /*html*/`
-
 
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
