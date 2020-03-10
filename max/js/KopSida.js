@@ -22,9 +22,7 @@ class KopSida extends Base {
   }
 
   async search(sokord) {
-    this.sokOm = { sokOmrade: sokord ? sokord + '%' : '%' }
-    this.sokSettings = Object.assign({}, this.settings, this.sokOm)
-
+    this.sokSettings = Object.assign({}, this.settings, { sokOmrade: sokord ? sokord + '%' : '%' })
     this.results = await sql(/*sql*/`
     SELECT 
       SaljObjekt.objektId, 
@@ -199,6 +197,11 @@ class KopSida extends Base {
                 ${this.results.map(object => /*html*/`<a style="color:black;" href="/objekt-sida/${object.objektId}">
                 <div class="row">
                   <div class=col-8>
+                   ${object.nyproduktion ? /*html*/`
+                    <div class="position-absolute float-left badge badge-secondary m-2">
+                    <h3>Nyproduktion</h3>
+                    </div>
+                    ` : ''}
                    <img class="img-fluid w-100 h-auto" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
                   </div>
                   <div class="col-4">
@@ -208,7 +211,6 @@ class KopSida extends Base {
                     Pris: ${app.formateraPris(object.pris)} <br>
                     Rum: ${object.antalRum} <br>
                     Typ: ${object.typNamn} <br>
-                    ${object.nyproduktion ? 'Nyproduktion! <br>' : ''}
                     </p>
                   </div>
                 </div></a>
