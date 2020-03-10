@@ -17,7 +17,7 @@ class SaljSida extends Base {
     }
 
     await sql(/*sql*/`
-      INSERT INTO Kunder (namn,telefonnummer,epost,omrade,kvm,antalRum) VALUES($namn,$epost, $telefonnummer, $omrade, $kvm, $antalRum)
+      INSERT INTO Kunder (namn,epost,telefonnummer,omrade,kvm,antalRum) VALUES($namn,$epost, $telefonnummer, $omrade, $kvm, $antalRum)
     `, formData);
 
     this.formSent = true;
