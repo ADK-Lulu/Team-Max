@@ -115,7 +115,7 @@ class ObjektSida extends Base {
           <div class="col-12">
             <img src="${this.frontImage.bildUrl}" class="img-fluid" alt="Frontbild ${this.objektId}">
             <h1 class="text-center">${this.saljRubrik}</h1> 
-            <div class="col text-center sticky-top"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
+            <div class="col text-center sticky-top2"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
               <div class="btn-group btn-group-lg" role="group" aria-label="Basic-example"> <!--Kod för button group -->
                 <button type="button" class="btn btn-primary"><a href="#AllaBilder">Alla bilder</a></button>
                 <button type="button" class="btn btn-primary"><a href="#Planritning">Planritning</a></button> 

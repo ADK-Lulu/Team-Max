@@ -13,7 +13,8 @@ class KopSida extends Base {
       sokBostadsratt: true,
       sokRadhus: true,
       sokVilla: true,
-      sokNybygge: false
+      sokNybygge: false,
+      sokOmrade: '%'
     };
     this.sokning = new Sokning();
     this.search();
@@ -22,13 +23,11 @@ class KopSida extends Base {
   }
 
   // Fånga upp sökordet från Sokning.js
-  catch(e) {
-    this.sokord = e;
+  fangaSokord(e) {
+    this.settings.sokOmrade = e ? e + '%' : '%';
   }
 
   async search() {
-    this.sokOm = { sokOmrade: this.sokord ? this.sokord + '%' : '%' }
-    this.sokSettings = Object.assign({}, this.settings, this.sokOm)
     this.results = await sql(/*sql*/`
     SELECT 
       SaljObjekt.objektId, 
@@ -76,7 +75,7 @@ class KopSida extends Base {
         CASE WHEN $sortering='billigastPris' THEN pris END ASC,
         CASE WHEN $sortering='dyrastPris' THEN pris END DESC
         
-      `, this.sokSettings);
+      `, this.settings);
     this.render();
   }
 

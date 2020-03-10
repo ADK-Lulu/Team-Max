@@ -23,14 +23,14 @@ class Sokning extends Base {
 
   gotoByPage() {
     if (location.pathname === '/kop-sida') {
-      app.kopSida.catch(this.chosen);
+      app.kopSida.fangaSokord(this.chosen);
       app.kopSida.search();
       app.kopSida.render();
     }
     else {
       // Tell the framework to go to another page
       app.goto('/kop-sida');
-      app.kopSida.catch(this.chosen);
+      app.kopSida.fangaSokord(this.chosen);
       app.kopSida.search();
       Base.router();
     }

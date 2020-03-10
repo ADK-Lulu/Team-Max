@@ -12,3 +12,11 @@
 .navbar-bg{
   background-color:#31a040;
 }
+
+.sticky-top2 {
+  @supports (position: sticky) {
+    position: sticky;
+    top: 120px;
+    z-index: $zindex-sticky;
+  }
+}
