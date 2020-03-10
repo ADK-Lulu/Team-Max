@@ -140,19 +140,19 @@ class KopSida extends Base {
               <div class="form-row align-items-center">
                   <div class="col-md-3"><label class="btn btn-secondary">
                   <img src="/images/iconer/bostadsratt.png" alt="bostadsratt">
-                  <input change="checkBoxFilter" value="false" type="checkbox" id="sokBostadsratt" checked></label></div>
+                  <input change="checkBoxFilter" value="false" type="checkbox" id="sokBostadsratt" ${this.settings.sokBostadsratt ? 'checked' : ''}></label></div>
 
                   <div class="col-md-3"><label class="btn btn-secondary">
                   <img src="/images/iconer/radhus.png" alt="radhus">
-                  <input change="checkBoxFilter" value="true" type="checkbox" id="sokRadhus" checked></label></div>
+                  <input change="checkBoxFilter" value="true" type="checkbox" id="sokRadhus" ${this.settings.sokRadhus ? 'checked' : ''}></label></div>
 
                   <div class="col-md-3"><label class="btn btn-secondary">
                   <img src="/images/iconer/hus.png" alt="hus">
-                  <input change="checkBoxFilter" value="true" type="checkbox" id="sokVilla" checked></label></div>
+                  <input change="checkBoxFilter" value="true" type="checkbox" id="sokVilla" ${this.settings.sokVilla ? 'checked' : ''}></label></div>
               
                   <div class="col-md-3"><label class="btn btn-secondary">
                   <img src="/images/iconer/nybygge.png" alt="nybygge">
-                  <input change="checkBoxFilter" value="false" type="checkbox" id="sokNybygge"></label></div>
+                  <input change="checkBoxFilter" value="false" type="checkbox" id="sokNybygge" ${this.settings.sokNybygge ? 'checked' : ''}></label></div>
               </div>
               </form>
               <form>
