@@ -202,7 +202,7 @@ class KopSida extends Base {
                     <h3>Nyproduktion</h3>
                     </div>
                     ` : ''}
-                   <img class="img-fluid w-100 h-auto" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
+                   <img class="img-fluid crop-image" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
                   </div>
                   <div class="col-4">
                     <h1 class="display-4">${object.gata} ${object.gatunummer}<br>
