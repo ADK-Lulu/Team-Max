@@ -8,7 +8,8 @@ class NavBar extends Base {
 
   render() {
     return /*html*/`
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-bg" >
       <a class="navbar-brand" href="/">
         <img src="/images/misc/logga_DR.png" width="270px" alt="">
           </a>
@@ -36,11 +37,10 @@ class NavBar extends Base {
               </li>
           `)}
           </ul>
-
-            <div class="col-2">${this.sokning}</div>
-
-          </div>
+        </div>
+        <div class="form-inline">${this.sokning}</div>
       </nav>
+    </div>
     `
   }
 
