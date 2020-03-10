@@ -21,8 +21,14 @@ class KopSida extends Base {
 
   }
 
-  async search(sokord) {
-    this.sokSettings = Object.assign({}, this.settings, { sokOmrade: sokord ? sokord + '%' : '%' })
+  // Fånga upp sökordet från Sokning.js
+  catch(e) {
+    this.sokord = e;
+  }
+
+  async search() {
+    this.sokOm = { sokOmrade: this.sokord ? this.sokord + '%' : '%' }
+    this.sokSettings = Object.assign({}, this.settings, this.sokOm)
     this.results = await sql(/*sql*/`
     SELECT 
       SaljObjekt.objektId, 
