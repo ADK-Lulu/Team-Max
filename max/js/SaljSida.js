@@ -34,13 +34,13 @@ class SaljSida extends Base {
             ${this.formSent ? /*html*/`
               <div class="col-12">
                 <h2>
-                  <p>Tack för ditt meddelande!</p>
+                  <p>Tack!</p>
                   <p>Vi återkommer till dig så snabbt som möjligt.</p>
                 </h2>
               </div>
               `:
           /*html*/`
-          `}
+         
 
           <div class="col-12">
            <h3>Redo att sälja? Fyll i formuläret så kontaktar vi dig!</h3>
@@ -84,7 +84,7 @@ class SaljSida extends Base {
             </div>
             <input class="btn btn-primary float-left" type="submit" value="Skicka">
           </form>
- 
+  `}
         </div>
       </div>
      
