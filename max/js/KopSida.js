@@ -199,7 +199,7 @@ class KopSida extends Base {
                 </div>
               </div>
               <div class="container">
-                ${this.results.map(object => /*html*/`<a style="color:black;" href="/objekt-sida/${object.objektId}">
+                ${this.results.map(object => /*html*/`<a class="text-black"href="/objekt-sida/${object.objektId}">
                 <div class="row">
                   <div class=col-8>
                    ${object.nyproduktion ? /*html*/`
