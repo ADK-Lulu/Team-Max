@@ -111,11 +111,14 @@ class ObjektSida extends Base {
 
   render() {
     return /*html*/`
-        <div class="row" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
-          <div class="col-12">
-            <img src="${this.frontImage.bildUrl}" class="img-fluid col-12" alt="Frontbild ${this.objektId}">
+        <div class="row justify-content-center" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
+         
+          <div class="col-auto">
+            <img src="${this.frontImage.bildUrl}" class="img-fluid front-side-picture"  alt="Frontbild ${this.objektId}">
+          </div>
+           <div class="col-12"> 
             <h1 class="text-center m-3">${this.saljRubrik}</h1> 
-            <div class="col text-center sticky-top2"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
+            <div class="col text-center sticky-top"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
               <div class="btn-group btn-group-lg text-center" role="group" aria-label="Basic-example"> <!--Kod för button group -->
                 <button type="button" class="btn btn-primary"><a href="#AllaBilder">Alla bilder</a></button>
                 <button type="button" class="btn btn-primary"><a href="#Planritning">Planritning</a></button> 
