@@ -2,7 +2,7 @@ class Footer extends Base {
 
   render() {
     return /*html*/ `
-  <footer class="bg-primary pt-3 text-light">
+  <footer class="bg-secondary pt-3 text-light">
   <div class="container">
     <div class="row align-items-end justify-content-center">
       <div class="col-md-auto">

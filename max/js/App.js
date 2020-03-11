@@ -42,7 +42,7 @@ class App extends Base {
   render() {
     return /*html*/`
       <div base-title="Dhyr & Rumson - ">
-        <header class="navbar-bg sticky-top">
+        <header class="bg-primary sticky-top">
           ${this.navBar}
         </header>
         <main class="container my-4">
