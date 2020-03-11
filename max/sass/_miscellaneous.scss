@@ -13,10 +13,6 @@
   background-color:#293844;
 }
 
-.sticky-top2 {
-  @supports (position: sticky) {
-    position: sticky;
-    top: 120px;
-    z-index: $zindex-sticky;
-  }
+.icon-filter {
+  width:80px;
 }
