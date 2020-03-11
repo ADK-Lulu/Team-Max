@@ -133,27 +133,44 @@ class KopSida extends Base {
             <h1>Köpa bostad ${this.sokord ? 'i ' + this.sokord : ''}</h1>
             <p>Det här är en sida där du kan köpa bostad</p>
 
-             <div class="row py-3">${this.sokning}</div>
+            <div class="row py-3">${this.sokning}</div>
     
-            	<form>
-              <div class="form-row align-items-center">
-                  <div class="col-md-3"><label class="btn btn-secondary">
-                  <img src="/images/iconer/bostadsratt.png" alt="bostadsratt">
-                  <input change="checkBoxFilter" value="false" type="checkbox" id="sokBostadsratt" ${this.settings.sokBostadsratt ? 'checked' : ''}></label></div>
+            	<form class="row bg-secondary mb-3">
+                <div class="form-row col-12 align-items-center">
+                  <div class="col-s-6 col-sm-6 col-xs-1 col-md-3">
+                    <label class="btn">
+                      <img class="icon-filter" src="/images/iconer/bostadsratt.svg" alt="bostadsratt">
+                      <input change="checkBoxFilter" value="false" type="checkbox" id="sokBostadsratt" ${this.settings.sokBostadsratt ? 'checked' : ''}>
+                      <div class="label font-weight-bold">Bostadsrätt</div>
+                    </label>
+                  </div>
 
-                  <div class="col-md-3"><label class="btn btn-secondary">
-                  <img src="/images/iconer/radhus.png" alt="radhus">
-                  <input change="checkBoxFilter" value="true" type="checkbox" id="sokRadhus" ${this.settings.sokRadhus ? 'checked' : ''}></label></div>
+                  <div class="col-s-6 col-sm-6 col-xs-1 col-md-3">
+                    <label class="btn">
+                      <img class="icon-filter" src="/images/iconer/radhus.svg" alt="radhus">
+                      <input change="checkBoxFilter" value="true" type="checkbox" id="sokRadhus" ${this.settings.sokRadhus ? 'checked' : ''}>
+                      <div class="label font-weight-bold">Radhus</div>
+                    </label>
+                  </div>
 
-                  <div class="col-md-3"><label class="btn btn-secondary">
-                  <img src="/images/iconer/hus.png" alt="hus">
-                  <input change="checkBoxFilter" value="true" type="checkbox" id="sokVilla" ${this.settings.sokVilla ? 'checked' : ''}></label></div>
-              
-                  <div class="col-md-3"><label class="btn btn-secondary">
-                  <img src="/images/iconer/nybygge.png" alt="nybygge">
-                  <input change="checkBoxFilter" value="false" type="checkbox" id="sokNybygge" ${this.settings.sokNybygge ? 'checked' : ''}></label></div>
-              </div>
+                  <div class="col-s-6 col-sm-6 col-xs-1 col-md-3">
+                    <label class="btn">
+                      <img class="icon-filter" src="/images/iconer/villa.svg" alt="villa">
+                      <input change="checkBoxFilter" value="true" type="checkbox" id="sokVilla" ${this.settings.sokVilla ? 'checked' : ''}>
+                      <div class="label font-weight-bold">Villa</div>
+                    </label>
+                  </div>
+                  
+                  <div class="col-s-6 col-sm-6 col-xs-1 col-md-3">
+                    <label class="btn">
+                      <img class="icon-filter" src="/images/iconer/nyproduktion.svg" alt="nyproduktion">
+                      <input change="checkBoxFilter" value="false" type="checkbox" id="sokNybygge" ${this.settings.sokNybygge ? 'checked' : ''}>
+                      <div class="label font-weight-bold">Nyproduktion</div>
+                    </label>
+                  </div>
+                </div>
               </form>
+              
               <form>
                   <div class="row">
                     <div class="col">
@@ -198,7 +215,7 @@ class KopSida extends Base {
                   </select>
                 </div>
               </div>
-              <div class="container">
+              <div class="col-12">
                 ${this.results.map(object => /*html*/`<a class="text-dark" href="/objekt-sida/${object.objektId}">
                 <div class="row">
                   <div class=col-8>
@@ -227,8 +244,6 @@ class KopSida extends Base {
 
               `)}
               </div>
-
-            ${!app.navBar.chosen ? '' : `<p>Du vill köpa bostäder i ${app.navBar.chosen}.</p>`}
             
             </div>
 
