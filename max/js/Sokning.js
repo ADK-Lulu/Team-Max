@@ -72,7 +72,7 @@ class Sokning extends Base {
 
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
-            <button click="gotoByPage" type="submit" class="input-group-text btn-info" id="inputGroup-sizing-lg">Sök</button>
+            <button click="gotoByPage" type="submit" class="input-group-text btn-info" id="inputGroup-sizing-lg"><div class="mr-1">Sök</div> <i class="icofont-search-property"></i></button>
           </div>
           <input type="text" class="form-control search" type="text" placeholder="Område" keyup="searchCity" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
            ${this.foundCities.length < 1 ? '' : /*html*/`
