@@ -113,10 +113,10 @@ class ObjektSida extends Base {
     return /*html*/`
         <div class="row" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
           <div class="col-12">
-            <img src="${this.frontImage.bildUrl}" class="img-fluid" alt="Frontbild ${this.objektId}">
-            <h1 class="text-center">${this.saljRubrik}</h1> 
+            <img src="${this.frontImage.bildUrl}" class="img-fluid col-12" alt="Frontbild ${this.objektId}">
+            <h1 class="text-center m-3">${this.saljRubrik}</h1> 
             <div class="col text-center sticky-top2"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
-              <div class="btn-group btn-group-lg" role="group" aria-label="Basic-example"> <!--Kod för button group -->
+              <div class="btn-group btn-group-lg text-center" role="group" aria-label="Basic-example"> <!--Kod för button group -->
                 <button type="button" class="btn btn-primary"><a href="#AllaBilder">Alla bilder</a></button>
                 <button type="button" class="btn btn-primary"><a href="#Planritning">Planritning</a></button> 
                 <button type="button" class="btn btn-primary"><a href="#FaktaOm">Fakta om</a></button> 
@@ -127,16 +127,16 @@ class ObjektSida extends Base {
             </div>
             <!--Skriv kod här som inte har med knapparna att göra-->
             <!--Hårdfakta-ruta här-->
-            <div class="col-12 py-2 align-middle">
-              <div class="row bg-light">
-                <div class="col">Storlek: ${this.kvm} kvm</div>
-                <div class="col">Garage: ${this.garage ? 'finns' : 'finns ej'}</div>
-                <div class="col">Hiss: ${this.hiss ? 'finns' : 'finns ej'}</div>
+            <div class="row py-2 justify-content-center m-3">
+              <div class="col-4 bg-light">
+                <div class="col-auto">Storlek: ${this.kvm} kvm</div>
+                <div class="col-auto">Garage: ${this.garage ? 'finns' : 'finns ej'}</div>
+                <div class="col-auto">Hiss: ${this.hiss ? 'finns' : 'finns ej'}</div>
               </div>
-              <div class="row bg-light">
-                <div class="col">Antal rum: ${this.antalRum}</div>
-                <div class="col">Område: ${this.namn}</div>
-                <div class="col">Pris: ${app.formateraPris(this.pris)} kr</div>
+              <div class="col-4 bg-light">
+                <div class="col-auto">Antal rum: ${this.antalRum}</div>
+                <div class="col-auto">Område: ${this.namn}</div>
+                <div class="col-auto">Pris: ${app.formateraPris(this.pris)} kr</div>
               </div>
             </div>
 
