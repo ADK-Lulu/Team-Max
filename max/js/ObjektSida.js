@@ -17,8 +17,6 @@ class ObjektSida extends Base {
   // Använd databasen max
   async mount() {
 
-    await sql(/*sql*/`USE max`);
-
     // Hämta alla bilder för aktuell SaljObjekt
     this.images = await sql(/*sql*/`
       SELECT * 

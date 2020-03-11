@@ -1,9 +1,7 @@
 class OmOss extends Base {
 
-  //Databasen max ska användas
   async mount() {
 
-    await sql(/*sql*/`USE max`);
 
     //info hämtas från tabellen Maklare
     this.maklarInfo = await sql(/*sql*/`

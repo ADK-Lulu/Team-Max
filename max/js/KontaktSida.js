@@ -1,9 +1,5 @@
 class KontaktSida extends Base {
 
-  async mount() {
-    await sql(/*sql*/`USE max`);
-  }
-
   async collectFormData(e) {
 
     e.preventDefault();

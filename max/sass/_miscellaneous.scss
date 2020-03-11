@@ -25,3 +25,44 @@
   height:150px;
   width:100%;
 }
+
+.text-shadow{
+  color: #fff;
+  font-size:50px;
+  text-shadow: 0 1px 1px #000;
+}
+
+// Stylar checkboxar i filterfunktionen START
+.checkmark input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark input[type="checkbox"]:checked + label{
+    border: $primary 2px solid;
+}
+
+.checkmark input[type="checkbox"]:checked + label span{
+  background-color: $primary;
+  border: 4px double $light;
+}
+
+.checkmark label {
+  border: $light 2px solid;
+  padding: 17px 5px 5px 5px;
+  width: 150px;
+  height: 150px;
+}
+
+.checkmarking {
+  display:block;
+  margin-top: -114px;
+  height: 20px;
+  width: 20px;
+  background-color: $light;
+}
+
+// Stylar checkboxar i filterfunktionen END
