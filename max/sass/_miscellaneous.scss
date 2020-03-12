@@ -72,3 +72,12 @@
 .front-side-picture {
    height: 400px; 
 }
+
+.are-we-the-key {
+  margin-left: -15px !important;
+  font-size: 45px;
+  @media (max-width: 575.98px) {
+    font-size: 10vw;
+  }
+}
+
