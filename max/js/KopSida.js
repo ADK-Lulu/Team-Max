@@ -8,7 +8,7 @@ class KopSida extends Base {
       minKvm: 0,
       maxKvm: 31,
       minPris: 0,
-      maxPris: 91,
+      maxPris: 999,
       sortering: 'nyast',
       sokBostadsratt: true,
       sokRadhus: true,
@@ -94,7 +94,7 @@ class KopSida extends Base {
     let val = +e.target.value;
     this.settings[name] = (name === 'maxPris' && val >= 90
       || name === 'maxKvm' && val >= 30
-      || name === 'maxRum' && val >= 5 ? val * 1000000000 : val);
+      || name === 'maxRum' && val >= 5 ? val * 1000000000000 : val);
 
     // Deklarera motsats början på namnet (min kontra max)
     let opposite = name.includes('min') ? 'max' : 'min';
@@ -131,11 +131,9 @@ class KopSida extends Base {
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
           <div class="col-12">
             <div class="row">
-              <h1 class="h1-responsive">Köpa bostad ${this.sokord ? 'i ' + this.sokord : ''}</h1>
+              <h1 class="h1-responsive py-3">Bostäder till salu:${this.sokord ? 'i ' + this.sokord : ''}</h1>
             </div>
-            <div class="row">
-              <p>Det här är en sida där du kan köpa bostad</p>
-            </div>
+            
 
             <div class="row py-3">${this.sokning}</div>
     
