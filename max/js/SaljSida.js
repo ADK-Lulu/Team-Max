@@ -95,11 +95,16 @@ class SaljSida extends Base {
                         <input name="antalRum" type="text" class="form-control">
                       </label>
                     </div>
-                    <input class="btn btn-primary m-2" type="submit" value="Skicka">
+                    <div class="col text">
+                      <input class="btn btn-primary m-0" type="submit" value="Skicka">
+                    </div>
+                  </div>
                   </form>
-                </div>
+                
                     <!--Gör en text under skicka knappen där man kan läsa mer om GDPR-relaterat-->
+                  <div> 
                     Genom att klicka på <b>skicka</b> knappen godkänner du våra <a click="showModal"><b>användarvillkor och personuppgiftspolicy.</b></a>
+                  </div>
               </div> 
             </div>
             <div class="col-4">
