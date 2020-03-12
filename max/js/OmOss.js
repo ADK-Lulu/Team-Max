@@ -21,7 +21,7 @@ class OmOss extends Base {
   
     <!--infofält om företaget o chefen-->
     <div class="col-md-6 col-xl-6 bg-secondary">
-      <div class="card col-my-2">
+      <div class="card mt-3 col-my-2">
         <div class="card-body">
           <h4 class="card-title">Vår story</h4>
           <p class="card-text">Redan när vår grundare <strong>Fiona</strong> var en liten flicka så älskade hon hus. Hon
