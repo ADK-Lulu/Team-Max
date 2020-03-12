@@ -234,7 +234,7 @@ class KopSida extends Base {
               <!-- Sortering -->
               <div class="row">
                 <div class="form-group col-4">
-                <label for="sort-by">${'(' + this.results.length + ')'} Sortera efter</label>
+                <label for="sort-by">${this.results ? '(' + this.results.length + ')' : ''} Sortera efter</label>
                   <select class="form-control" id="sort-by" click="sortera">
                     <option value="nyast">Nyast först</option>
                     <option value="aldst">Äldst först</option>
@@ -249,10 +249,10 @@ class KopSida extends Base {
                 <a class="text-dark" href="/objekt-sida/${object.objektId}">
                   <div class="row mb-4 bg-grey">
                     <div class="px-0 pr-md-0 p-xs-0 col-12 col-lg-8 col-xl-9">
-                    ${object.nyproduktion ? /*html*/`
-                      <div class="position-absolute float-left badge badge-secondary m-2">
-                      <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
-                      </div>
+                      ${object.nyproduktion ? /*html*/`
+                        <div class="position-absolute float-left badge badge-secondary m-2">
+                          <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
+                        </div>
                       ` : ''}
                     <img class="img-fluid crop-image mb-0" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
                     </div>
@@ -272,10 +272,7 @@ class KopSida extends Base {
                     </div>
                   </div>
                 </a>
-
               `) : ''}
-            
-            </div>
 
           </div>
         </div>
