@@ -8,7 +8,7 @@ class KopSida extends Base {
       minKvm: 0,
       maxKvm: 31,
       minPris: 0,
-      maxPris: 91,
+      maxPris: 999,
       sortering: 'nyast',
       sokBostadsratt: true,
       sokRadhus: true,
@@ -94,7 +94,7 @@ class KopSida extends Base {
     let val = +e.target.value;
     this.settings[name] = (name === 'maxPris' && val >= 90
       || name === 'maxKvm' && val >= 30
-      || name === 'maxRum' && val >= 5 ? val * 1000000000 : val);
+      || name === 'maxRum' && val >= 5 ? val * 1000000000000 : val);
 
     // Deklarera motsats början på namnet (min kontra max)
     let opposite = name.includes('min') ? 'max' : 'min';
