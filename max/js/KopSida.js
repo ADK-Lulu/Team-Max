@@ -181,7 +181,7 @@ class KopSida extends Base {
                 </div>
               </form>
               
-                  <div class="row">
+                  <div class="row p-0 m-0">
                     <div class="col-12 col-md-4 pb-2 mb-2">
                       <label class="w-100">Minst antal rum: ${s.minRum}                   
                         <input value="${s.minRum}" type="range" class="form-control-range" min="0" max="5" step="1" id="minRum" input="getSliderValue">
@@ -226,7 +226,7 @@ class KopSida extends Base {
 
                 ${this.results.map(object => /*html*/`<a class="text-dark" href="/objekt-sida/${object.objektId}">
                 <div class="row pb-4">
-                  <div class="col-12 col-xl-8 p-xs-0">
+                  <div class="col-12 col-xl-8 p-xs-0 pl-0">
                    ${object.nyproduktion ? /*html*/`
                     <div class="position-absolute float-left badge badge-secondary m-2">
                     <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
