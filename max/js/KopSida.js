@@ -75,6 +75,7 @@ class KopSida extends Base {
         
       `, this.settings);
     this.render();
+    console.log(this.settings)
   }
 
   // Filtrera efter checkboxar
@@ -91,7 +92,9 @@ class KopSida extends Base {
     // Deklarera jobbigt långa saker till enkla namn
     let name = e.target.id;
     let val = +e.target.value;
-    this.settings[name] = (name === 'maxPris' && val >= 90 ? val * 10000000000000 : val);
+    this.settings[name] = (name === 'maxPris' && val >= 90
+      || name === 'maxKvm' && val >= 30
+      || name === 'maxRum' && val >= 5 ? val * 1000000000 : val);
 
     // Deklarera motsats början på namnet (min kontra max)
     let opposite = name.includes('min') ? 'max' : 'min';
@@ -128,7 +131,7 @@ class KopSida extends Base {
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
           <div class="col-12">
             <div class="row">
-              <h1>Köpa bostad ${this.sokord ? 'i ' + this.sokord : ''}</h1>
+              <h1 class="h1-responsive">Köpa bostad ${this.sokord ? 'i ' + this.sokord : ''}</h1>
             </div>
             <div class="row">
               <p>Det här är en sida där du kan köpa bostad</p>
@@ -187,16 +190,16 @@ class KopSida extends Base {
                         <input value="${s.minRum}" type="range" class="form-control-range" min="0" max="5" step="1" id="minRum" input="getSliderValue">
                       </label>
                       <div class="w-100"></div>
-                      <label class="w-100">Max. antal rum: ${s.maxRum}
+                      <label class="w-100">Max. antal rum: ${s.maxRum > 5 ? '5+' : s.maxRum}
                         <input value="${s.maxRum}" type="range" class="form-control-range" min="0" max="5" step="1" id="maxRum" input="getSliderValue">
                       </label>
                     </div>
                     <div class="col-12 col-md-4 pb-2 mb-2">
-                      <label class="w-100">Minst boarea: ${s.minKvm * 10} kvm
+                      <label class="w-100">Minst boarea: ${(s.minKvm * 10) > 300 ? '300+' : (s.minKvm * 10)} kvm
                         <input value="${s.minKvm}" type="range" class="form-control-range" min="0" max="30" step="1" id="minKvm" input="getSliderValue">
                       </label>
                       <div class="w-100"></div>
-                      <label class="w-100">Max. boarea: ${s.maxKvm * 10} kvm
+                      <label class="w-100">Max. boarea: ${(s.maxKvm * 10) > 300 ? '300+' : (s.maxKvm * 10)} kvm
                         <input value="${s.maxKvm}" type="range" class="form-control-range" min="0" max="30" step="1" id="maxKvm" input="getSliderValue">
                       </label>
                     </div>
@@ -232,7 +235,7 @@ class KopSida extends Base {
                     <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
                     </div>
                     ` : ''}
-                   <img class="img-fluid" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
+                   <img class="img-fluid crop-image" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
                   </div>
                   <div class="col-xl-4 col-12 pt-sm-3">
                     <div class="row">
