@@ -44,6 +44,48 @@ font-size: 3vw; }
   background-color: #f5f5f5;
 }
 
+.row-h-25{
+  height: 25px;
+}
+
+// Visa/dölj filter
+
+.sort-trigger{
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  margin-left: -10px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 9999px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.15);
+  -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.15);
+  line-height: 40px;
+}
+
+.sort-trigger i{
+  font-size:30px;
+  top: 5px;
+  position: absolute;
+  left: 5px;
+}
+
+.sort-trigger span{
+  position: absolute;
+  text-transform: uppercase;
+  white-space: nowrap;
+  bottom: -30px;
+  left: -50%;
+  font-size: 14px;
+  font-size: .875rem;
+  line-height: 1;
+  font-weight: 600;
+}
+
 .text-shadow{
   color: #fff;
   font-size:50px;

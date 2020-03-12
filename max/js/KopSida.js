@@ -125,6 +125,12 @@ class KopSida extends Base {
     this.render();
   }
 
+  visaDoljFilter() {
+    this.visaFilter = !this.visaFilter;
+    this.render();
+  }
+
+
   render() {
     let s = this.settings;
     return /*html*/`
@@ -133,10 +139,10 @@ class KopSida extends Base {
             <div class="row">
               <h1 class="h1-responsive py-3">Bostäder till salu ${this.sokOrd ? 'i ' + this.sokOrd : ''}</h1>
             </div>
-            
-
+        
             <div class="row py-3">${this.sokning}</div>
     
+              <!-- Filterknappar-->
             	<form class="row bg-secondary rounded mb-4">
                 <div class="form-row col-12 align-items-center">
                   <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
@@ -181,7 +187,9 @@ class KopSida extends Base {
                   </div>
                 </div>
               </form>
-              
+
+                <!-- Input range sliders -->
+                ${!this.visaFilter ? '' : /*html*/`
                   <div class="row p-0">
                     <div class="col-12 col-md-4 pb-2 mb-2">
                       <label class="w-100">Minst antal rum: ${s.minRum}                   
@@ -211,8 +219,19 @@ class KopSida extends Base {
                       </label>
                     </div>
                   </div>
+                `}
+
+              <!-- Knapp för att visa/dölja filter -->
+              <div class="row row-h-25">
+                <div class="col-12">
+                  <div click="visaDoljFilter" class="sort-trigger">
+                    <i class="icofont-arrow-${!this.visaFilter ? 'down' : 'up'}"></i>
+                    <span>${!this.visaFilter ? 'Fler filter' : 'Dölj filter'}</span>
+                  </div>
+                </div>
+              </div>
                             
-              <!--Gör en knapp som man kan sortera med-->
+              <!-- Sortering -->
               <div class="row">
                 <div class="form-group col-4">
                 <label for="sort-by">${'(' + this.results.length + ')'} Sortera efter</label>
@@ -225,7 +244,8 @@ class KopSida extends Base {
                 </div>
               </div>
 
-                ${this.results.map(object => /*html*/`
+              <!-- Sökresultat -->
+                ${this.results ? this.results.map(object => /*html*/`
                 <a class="text-dark" href="/objekt-sida/${object.objektId}">
                   <div class="row mb-4 bg-grey">
                     <div class="px-0 pr-md-0 p-xs-0 col-12 col-lg-8 col-xl-9">
@@ -253,7 +273,7 @@ class KopSida extends Base {
                   </div>
                 </a>
 
-              `)}
+              `) : ''}
             
             </div>
 
