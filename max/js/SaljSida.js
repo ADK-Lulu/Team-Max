@@ -1,7 +1,7 @@
 class SaljSida extends Base {
 
   async mount() {
-    await sql(/*sql*/`USE max`);
+
   }
   showModal() {
     // Needed to stop scrolling when the modal is shown
@@ -40,8 +40,8 @@ class SaljSida extends Base {
 
   render() {
     return /*html*/`
-      <div class="container" route="/salj-sida">
-        <div class="row" page-title="Sälja bostad">
+      <div class="container" route="/salj-sida" page-title="Sälja bostad">
+        <div class="row">
           <div class="row w-100 pt-5">
               ${this.formSent ? /*html*/`
                 <div class="col-12">

@@ -3,7 +3,7 @@ class NavBar extends Base {
     this.sokning = new Sokning();
     this.foundCities = [];
     this.selected = -1;
-    sql(/*sql*/`USE max`);
+
   }
 
   render() {

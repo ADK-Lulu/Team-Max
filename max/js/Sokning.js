@@ -3,8 +3,6 @@ class Sokning extends Base {
   async mount() {
     this.foundCities = [];
     this.selected = -1;
-    sql(/*sql*/`USE max`);
-
   }
 
   preventReload(e) {

@@ -17,9 +17,7 @@ class KopSida extends Base {
       sokOmrade: '%'
     };
     this.sokning = new Sokning();
-    this.search();
-    await sql(/*sql*/`USE max`)
-
+    await this.search();
   }
 
   // Fånga upp sökordet från Sokning.js
@@ -125,7 +123,6 @@ class KopSida extends Base {
   }
 
   render() {
-    !this.results ? this.search() : '';
     let s = this.settings;
     return /*html*/`
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
@@ -135,38 +132,47 @@ class KopSida extends Base {
 
             <div class="row py-3">${this.sokning}</div>
     
-            	<form class="row bg-secondary mb-3">
+            	<form class="row bg-secondary rounded mb-4">
                 <div class="form-row col-12 align-items-center">
-                  <div class="col-s-6 col-sm-6 col-xs-1 col-md-3">
-                    <label class="btn">
-                      <img class="icon-filter" src="/images/iconer/bostadsratt.svg" alt="bostadsratt">
+                  <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
+                    <div class="btn py-3 pl-3 pr-4 mt-2">
                       <input change="checkBoxFilter" value="false" type="checkbox" id="sokBostadsratt" ${this.settings.sokBostadsratt ? 'checked' : ''}>
-                      <div class="label font-weight-bold">Bostadsrätt</div>
-                    </label>
+                      <label for="sokBostadsratt" class="rounded">               
+                        <img class="icon-filter" src="/images/iconer/bostadsratt.svg" alt="bostadsratt">
+                        <div class="label font-weight-bold">Bostadsrätt</div>
+                        <span class="checkmarking"></span>
+                      </label>
+                    </div>
                   </div>
-
-                  <div class="col-s-6 col-sm-6 col-xs-1 col-md-3">
-                    <label class="btn">
-                      <img class="icon-filter" src="/images/iconer/radhus.svg" alt="radhus">
+                  <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
+                    <div class="btn py-3 pl-3 pr-4 mt-2">
                       <input change="checkBoxFilter" value="true" type="checkbox" id="sokRadhus" ${this.settings.sokRadhus ? 'checked' : ''}>
-                      <div class="label font-weight-bold">Radhus</div>
-                    </label>
+                      <label for="sokRadhus" class="rounded"> 
+                        <img class="icon-filter" src="/images/iconer/radhus.svg" alt="radhus">
+                        <div class="label font-weight-bold">Radhus</div>
+                        <span class="checkmarking"></span>
+                      </label>
+                    </div>
                   </div>
-
-                  <div class="col-s-6 col-sm-6 col-xs-1 col-md-3">
-                    <label class="btn">
-                      <img class="icon-filter" src="/images/iconer/villa.svg" alt="villa">
+                  <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
+                    <div class="btn py-3 pl-3 pr-4 mt-2">
                       <input change="checkBoxFilter" value="true" type="checkbox" id="sokVilla" ${this.settings.sokVilla ? 'checked' : ''}>
-                      <div class="label font-weight-bold">Villa</div>
-                    </label>
+                      <label for="sokVilla" class="rounded"> 
+                        <img class="icon-filter" src="/images/iconer/villa.svg" alt="villa">
+                        <div class="label font-weight-bold">Villa</div>
+                        <span class="checkmarking"></span>
+                      </label>
+                    </div>
                   </div>
-                  
-                  <div class="col-s-6 col-sm-6 col-xs-1 col-md-3">
-                    <label class="btn">
-                      <img class="icon-filter" src="/images/iconer/nyproduktion.svg" alt="nyproduktion">
+                  <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
+                    <div class="btn py-3 px-3 mt-2">
                       <input change="checkBoxFilter" value="false" type="checkbox" id="sokNybygge" ${this.settings.sokNybygge ? 'checked' : ''}>
-                      <div class="label font-weight-bold">Nyproduktion</div>
-                    </label>
+                      <label for="sokNybygge" class="rounded"> 
+                        <img class="icon-filter" src="/images/iconer/nyproduktion.svg" alt="nyproduktion">
+                        <div class="label font-weight-bold">Nyproduktion</div>
+                        <span class="checkmarking"></span>
+                      </label>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -196,7 +202,7 @@ class KopSida extends Base {
                         <input value="${s.minPris}" type="range" class="form-control-range" min="0" max="90" step="1" id="minPris" input="getSliderValue">
                       </label>
                       <div class="w-100"></div>
-                      <label class="w-100">Max pris: ${s.maxPris * 100000} kr
+                      <label class="w-100">Max pris: ${app.formateraPris(s.maxPris * 100000)} kr
                         <input value="${s.maxPris}" type="range" class="form-control-range" min="0" max="90" step="1" id="maxPris" input="getSliderValue">
                       </label>
                     </div>
@@ -206,7 +212,7 @@ class KopSida extends Base {
               <!--Gör en knapp som man kan sortera med-->
               <div class="row w-100">
                 <div class="form-group">
-                <label for="sort-by">Sortera efter</label>
+                <label for="sort-by">${'(' + this.results.length + ')'} Sortera efter</label>
                   <select class="form-control" id="sort-by" click="sortera">
                     <option value="nyast">Nyast först</option>
                     <option value="aldst">Äldst först</option>
@@ -215,18 +221,18 @@ class KopSida extends Base {
                   </select>
                 </div>
               </div>
-              <div class="col-12">
+              <div class="row w-100">
                 ${this.results.map(object => /*html*/`<a class="text-dark" href="/objekt-sida/${object.objektId}">
                 <div class="row">
-                  <div class=col-8>
+                  <div class="col-xl-8 col-xs-12">
                    ${object.nyproduktion ? /*html*/`
                     <div class="position-absolute float-left badge badge-secondary m-2">
-                    <h3>Nyproduktion</h3>
+                    <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
                     </div>
                     ` : ''}
                    <img class="img-fluid crop-image" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
                   </div>
-                  <div class="col-4">
+                  <div class="col-xl-4 col-xs-12">
                     <h1 class="display-4">${object.gata} ${object.gatunummer}<br>
                     <small>${object.namn}</small> </h1>
                     <p class="lead">Kvm: ${object.kvm} <br>
