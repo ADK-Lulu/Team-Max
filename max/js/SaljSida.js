@@ -52,10 +52,12 @@ class SaljSida extends Base {
             /*html*/`
           
 
-            <div class="col-12">
-              <h1 class="h1-responsive">Redo att sälja? Fyll i formuläret så kontaktar vi dig!</h1>
+            <div class="col-12 mb-5">
+              <div class="row">
+                <h1 class="h1-responsive">Redo att sälja?</h1>
+                <h1 class="h1-responsive">Fyll i formuläret så kontaktar vi dig!</h1>
+              </div>
             </div>
-            <div class="w-100"></div>
               <div class="col-8">
                 <div class="row">
                   <form class="w-100" submit="collectFormData">
@@ -101,8 +103,8 @@ class SaljSida extends Base {
                   </form>
                 
                     <!--Gör en text under skicka knappen där man kan läsa mer om GDPR-relaterat-->
-                  <div> 
-                    Genom att klicka på <b>skicka</b> knappen godkänner du våra <a click="showModal"><b>användarvillkor och personuppgiftspolicy.</b></a>
+                  <div class="mt-3"> 
+                    <p>Genom att klicka på <b>skicka</b> knappen godkänner du våra <a click="showModal"><b>användarvillkor och personuppgiftspolicy.</b></a></p>
                   </div>
               </div> 
             </div>
