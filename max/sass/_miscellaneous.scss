@@ -3,7 +3,7 @@
   cursor: pointer;
 }
 .crop-image{
-  object-fit: none; /* Do not scale the image */
+  object-fit: cover; /* Do not scale the image */
   object-position: center; /* Center the image within the element */
   width: 100%;
   max-height: 350px;
@@ -17,6 +17,18 @@
   width:80px;
 }
 
+.tab-choices-object-page button.btn {
+  // xs, sm, md, lg, xl boostrap breakpoints
+  font-size: 1.5vw;
+  
+}
+
+//justerar h1 så de inte blir så hysteriskt stora
+.h1-responsive{
+
+font-size: 4vw;
+
+}
 .bg-white-50 {
   background-color: #fff;
   opacity: 0.5;
@@ -66,3 +78,18 @@
 }
 
 // Stylar checkboxar i filterfunktionen END
+
+// Style för objekt images
+
+.front-side-picture {
+   height: 400px; 
+}
+
+.are-we-the-key {
+  margin-left: -15px !important;
+  font-size: 45px;
+  @media (max-width: 575.98px) {
+    font-size: 10vw;
+  }
+}
+

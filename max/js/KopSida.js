@@ -4,11 +4,11 @@ class KopSida extends Base {
   async mount() {
     this.settings = {
       minRum: 0,
-      maxRum: 5,
+      maxRum: 6,
       minKvm: 0,
-      maxKvm: 30,
+      maxKvm: 31,
       minPris: 0,
-      maxPris: 90,
+      maxPris: 91,
       sortering: 'nyast',
       sokBostadsratt: true,
       sokRadhus: true,
@@ -75,6 +75,7 @@ class KopSida extends Base {
         
       `, this.settings);
     this.render();
+    console.log(this.settings)
   }
 
   // Filtrera efter checkboxar
@@ -90,8 +91,10 @@ class KopSida extends Base {
   async getSliderValue(e) {
     // Deklarera jobbigt långa saker till enkla namn
     let name = e.target.id;
-    let val = e.target.value / 1;
-    this.settings[name] = val;
+    let val = +e.target.value;
+    this.settings[name] = (name === 'maxPris' && val >= 90
+      || name === 'maxKvm' && val >= 30
+      || name === 'maxRum' && val >= 5 ? val * 1000000000 : val);
 
     // Deklarera motsats början på namnet (min kontra max)
     let opposite = name.includes('min') ? 'max' : 'min';
@@ -127,8 +130,12 @@ class KopSida extends Base {
     return /*html*/`
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
           <div class="col-12">
-            <h1>Köpa bostad ${this.sokord ? 'i ' + this.sokord : ''}</h1>
-            <p>Det här är en sida där du kan köpa bostad</p>
+            <div class="row">
+              <h1 class="h1-responsive">Köpa bostad ${this.sokord ? 'i ' + this.sokord : ''}</h1>
+            </div>
+            <div class="row">
+              <p>Det här är en sida där du kan köpa bostad</p>
+            </div>
 
             <div class="row py-3">${this.sokning}</div>
     
@@ -177,41 +184,39 @@ class KopSida extends Base {
                 </div>
               </form>
               
-              <form>
-                  <div class="row">
-                    <div class="col">
+                  <div class="row p-0 m-0">
+                    <div class="col-12 col-md-4 pb-2 mb-2">
                       <label class="w-100">Minst antal rum: ${s.minRum}                   
                         <input value="${s.minRum}" type="range" class="form-control-range" min="0" max="5" step="1" id="minRum" input="getSliderValue">
                       </label>
-                    <div class="w-100"></div>
-                      <label class="w-100">Max. antal rum: ${s.maxRum}
+                      <div class="w-100"></div>
+                      <label class="w-100">Max. antal rum: ${s.maxRum > 5 ? '5+' : s.maxRum}
                         <input value="${s.maxRum}" type="range" class="form-control-range" min="0" max="5" step="1" id="maxRum" input="getSliderValue">
                       </label>
                     </div>
-                    <div class="col">
-                      <label class="w-100">Minst boarea: ${s.minKvm * 10} kvm
+                    <div class="col-12 col-md-4 pb-2 mb-2">
+                      <label class="w-100">Minst boarea: ${(s.minKvm * 10) > 300 ? '300+' : (s.minKvm * 10)} kvm
                         <input value="${s.minKvm}" type="range" class="form-control-range" min="0" max="30" step="1" id="minKvm" input="getSliderValue">
                       </label>
                       <div class="w-100"></div>
-                      <label class="w-100">Max. boarea: ${s.maxKvm * 10} kvm
+                      <label class="w-100">Max. boarea: ${(s.maxKvm * 10) > 300 ? '300+' : (s.maxKvm * 10)} kvm
                         <input value="${s.maxKvm}" type="range" class="form-control-range" min="0" max="30" step="1" id="maxKvm" input="getSliderValue">
                       </label>
                     </div>
-                    <div class="col">
-                      <label class="w-100">Minsta pris: ${s.minPris * 100000} kr
+                    <div class="col-12 col-md-4 pb-2 mb-2">
+                      <label class="w-100">Minsta pris: ${app.formateraPris((s.minPris * 100000) > 9000000 ? '9 000 000+' : (s.minPris * 100000))} kr
                         <input value="${s.minPris}" type="range" class="form-control-range" min="0" max="90" step="1" id="minPris" input="getSliderValue">
                       </label>
                       <div class="w-100"></div>
-                      <label class="w-100">Max pris: ${app.formateraPris(s.maxPris * 100000)} kr
+                      <label class="w-100">Max pris: ${app.formateraPris((s.maxPris * 100000) > 9000000 ? '9 000 000+' : (s.maxPris * 100000))} kr
                         <input value="${s.maxPris}" type="range" class="form-control-range" min="0" max="90" step="1" id="maxPris" input="getSliderValue">
                       </label>
                     </div>
                   </div>
-              </form>
                             
               <!--Gör en knapp som man kan sortera med-->
-              <div class="row w-100">
-                <div class="form-group">
+              <div class="row">
+                <div class="form-group col-4">
                 <label for="sort-by">${'(' + this.results.length + ')'} Sortera efter</label>
                   <select class="form-control" id="sort-by" click="sortera">
                     <option value="nyast">Nyast först</option>
@@ -221,10 +226,10 @@ class KopSida extends Base {
                   </select>
                 </div>
               </div>
-              <div class="row w-100">
+
                 ${this.results.map(object => /*html*/`<a class="text-dark" href="/objekt-sida/${object.objektId}">
-                <div class="row">
-                  <div class="col-xl-8 col-xs-12">
+                <div class="row pb-4">
+                  <div class="col-12 col-xl-8 p-xs-0 px-0">
                    ${object.nyproduktion ? /*html*/`
                     <div class="position-absolute float-left badge badge-secondary m-2">
                     <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
@@ -232,24 +237,24 @@ class KopSida extends Base {
                     ` : ''}
                    <img class="img-fluid crop-image" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
                   </div>
-                  <div class="col-xl-4 col-xs-12">
-                    <h1 class="display-4">${object.gata} ${object.gatunummer}<br>
+                  <div class="col-xl-4 col-12 pt-sm-3">
+                    <div class="row p-2 mt-3 p-md-5">
+                    <div class="col-8 col-lg-8 col-xl-12">
+                    <h1>${object.gata} ${object.gatunummer}<br>
                     <small>${object.namn}</small> </h1>
+                    </div>
+                    <div class="col-4 col-lg-4 col-xl-12">
                     <p class="lead">Kvm: ${object.kvm} <br>
                     Pris: ${app.formateraPris(object.pris)} <br>
                     Rum: ${object.antalRum} <br>
                     Typ: ${object.typNamn} <br>
                     </p>
+                    </div>
+                    </div>
                   </div>
                 </div></a>
-                <div class="row">
-                <div class=col-12>
-                <br>
-                </div>
-                </div>
 
               `)}
-              </div>
             
             </div>
 

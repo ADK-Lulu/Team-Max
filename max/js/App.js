@@ -19,7 +19,6 @@ class App extends Base {
     this.startSida = new StartSida();
     this.omOss = new OmOss();
     this.kopSida = new KopSida();
-    this.objektSida = new ObjektSida();
     this.saljSida = new SaljSida();
     this.sokning = new Sokning();
     this.kontaktSida = new KontaktSida();
@@ -47,10 +46,10 @@ class App extends Base {
         </header>
         <main class="container my-4">
           ${this.startSida}
-          ${this.omOss}
-          ${this.kopSida}
-          ${this.objektSidor}
           ${this.saljSida}
+          ${this.kopSida}
+          ${this.omOss}
+          ${this.objektSidor}
           ${this.kontaktSida}
         </main>
         ${this.footer}
