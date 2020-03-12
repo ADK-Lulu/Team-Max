@@ -226,7 +226,7 @@ class KopSida extends Base {
 
                 ${this.results.map(object => /*html*/`<a class="text-dark" href="/objekt-sida/${object.objektId}">
                 <div class="row pb-4">
-                  <div class="col-12 col-xl-8 p-xs-0 pl-0">
+                  <div class="col-12 col-xl-8 p-xs-0 px-0">
                    ${object.nyproduktion ? /*html*/`
                     <div class="position-absolute float-left badge badge-secondary m-2">
                     <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
@@ -235,10 +235,10 @@ class KopSida extends Base {
                    <img class="img-fluid" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
                   </div>
                   <div class="col-xl-4 col-12 pt-sm-3">
-                    <div class="row">
+                    <div class="row p-2 mt-3 p-md-5">
                     <div class="col-8 col-lg-8 col-xl-12">
-                    <h2 class="display-4">${object.gata} ${object.gatunummer}<br>
-                    <small>${object.namn}</small> </h2>
+                    <h1>${object.gata} ${object.gatunummer}<br>
+                    <small>${object.namn}</small> </h1>
                     </div>
                     <div class="col-4 col-lg-4 col-xl-12">
                     <p class="lead">Kvm: ${object.kvm} <br>
