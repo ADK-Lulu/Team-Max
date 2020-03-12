@@ -113,13 +113,13 @@ class ObjektSida extends Base {
     return /*html*/`
         <div class="row justify-content-center" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
          
-          <div class="col-auto">
-            <img src="${this.frontImage.bildUrl}" class="img-fluid front-side-picture"  alt="Frontbild ${this.objektId}">
+          <div class="col-12">
+            <img src="${this.frontImage.bildUrl}" class="img-fluid crop-image"  alt="Frontbild ${this.objektId}">
           </div>
            <div class="col-12"> 
-            <h1 class="text-center m-3">${this.saljRubrik}</h1> 
-            <div class="col text-center sticky-top"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
-              <div class="btn-group btn-group-lg text-center" role="group" aria-label="Basic-example"> <!--Kod för button group -->
+            <h1 class="text-center m-3 h1-responsive">${this.saljRubrik}</h1> 
+            <div class="col-sm-12 text-center sticky-top"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
+              <div class="btn-group btn-group-lg text-center tab-choices-object-page" role="group" aria-label="Basic-example"> <!--Kod för button group -->
                 <button type="button" class="btn btn-primary"><a href="#AllaBilder">Alla bilder</a></button>
                 <button type="button" class="btn btn-primary"><a href="#Planritning">Planritning</a></button> 
                 <button type="button" class="btn btn-primary"><a href="#FaktaOm">Fakta om</a></button> 
@@ -149,75 +149,77 @@ class ObjektSida extends Base {
 
             <div class="row"><a id="AllaBilder"></a><!--Kod för bilderna-->
               ${this.allPictures.map(image => /*html*/`
-                    <img class="img-fluid col-6 py-2" src="${image.bildUrl}">
+                    <div class="col-12 col-md-6">
+                    <img class="img-fluid py-2" src="${image.bildUrl}">
+                    </div>
                   `)}
             </div>
             <div class="col" id="Planritning"><!--Planritning-->
               <img src="${this.planImage.bildUrl}" class="img-fluid" alt="Planritning ${this.objektId}">
             </div>
-            <div class="col mt-3" id="FaktaOm"><!--Fakta om-->
+            <div class="pt-5" id="FaktaOm">
+            </div>
+            <div class="col mt-3"><!--Fakta om-->
             <p>${this.objektBeskrivning}</p>
             </div>
+
+            
             
 
-            <!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
-        <div class="container">
-            <div class="row">
-              <div class="col-4">
-               <img class="card-img-top" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-center mb-2">Aktuell mäklare</h5>
-                      <div class="card-text">
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">${this.maklare.namn}</li>
-                          <li class="list-group-item">${this.maklare.telefonnummer}</li>
-                          <li class="list-group-item">${this.maklare.epost}</li>
-                        </ul>
-                      </div>
-                </div>
-            </div>
+<!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
 
-              
-  <!--Tack för visat intresse (svar på intresseformulär)-->
-  
-    ${this.formSent ? /*html*/`
-      <div class="col-8">
-        <h1>Tack för att du kontaktar oss!</h1>
-      </div>
-      ` :
-    //Intresseformulär
-      /*html*/`
-      
-      <div class="col-8" id="AnmälIntresse">
-        <div class="col mt-2">
-          <h4>Intresseanmälan:</h4>
-          <form submit="collectFormData">
-            <div class="form-group">
-              <label class="w-100">Namn:
-                        <input name="namn" type="text" class="form-control" placeholder="Ditt namn" required pattern=".{2,}">
-                      </label>
-                    </div>
-              <div class="form-group">
-                <label class="w-100">E-post:
-                        <input name="epost" type="email" class="form-control" placeholder="Din e-postadress" required>
-                        </label>
-                      </div>
-                <input class="btn btn-primary float-right" type="submit" value="Skicka">
-                    </form>
-              </div>
-            `}
-            </div>
-              </div>
+  <div class="row align-items-end py-5">
+    <div class="col-6 col-md-3" id="AnmälIntresse">
+      <img class="card-img" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
+    </div>  
+    <div class="col-6 col-md-3">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${this.maklare.namn}</li>
+        <li class="list-group-item">${this.maklare.telefonnummer}</li>
+        <li class="list-group-item">${this.maklare.epost}</li>
+      </ul>
     </div>
+    
+    <!--Tack för visat intresse (svar på intresseformulär)-->
+
+    ${this.formSent ? /*html*/`
+    <div class="col-6">
+      <h1>Tack för att du kontaktar oss!</h1>
+    </div>
+    ` :
+    //Intresseformulär
+    /*html*/`
+
+    <div class="col-12 col-md-6">
+      <div class="col mt-2 pr-0">
+        <h4>Intresseanmälan:</h4>
+        <form submit="collectFormData">
+          <div class="form-group">
+            <label class="w-100">Namn:
+              <input name="namn" type="text" class="form-control" placeholder="Ditt namn" required pattern=".{2,}">
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="w-100">E-post:
+              <input name="epost" type="email" class="form-control" placeholder="Din e-postadress" required>
+            </label>
+          </div>
+          <input class="btn btn-primary float-right" type="submit" value="Skicka">
+        </form>
+      </div>
+      `}
+    </div>
+  </div>
+
 
           <!--Om området-->
-            <div class="row" id="OmOmrådet">
-            <div class="col-6 mt-3">
+            <div class="row align-items-end" id="OmOmrådet">
+            <div class="col-4 mt-4">
               <h4>Om ${this.namn}:</h4>
               ${this.omradesBeskrivning}
             </div>
-            <div class="col-6 mt-3">
-              <img class="img-fluid" src="${this.bildUrl}">
+            <div class="col-8 mt-4">
+              <img class="crop-image" src="${this.bildUrl}">
              </div>
             </div>
 
