@@ -10,14 +10,14 @@ class StartSida extends Base {
           <div class="col-12">
             <div class="row position-absolute w-100 mx-auto">
               <div class="col-lg-10 col-md-10 col-sm-8 mx-auto mt-5 mt-sm-5 mt-md-6 mt-lg-7 mt-xl-8">
-                <h1 class="text-center text-shadow w-100 mx-auto pb-3">Är vi nyckeln till ditt nya hem?</h1>
-                ${this.sokning}
+                <h1 class="are-we-the-key text-center text-shadow w-100 mx-auto pb-3">Är vi nyckeln till ditt nya hem?</h1>
+                <div class="d-none d-lg-block">${this.sokning}
+                </div>
               </div>
             </div>
             <img src="images/misc/startsida_stamningsbild.jpg" class="img-fluid" alt="Ditt nya hem?">
           </div>
           ${this.carousel}
-          </div>
         </div>
     `;
   }
