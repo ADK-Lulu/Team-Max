@@ -25,7 +25,7 @@ class KontaktSida extends Base {
     return /*html*/`
       <div class="row border bg-light" route="/kontakt-sida" page-title="Kontakta oss">
         <div class="col d-none d-lg-block">
-          <div class="p-3"><img src="images/misc/kontaktsida_kontorsfasad.jpg" class="card-img-top" alt="">
+          <div class="p-3"><img src="images/misc/office.jpg" class="card-img-top" alt="">
           </div>
         </div>
         <div class="col">
