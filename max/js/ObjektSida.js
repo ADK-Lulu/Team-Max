@@ -128,14 +128,14 @@ class ObjektSida extends Base {
             <div class="btn-group btn-group-lg text-center tab-choices-object-page" role="group" aria-label="Basic-example"> <!--Kod för button group -->
                 <div class="row">
                   <div class="btn-group col-12 p-0 col-md-6 pr-md-0">
-                    <button type="button" class="btn btn-primary py-3"><a href="#AllaBilder">Alla bilder</a></button>
-                    <button type="button" class="btn btn-primary py-3"><a href="#Planritning">Planritning</a></button> 
-                    <button type="button" class="btn btn-primary py-3"><a href="#FaktaOm">Fakta om</a></button>
+                    <button type="button" class="btn btn-secondary py-3"><a href="#AllaBilder">Alla bilder</a></button>
+                    <button type="button" class="btn btn-secondary py-3"><a href="#Planritning">Planritning</a></button> 
+                    <button type="button" class="btn btn-secondary py-3"><a href="#FaktaOm">Fakta om</a></button>
                   </div>
                   <div class="btn-group col-12 p-0 col-md-6 pl-md-0 sticky-menu-right">
-                    <button type="button" class="btn btn-primary py-3"><a href="#AnmälIntresse">Anmäl intresse</a></button> 
-                    <button type="button" class="btn btn-primary py-3"><a href="#OmOmrådet">Om området</a></button>
-                    <button type="button" class="btn btn-primary py-3" click="showModal">Dela</button>
+                    <button type="button" class="btn btn-secondary py-3"><a href="#AnmälIntresse">Anmäl intresse</a></button> 
+                    <button type="button" class="btn btn-secondary py-3"><a href="#OmOmrådet">Om området</a></button>
+                    <button type="button" class="btn btn-secondary py-3 white-btn-text" click="showModal">Dela</button>
                   </div>
                 </div>
               </div>
