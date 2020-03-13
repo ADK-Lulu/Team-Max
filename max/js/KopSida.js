@@ -23,6 +23,7 @@ class KopSida extends Base {
   // Fånga upp sökordet från Sokning.js
   fangaSokord(e) {
     this.settings.sokOmrade = e ? e + '%' : '%';
+    this.sokOrd = e;
   }
 
   async search() {
@@ -75,7 +76,6 @@ class KopSida extends Base {
         
       `, this.settings);
     this.render();
-    console.log(this.settings)
   }
 
   // Filtrera efter checkboxar
@@ -125,18 +125,24 @@ class KopSida extends Base {
     this.render();
   }
 
+  visaDoljFilter() {
+    this.visaFilter = !this.visaFilter;
+    this.render();
+  }
+
+
   render() {
     let s = this.settings;
     return /*html*/`
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
           <div class="col-12">
             <div class="row">
-              <h1 class="h1-responsive py-3">Bostäder till salu:${this.sokord ? 'i ' + this.sokord : ''}</h1>
+              <h1 class="h1-responsive py-3">Bostäder till salu ${this.sokOrd ? 'i ' + this.sokOrd : ''}</h1>
             </div>
-            
-
+        
             <div class="row py-3">${this.sokning}</div>
     
+              <!-- Filterknappar-->
             	<form class="row bg-secondary rounded mb-4">
                 <div class="form-row col-12 align-items-center">
                   <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
@@ -181,8 +187,10 @@ class KopSida extends Base {
                   </div>
                 </div>
               </form>
-              
-                  <div class="row p-0 m-0">
+
+                <!-- Input range sliders -->
+                ${!this.visaFilter ? '' : /*html*/`
+                  <div class="row p-0">
                     <div class="col-12 col-md-4 pb-2 mb-2">
                       <label class="w-100">Minst antal rum: ${s.minRum}                   
                         <input value="${s.minRum}" type="range" class="form-control-range" min="0" max="5" step="1" id="minRum" input="getSliderValue">
@@ -211,11 +219,22 @@ class KopSida extends Base {
                       </label>
                     </div>
                   </div>
+                `}
+
+              <!-- Knapp för att visa/dölja filter -->
+              <div class="row row-h-25">
+                <div class="col-12">
+                  <div click="visaDoljFilter" class="sort-trigger">
+                    <i class="icofont-arrow-${!this.visaFilter ? 'down' : 'up'}"></i>
+                    <span>${!this.visaFilter ? 'Fler filter' : 'Dölj filter'}</span>
+                  </div>
+                </div>
+              </div>
                             
-              <!--Gör en knapp som man kan sortera med-->
+              <!-- Sortering -->
               <div class="row">
                 <div class="form-group col-4">
-                <label for="sort-by">${'(' + this.results.length + ')'} Sortera efter</label>
+                <label for="sort-by">${this.results ? '(' + this.results.length + ')' : ''} Sortera efter</label>
                   <select class="form-control" id="sort-by" click="sortera">
                     <option value="nyast">Nyast först</option>
                     <option value="aldst">Äldst först</option>
@@ -225,36 +244,35 @@ class KopSida extends Base {
                 </div>
               </div>
 
-                ${this.results.map(object => /*html*/`<a class="text-dark" href="/objekt-sida/${object.objektId}">
-                <div class="row pb-4">
-                  <div class="col-12 col-xl-8 p-xs-0 px-0">
-                   ${object.nyproduktion ? /*html*/`
-                    <div class="position-absolute float-left badge badge-secondary m-2">
-                    <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
+              <!-- Sökresultat -->
+                ${this.results ? this.results.map(object => /*html*/`
+                <a class="text-dark" href="/objekt-sida/${object.objektId}">
+                  <div class="row mb-4 bg-grey">
+                    <div class="px-0 pr-md-0 p-xs-0 col-12 col-lg-8 col-xl-9">
+                      ${object.nyproduktion ? /*html*/`
+                        <div class="position-absolute float-left badge badge-secondary m-2">
+                          <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
+                        </div>
+                      ` : ''}
+                    <img class="img-fluid crop-image mb-0" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
                     </div>
-                    ` : ''}
-                   <img class="img-fluid crop-image" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
+                    <div class="py-sm-3 col-12 col-lg-4 col-xl-3">
+                      <div class="row p-2 mt-1 p-md-1 pl-md-0">
+                        <div class="col-7 col-lg-12">
+                          <h2>${object.gata} ${object.gatunummer}</h2>
+                          <h3>${object.namn}</h3> 
+                        </div>
+                        <div class="col-5 col-lg-12">
+                          <p class="mb-1"><span class="font-weight-bold">Boarea:</span> ${object.kvm} kvm</p>
+                          <p class="mb-1"><span class="font-weight-bold">Pris:</span> ${app.formateraPris(object.pris)} kr</p>
+                          <p class="mb-1"><span class="font-weight-bold">Rum:</span> ${object.antalRum}</p>
+                          <p class="mb-1"><span class="font-weight-bold">Typ:</span> ${object.typNamn}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-xl-4 col-12 pt-sm-3">
-                    <div class="row p-2 mt-3 p-md-5">
-                    <div class="col-8 col-lg-8 col-xl-12">
-                    <h1>${object.gata} ${object.gatunummer}<br>
-                    <small>${object.namn}</small> </h1>
-                    </div>
-                    <div class="col-4 col-lg-4 col-xl-12">
-                    <p class="lead">Kvm: ${object.kvm} <br>
-                    Pris: ${app.formateraPris(object.pris)} <br>
-                    Rum: ${object.antalRum} <br>
-                    Typ: ${object.typNamn} <br>
-                    </p>
-                    </div>
-                    </div>
-                  </div>
-                </div></a>
-
-              `)}
-            
-            </div>
+                </a>
+              `) : ''}
 
           </div>
         </div>
