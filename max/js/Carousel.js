@@ -22,8 +22,8 @@ class Carousel extends Base {
   render() {
     let toRender = /*html*/`
       <div class="col-12 mt-4">
-        <div class="text-center">
-        <div id="start-carousel" class="carousel slide bg-dark w-75 d-inline-block" data-ride="carousel">
+        <div class="text-center bg-white">
+        <div id="start-carousel" class="carousel slide d-inline-block" data-ride="carousel">
           <ol class="carousel-indicators bg-secondary rounded">
             ${this.karusellObjekt.map((karusellObjektet, index) => /*html*/`
               <li data-target="#start-carousel" data-slide-to="${index}" class="${index === 0 ? 'active' : ''}"></li>
@@ -34,8 +34,8 @@ class Carousel extends Base {
             <div class="carousel-item ${index === 0 ? 'active' : ''}">
               <div class="d-flex justify-content-center">
                 <a href="/objekt-sida/${karusellObjektet.objektId}">
-                  <img class="img-fluid" src="${karusellObjektet.bildUrl}">
-                  <div class="carousel-caption d-none d-md-block">
+                  <img class="img-fluid crop-image" src="${karusellObjektet.bildUrl}">
+                  <div class="carousel-caption">
                     <h3 class="text-dark">${karusellObjektet.gata} ${karusellObjektet.gatunummer}</h3>
                     <h4 class="text-dark">${app.formateraPris(karusellObjektet.pris)} kr</h4>
                   </div>
