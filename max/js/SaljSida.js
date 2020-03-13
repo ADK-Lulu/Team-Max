@@ -58,7 +58,7 @@ class SaljSida extends Base {
                 <h1 class="h1-responsive">Fyll i formuläret så kontaktar vi dig!</h1>
               </div>
             </div>
-              <div class="col-8">
+              <div class="col-12 col-md-8">
                 <div class="row">
                   <form class="w-100" submit="collectFormData">
                   <div class="row">
@@ -108,7 +108,7 @@ class SaljSida extends Base {
                   </div>
               </div> 
             </div>
-            <div class="col-4">
+            <div class="col-4 d-none d-md-block">
               <img class="img-fluid" src="images/misc/saljsida_sunset.jpg">
             </div>
             <div><!--Gör en modal som kommer upp så man slipper gå in på en ny sida för att läsa GDPR-relaterad info.-->
