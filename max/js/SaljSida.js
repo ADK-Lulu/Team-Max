@@ -58,7 +58,7 @@ class SaljSida extends Base {
       </div>
       <div class="col-12 col-md-8">
        <div class="row">
-         <form class="w-100" submit="collectFormData">
+         <form class="w-100 pr-3 pr-md-0" submit="collectFormData">
           <div class="row">
             <div class="col-8">
               <label class="w-100">För- och efternamn:
@@ -73,16 +73,16 @@ class SaljSida extends Base {
          </div>
           <div class="row">
             <div class="col-8">
-               <label class="w-100">Email:
-                  <input name="epost" type="email" class="form-control"required>
-                </label>
-              </div>
-              <div class="col-4">
-                <label>Kvm:
-                  <input name="kvm" type="text" class="form-control"required>
-                </label>
-              </div>
+              <label class="w-100">Email:
+                <input name="epost" type="email" class="form-control"required>
+              </label>
             </div>
+            <div class="col-4">
+              <label>Kvm:
+                <input name="kvm" type="text" class="form-control"required>
+              </label>
+            </div>
+          </div>
             <div class="row">
               <div class="col-8">
                 <label class="w-100">Telefonnummer:

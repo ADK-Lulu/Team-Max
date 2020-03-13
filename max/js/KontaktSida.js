@@ -23,7 +23,8 @@ class KontaktSida extends Base {
 
   render() {
     return /*html*/`
-      <div class="row border bg-light" route="/kontakt-sida" page-title="Kontakta oss">
+      <div class="row border bg-secondary" route="/kontakt-sida" page-title="Kontakta oss">
+      <div class="row">
         <div class="col d-none d-lg-block">
           <div class="p-3"><img src="images/misc/office.jpg" class="card-img-top" alt="">
           </div>
@@ -35,6 +36,7 @@ class KontaktSida extends Base {
             <br><p>Öppettider:<br>Måndag-Fredag: 10-16<br>Lördag-Söndag: Stängt</p>
           </div>
         </div>
+      </div>
 
         <div class="row w-100 pt-5">
           ${this.formSent ? /*html*/`
@@ -47,13 +49,10 @@ class KontaktSida extends Base {
         </div>
               `:
          /*html*/`  
-          <div class="col-12 col-lg-6 ml-3 text-left d-block d-lg-none">
+          <div class="col-4 text-right">
             <h4>Kontakta oss:</h4>
           </div>
-          <div class="col-12 col-lg-6 text-right d-none d-lg-block">
-            <h4>Kontakta oss:</h4>
-          </div>
-          <div class="col-12 col-lg-6 ml-3 ml-lg-0">
+          <div class="col-8">
             <form submit="collectFormData">
               <div class="form-group">
                 <label class="w-100">Namn:
@@ -72,7 +71,7 @@ class KontaktSida extends Base {
               </div>
                 <input class="btn btn-primary float-right mb-3" type="submit" value="Skicka">
             </form>
-          </div> 
+          </div>
             `}
         
         </div>

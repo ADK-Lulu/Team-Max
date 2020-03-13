@@ -23,7 +23,7 @@ class Footer extends Base {
     </div> 
     <div class="row align-items-end justify-content-center">
       <div class="col-auto">
-        <p class="mb-3">© Dhyr & Rumson 2020</p>
+        <p class="mb-3 pt-3">©<small> Dhyr & Rumson 2020</small></p>
       </div>
     </div>
   </div>
