@@ -17,7 +17,7 @@ class KopSida extends Base {
       sokOmrade: '%'
     };
     this.sokning = new Sokning();
-    await this.search();
+
   }
 
   // Fånga upp sökordet från Sokning.js

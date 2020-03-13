@@ -1,4 +1,7 @@
 class Footer extends Base {
+  async mount() {
+    await app.kopSida.search();
+  }
 
   render() {
     return /*html*/ `
