@@ -22,7 +22,7 @@ class KopSida extends Base {
 
   // Fånga upp sökordet från Sokning.js
   fangaSokord(e) {
-    this.settings.sokOmrade = e ? e + '%' : '%';
+    e ? (this.settings.sokOmrade = e ? e + '%' : '%') : '';
     this.sokOrd = e;
   }
 
