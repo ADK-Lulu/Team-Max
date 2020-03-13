@@ -20,6 +20,10 @@
 .tab-choices-object-page button.btn {
   // xs, sm, md, lg, xl boostrap breakpoints
   font-size: 1.5vw;
+  @include media-breakpoint-down(sm) {
+    font-size: 3vw;
+  }
+
   
 }
 
@@ -145,3 +149,10 @@ font-size: 3vw; }
   }
 }
 
+.sticky-menu-right {
+   margin-top: -5px;
+   @include media-breakpoint-up(md) {
+    margin-left:-5px;
+    margin-top: 0px;
+  }
+}
