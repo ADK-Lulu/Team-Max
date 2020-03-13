@@ -52,7 +52,7 @@ class SaljSida extends Base {
       /*html*/`
       <div class="col-12 mb-5">
         <div class="row">
-          <h1 class="h1-responsive">Redo att sälja?</h1>
+          <h1 class="h1-responsive mt-3">Redo att sälja?</h1>
           <h1 class="h1-responsive">Fyll i formuläret så kontaktar vi dig!</h1>
         </div>
       </div>
