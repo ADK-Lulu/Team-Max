@@ -14,6 +14,21 @@ class App extends Base {
       },
     ];
 
+    this.settings = {
+      minRum: 0,
+      maxRum: 6,
+      minKvm: 0,
+      maxKvm: 31,
+      minPris: 0,
+      maxPris: 999,
+      sortering: 'nyast',
+      sokBostadsratt: true,
+      sokRadhus: true,
+      sokVilla: true,
+      sokNybygge: false,
+      sokOmrade: '%'
+    };
+
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.footer = new Footer({ links: this.navBarLinks });
     this.startSida = new StartSida();
