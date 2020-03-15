@@ -2,27 +2,14 @@ class KopSida extends Base {
 
   // Läs in databasen max
   async mount() {
-    this.settings = {
-      minRum: 0,
-      maxRum: 6,
-      minKvm: 0,
-      maxKvm: 31,
-      minPris: 0,
-      maxPris: 999,
-      sortering: 'nyast',
-      sokBostadsratt: true,
-      sokRadhus: true,
-      sokVilla: true,
-      sokNybygge: false,
-      sokOmrade: '%'
-    };
+
     this.sokning = new Sokning();
 
   }
 
   // Fånga upp sökordet från Sokning.js
   fangaSokord(e) {
-    e ? (this.settings.sokOmrade = e ? e + '%' : '%') : '';
+    e ? (app.settings.sokOmrade = e ? e + '%' : '%') : '';
     this.sokOrd = e;
   }
 
@@ -74,7 +61,7 @@ class KopSida extends Base {
         CASE WHEN $sortering='billigastPris' THEN pris END ASC,
         CASE WHEN $sortering='dyrastPris' THEN pris END DESC
         
-      `, this.settings);
+      `, app.settings);
     this.render();
   }
 
@@ -82,7 +69,7 @@ class KopSida extends Base {
   checkBoxFilter(e) {
     let name = e.target.id;
     let val = document.getElementById(name).checked;
-    this.settings[name] = val;
+    app.settings[name] = val;
     this.search();
     this.render();
   }
@@ -92,7 +79,7 @@ class KopSida extends Base {
     // Deklarera jobbigt långa saker till enkla namn
     let name = e.target.id;
     let val = +e.target.value;
-    this.settings[name] = (name === 'maxPris' && val >= 90
+    app.settings[name] = (name === 'maxPris' && val >= 90
       || name === 'maxKvm' && val >= 30
       || name === 'maxRum' && val >= 5 ? val * 1000000000000 : val);
 
@@ -101,26 +88,26 @@ class KopSida extends Base {
     // Sätt ihop motsats början med slut delen av namnet i en egen variable(Rum, Kvm, Pris)
     let oppoName = opposite + name.slice(3);
     // Deklarera en variable med motsatsens value
-    let oppoVal = this.settings[oppoName];
+    let oppoVal = app.settings[oppoName];
     // Om motsatsnamnet börjar på max, sätt motsatsvärdet till det största av värdena. Annars tvärt om.
     oppoVal = opposite == "max" ? Math.max(val, oppoVal) : Math.min(val, oppoVal);
-    this.settings[oppoName] = oppoVal;
+    app.settings[oppoName] = oppoVal;
     this.search();
     this.render();
   }
 
   // Sätter värdena till sig själva fixa en mysko bugg med startvärdet på slidern
   setSliderValuesHackish() {
-    for (let setting in this.settings) {
+    for (let setting in app.settings) {
       // Sörens fix för en bugg där sidan gav error när man bytte från köpsidan till en annan sida
       if (document.querySelector("#" + setting) != null) {
-        document.querySelector("#" + setting).value = this.settings[setting];
+        document.querySelector("#" + setting).value = app.settings[setting];
       }
     }
   }
 
   sortera(e) {
-    this.settings.sortering = e.target.value;
+    app.settings.sortering = e.target.value;
     this.search();
     this.render();
   }
@@ -132,7 +119,7 @@ class KopSida extends Base {
 
 
   render() {
-    let s = this.settings;
+    let s = app.settings;
     return /*html*/`
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
           <div class="col-12">
@@ -147,7 +134,7 @@ class KopSida extends Base {
                 <div class="form-row col-12 align-items-center">
                   <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
                     <div class="btn py-3 pl-3 pr-4 mt-2">
-                      <input change="checkBoxFilter" value="false" type="checkbox" id="sokBostadsratt" ${this.settings.sokBostadsratt ? 'checked' : ''}>
+                      <input change="checkBoxFilter" value="false" type="checkbox" id="sokBostadsratt" ${app.settings.sokBostadsratt ? 'checked' : ''}>
                       <label for="sokBostadsratt" class="rounded">               
                         <img class="icon-filter" src="/images/iconer/bostadsratt.svg" alt="bostadsratt">
                         <div class="label font-weight-bold">Bostadsrätt</div>
@@ -157,7 +144,7 @@ class KopSida extends Base {
                   </div>
                   <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
                     <div class="btn py-3 pl-3 pr-4 mt-2">
-                      <input change="checkBoxFilter" value="true" type="checkbox" id="sokRadhus" ${this.settings.sokRadhus ? 'checked' : ''}>
+                      <input change="checkBoxFilter" value="true" type="checkbox" id="sokRadhus" ${app.settings.sokRadhus ? 'checked' : ''}>
                       <label for="sokRadhus" class="rounded"> 
                         <img class="icon-filter" src="/images/iconer/radhus.svg" alt="radhus">
                         <div class="label font-weight-bold">Radhus</div>
@@ -167,7 +154,7 @@ class KopSida extends Base {
                   </div>
                   <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
                     <div class="btn py-3 pl-3 pr-4 mt-2">
-                      <input change="checkBoxFilter" value="true" type="checkbox" id="sokVilla" ${this.settings.sokVilla ? 'checked' : ''}>
+                      <input change="checkBoxFilter" value="true" type="checkbox" id="sokVilla" ${app.settings.sokVilla ? 'checked' : ''}>
                       <label for="sokVilla" class="rounded"> 
                         <img class="icon-filter" src="/images/iconer/villa.svg" alt="villa">
                         <div class="label font-weight-bold">Villa</div>
@@ -177,7 +164,7 @@ class KopSida extends Base {
                   </div>
                   <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
                     <div class="btn py-3 px-3 mt-2">
-                      <input change="checkBoxFilter" value="false" type="checkbox" id="sokNybygge" ${this.settings.sokNybygge ? 'checked' : ''}>
+                      <input change="checkBoxFilter" value="false" type="checkbox" id="sokNybygge" ${app.settings.sokNybygge ? 'checked' : ''}>
                       <label for="sokNybygge" class="rounded"> 
                         <img class="icon-filter" src="/images/iconer/nyproduktion.svg" alt="nyproduktion">
                         <div class="label font-weight-bold">Nyproduktion</div>
