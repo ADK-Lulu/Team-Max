@@ -24,6 +24,7 @@ class Sokning extends Base {
       app.kopSida.fangaSokord(this.chosen);
       app.kopSida.search();
       app.kopSida.render();
+      console.log(this.chosen)
     }
     else {
       // Tell the framework to go to another page
