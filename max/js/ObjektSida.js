@@ -215,12 +215,12 @@ class ObjektSida extends Base {
                 <form submit="collectFormData">
                  <div class="form-group">
                   <label class="w-100">Namn:
-                   <input name="namn" type="text" class="form-control" placeholder="Ditt namn" required pattern=".{2,}">
+                   <input name="namn" type="text" class="form-control" autocomplete="name" placeholder="Ditt namn" required pattern=".{2,}">
                   </label>
                  </div>
                  <div class="form-group">
                   <label class="w-100">E-post:
-                   <input name="epost" type="email" class="form-control" placeholder="Din e-postadress" required>
+                   <input name="epost" type="email" class="form-control" autocomplete="email" placeholder="Din e-postadress" required>
                   </label>
                  </div>
                  <input class="btn btn-primary float-right" type="submit" value="Skicka">

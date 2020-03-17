@@ -62,36 +62,36 @@ class SaljSida extends Base {
           <div class="row">
             <div class="col-8">
               <label class="w-100">För- och efternamn:
-                <input name="namn" type="text" class="form-control" required pattern=".{2,}">
+                <input name="namn" type="text" class="form-control" autocomplete="name" tabindex="1" placeholder="Ditt namn" required pattern=".{2,}">
               </label>
             </div>
             <div class="col-4">
              <label>Område:
-                <input name="omrade" type="text" class="form-control"required>
+                <input name="omrade" type="text" class="form-control" tabindex="4" placeholder="Område" required>
               </label>                  
            </div>
          </div>
           <div class="row">
             <div class="col-8">
               <label class="w-100">Email:
-                <input name="epost" type="email" class="form-control"required>
+                <input name="epost" type="email" class="form-control" tabindex="2" placeholder="Email" required>
               </label>
             </div>
             <div class="col-4">
               <label>Kvm:
-                <input name="kvm" type="text" class="form-control"required>
+                <input name="kvm" type="number" class="form-control" tabindex="5" placeholder="Kvm" required>
               </label>
             </div>
           </div>
             <div class="row">
               <div class="col-8">
                 <label class="w-100">Telefonnummer:
-                  <input name="telefonnummer" type="text" class="form-control"required>
+                  <input name="telefonnummer" type="number" class="form-control" tabindex="3" placeholder="Telefonnummer" required>
                 </label>
               </div>
               <div class="col-4">
                 <label>Antal rum:
-                  <input name="antalRum" type="text" class="form-control">
+                  <input name="antalRum" type="number" class="form-control" tabindex="6" placeholder="Antal rum" >
                 </label>
               </div>
               <div class="col text">
