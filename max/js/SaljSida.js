@@ -79,19 +79,19 @@ class SaljSida extends Base {
             </div>
             <div class="col-4">
               <label>Kvm:
-                <input name="kvm" type="text" class="form-control" tabindex="5" placeholder="Kvm" required>
+                <input name="kvm" type="number" class="form-control" tabindex="5" placeholder="Kvm" required>
               </label>
             </div>
           </div>
             <div class="row">
               <div class="col-8">
                 <label class="w-100">Telefonnummer:
-                  <input name="telefonnummer" type="text" class="form-control" tabindex="3" placeholder="Telefonnummer" required>
+                  <input name="telefonnummer" type="number" class="form-control" tabindex="3" placeholder="Telefonnummer" required>
                 </label>
               </div>
               <div class="col-4">
                 <label>Antal rum:
-                  <input name="antalRum" type="text" class="form-control" tabindex="6" placeholder="Antal rum" >
+                  <input name="antalRum" type="number" class="form-control" tabindex="6" placeholder="Antal rum" >
                 </label>
               </div>
               <div class="col text">

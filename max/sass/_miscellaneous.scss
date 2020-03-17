@@ -162,3 +162,18 @@ font-size: 3vw; }
   color: white;
 
 }
+//Hindrar en från att skriva in bokstäver i nummerfält - men genom "none" så slipper vi ha lilla högerscrollen i formulären
+input[type=number] {
+  &,
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
+
+    &:hover,
+    &:focus {
+      -moz-appearance: number-input;
+    }
+  }
+}
