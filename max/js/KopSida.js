@@ -132,7 +132,7 @@ class KopSida extends Base {
               <!-- Filterknappar-->
             	<form class="row bg-secondary rounded mb-4">
                 <div class="form-row col-12 align-items-center">
-                  <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
+                  <div class="col-6 col-md-3 text-center checkmark">
                     <div class="btn py-3 pl-3 pr-4 mt-2">
                       <input change="checkBoxFilter" value="false" type="checkbox" id="sokBostadsratt" ${app.settings.sokBostadsratt ? 'checked' : ''}>
                       <label for="sokBostadsratt" class="rounded">               
@@ -142,7 +142,7 @@ class KopSida extends Base {
                       </label>
                     </div>
                   </div>
-                  <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
+                  <div class="col-6 col-md-3 text-center checkmark">
                     <div class="btn py-3 pl-3 pr-4 mt-2">
                       <input change="checkBoxFilter" value="true" type="checkbox" id="sokRadhus" ${app.settings.sokRadhus ? 'checked' : ''}>
                       <label for="sokRadhus" class="rounded"> 
@@ -152,7 +152,7 @@ class KopSida extends Base {
                       </label>
                     </div>
                   </div>
-                  <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
+                  <div class="col-6 col-md-3 text-center checkmark">
                     <div class="btn py-3 pl-3 pr-4 mt-2">
                       <input change="checkBoxFilter" value="true" type="checkbox" id="sokVilla" ${app.settings.sokVilla ? 'checked' : ''}>
                       <label for="sokVilla" class="rounded"> 
@@ -162,7 +162,7 @@ class KopSida extends Base {
                       </label>
                     </div>
                   </div>
-                  <div class="col-6 col-s-6 col-sm-6 col-md-3 text-center checkmark">
+                  <div class="col-6 col-md-3 text-center checkmark">
                     <div class="btn py-3 px-3 mt-2">
                       <input change="checkBoxFilter" value="false" type="checkbox" id="sokNybygge" ${app.settings.sokNybygge ? 'checked' : ''}>
                       <label for="sokNybygge" class="rounded"> 
