@@ -138,7 +138,7 @@ class ObjektSida extends Base {
             </div>
           </div>
         </div>
-        <!--Skriv kod här som inte har med knapparna att göra-->
+    <!--Skriv kod här som inte har med knapparna att göra-->
         <!--Hårdfakta-ruta här-->
         <div class="row w-100 my-4 py-2 bg-light">
           <div class="col-6">
@@ -183,78 +183,77 @@ class ObjektSida extends Base {
           <div class="col-6 col-md-3" id="AnmälIntresse">
             <img class="card-img" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
           </div>
-        </div>
-        <!--Mäklarinfo start-->
-        <div class="col-6 col-md-3">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">${this.maklare.namn}</li>
-            <li class="list-group-item">${this.maklare.telefonnummer}</li>
-            <li class="list-group-item">${this.maklare.epost}</li>
-          </ul>
-        </div>
-        <!--Tack för visat intresse (svar på intresseformulär)-->
-          ${this.formSent ? /*html*/`
-          <div class="col-6">
-            <h1>Tack för att du kontaktar oss!</h1>
-          </div>
-          ` :
-          //Intresseformulär
+          <!--mäklarinfo start-->
+          <div class="col-6 col-md-3">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${this.maklare.namn}</li>
+              <li class="list-group-item">${this.maklare.telefonnummer}</li>
+              <li class="list-group-item">${this.maklare.epost}</li>
+            </ul>
+          </div>        
+          <!--Tack för visat intresse (svar på intresseformulär)-->
+            ${this.formSent ? /*html*/`
+            <div class="col-6">
+              <h1>Tack för att du kontaktar oss!</h1>
+            </div>
+             ` :
+            //Intresseformulär
           /*html*/`
-        <div class="col-12 col-md-6">
-          <div class="col mt-2 pr-0">
-            <h4>Intresseanmälan:</h4>
+          <div class="col-12 col-md-6">
+           <div class="col mt-2 pr-0">
+             <h4>Intresseanmälan:</h4>
               <form submit="collectFormData">
-                <div class="form-group">
-                  <label class="w-100">Namn:
-                   <input name="namn" type="text" class="form-control" autocomplete="name" placeholder="för & efternamn" required pattern=".{2,}">
-                  </label>
+               <div class="form-group">
+                <label class="w-100">Namn:
+                 <input name="namn" type="text" class="form-control" autocomplete="name" placeholder="för & efternamn" required pattern=".{2,}">
+                </label>
                 </div>
                 <div class="form-group">
                   <label class="w-100">E-post:
                    <input name="epost" type="email" class="form-control" autocomplete="email" placeholder="namn@mail.com" required>
                   </label>
-                </div>
+                 </div>
                  <input class="btn btn-primary float-right" type="submit" value="Skicka">
-              </form>
-            </div>
-          </div>
-           `} 
-        
-        <!--Om området-->
-        <div class="row align-items-end" id="OmOmrådet">
-          <div class="col-12 col-lg-4 mt-4">
+                </form>
+             </div>
+             </div>
+           `}
+          </div><!--mäklarinfo slut-->
+
+          <div class="row align-items-end" id="OmOmrådet"><!--Om området-->
+           <div class="col-12 col-lg-4 mt-4">
             <h4>Om ${this.namn}:</h4>
              ${this.omradesBeskrivning}
-          </div>
-          <div class="col-12 col-lg-8 mt-4">
+           </div>
+           <div class="col-12 col-lg-8 mt-4">
             <img class="crop-image" src="${this.bildUrl}">
+           </div>
           </div>
-        </div>
-        <!--Kod för Dela-knapp-->
-        <div id="Dela">
-          <div class="modal-backdrop ${this.shown ? 'show' : 'd-none'}"></div>
-            <div class="modal ${this.shown ? 'd-block open' : ''}" tabindex="-1" role="dialog">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Kopiera länk</h5>
-                    <button type="button" class="close" click="closeModal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <input type="text" class="w-100" value="${window.location.href}" id="lank" readonly>
-                    <p id="kopieratLank"></p>
-                  </div>
-                  <div class="modal-footer">
-                    <button role="button" class="btn btn-primary" click="kopieraLank" aria-label="Copy">Kopiera länk</button>
-                    <button type="button" class="btn btn-primary" click="closeModal">Stäng</button>
+          <!--Koden för dela-knappen-->
+          <div id="Dela">
+            <div class="modal-backdrop ${this.shown ? 'show' : 'd-none'}"></div>
+              <div class="modal ${this.shown ? 'd-block open' : ''}" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Kopiera länk</h5>
+                      <button type="button" class="close" click="closeModal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <input type="text" class="w-100" value="${window.location.href}" id="lank" readonly>
+                      <p id="kopieratLank"></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button role="button" class="btn btn-primary" click="kopieraLank" aria-label="Copy">Kopiera länk</button>
+                      <button type="button" class="btn btn-primary" click="closeModal">Stäng</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        `;
+          `;
   }
 }
