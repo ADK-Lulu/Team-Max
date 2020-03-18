@@ -132,8 +132,8 @@ class KopSida extends Base {
               <!-- Filterknappar-->
             	<form class="row bg-secondary rounded mb-4">
                 <div class="form-row col-12 align-items-center">
-                  <div class="col-6 col-md-3 text-center checkmark">
-                    <div class="btn py-3 pl-3 pr-4 mt-2">
+                  <div class="col-3 text-center checkmark">
+                    <div class="btn px-0 py-md-3 pl-md-3 pr-md-4 mt-md-2">
                       <input change="checkBoxFilter" value="false" type="checkbox" id="sokBostadsratt" ${app.settings.sokBostadsratt ? 'checked' : ''}>
                       <label for="sokBostadsratt" class="rounded">               
                         <img class="icon-filter" src="/images/iconer/bostadsratt.svg" alt="bostadsratt">
@@ -142,8 +142,8 @@ class KopSida extends Base {
                       </label>
                     </div>
                   </div>
-                  <div class="col-6 col-md-3 text-center checkmark">
-                    <div class="btn py-3 pl-3 pr-4 mt-2">
+                  <div class="col-3 text-center checkmark">
+                    <div class="btn px-0 py-md-3 pl-md-3 pr-md-4 mt-md-2">
                       <input change="checkBoxFilter" value="true" type="checkbox" id="sokRadhus" ${app.settings.sokRadhus ? 'checked' : ''}>
                       <label for="sokRadhus" class="rounded"> 
                         <img class="icon-filter" src="/images/iconer/radhus.svg" alt="radhus">
@@ -152,8 +152,8 @@ class KopSida extends Base {
                       </label>
                     </div>
                   </div>
-                  <div class="col-6 col-md-3 text-center checkmark">
-                    <div class="btn py-3 pl-3 pr-4 mt-2">
+                  <div class="col-3 text-center checkmark">
+                    <div class="btn px-0 py-md-3 pl-md-3 pr-md-4 mt-md-2">
                       <input change="checkBoxFilter" value="true" type="checkbox" id="sokVilla" ${app.settings.sokVilla ? 'checked' : ''}>
                       <label for="sokVilla" class="rounded"> 
                         <img class="icon-filter" src="/images/iconer/villa.svg" alt="villa">
@@ -162,13 +162,13 @@ class KopSida extends Base {
                       </label>
                     </div>
                   </div>
-                  <div class="col-6 col-md-3 text-center checkmark">
-                    <div class="btn py-3 px-3 mt-2">
+                  <div class="col-3 text-center checkmark">
+                    <div class="btn px-0 py-md-3 pl-md-3 pr-md-4 mt-md-2">
                       <input change="checkBoxFilter" value="false" type="checkbox" id="sokNybygge" ${app.settings.sokNybygge ? 'checked' : ''}>
                       <label for="sokNybygge" class="rounded"> 
                         <img class="icon-filter" src="/images/iconer/nyproduktion.svg" alt="nyproduktion">
-                        <div class="label font-weight-bold">Nyproduktion</div>
-                        <span class="checkmarking"></span>
+                        <div class="label font-weight-bold" font-size="1vw">Endast Nyproduktion</div>
+                        <span class="checkmarking checkmarking-nyproduktion"></span>
                       </label>
                     </div>
                   </div>
@@ -231,8 +231,13 @@ class KopSida extends Base {
                 </div>
               </div>
 
+              <!-- Fixed-bottom "Antal bostäder hittad för mobilvy"  -->
+              <div class="d-lg-none bg-light row shadow fixed-bottom">
+                <p class="col pt-3 ml-3">${this.results ? '<strong>' + this.results.length + '</strong> bostäder till salu just nu' : ''}</p>
+              </div>
+
               <!-- Sökresultat -->
-                ${this.results ? this.results.map(object => /*html*/`
+                ${this.results && this.results.length >0 ? this.results.map(object => /*html*/`
                 <a class="text-dark" href="/objekt-sida/${object.objektId}">
                   <div class="row mb-4 bg-grey">
                     <div class="px-0 pr-md-0 p-xs-0 col-12 col-lg-8 col-xl-9">
@@ -259,7 +264,13 @@ class KopSida extends Base {
                     </div>
                   </div>
                 </a>
-              `) : ''}
+              `) : /*html*/`
+                <div class="row">
+                  <div class="col-12">
+                  <h3 class="text-center text-dark py-5 px-3">Tyvärr matchar din sökning inget av våra objekt, gör om din sökning eller kontakta en
+                  av våra mäklare för information om kommande försäljningar.</h3>
+                  </div>
+                </div> `}
 
           </div>
         </div>
