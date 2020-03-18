@@ -37,15 +37,15 @@ class Footer extends Base {
 
       <ul class="list-group">
         <li>
-          <a class="text-muted" href="#">Användarvillkor</a>
+          <a class="text-muted" href="/notFound">Användarvillkor</a>
         </li>
 
         <li>
-          <a class="text-muted" href="#">Personuppgiftspolicy</a>
+          <a class="text-muted" href="notFound">Personuppgiftspolicy</a>
         </li>
 
         <li>
-          <a class="text-muted" href="#">Sitemap</a>
+          <a class="text-muted" href="notFound">Sitemap</a>
         </li>
       </ul>
     </div>

@@ -37,6 +37,7 @@ class App extends Base {
     this.saljSida = new SaljSida();
     this.sokning = new Sokning();
     this.kontaktSida = new KontaktSida();
+    this.notFound = new NotFound();
 
 
     // Använd databasen max
@@ -66,6 +67,7 @@ class App extends Base {
           ${this.omOss}
           ${this.objektSidor}
           ${this.kontaktSida}
+          ${this.notFound}
         </main>
         ${this.footer}
       </div>
