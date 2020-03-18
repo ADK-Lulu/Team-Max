@@ -57,7 +57,7 @@ class App extends Base {
   render() {
     return /*html*/`
       <div base-title="Dhyr & Rumson - ">
-        <header class="bg-primary">
+        <header class="navbarbackground"> 
           ${this.navBar}
         </header>
         <main class="container my-4">
