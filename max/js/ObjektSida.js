@@ -138,7 +138,7 @@ class ObjektSida extends Base {
             </div>
           </div>
         </div>
-    <!--Skriv kod här som inte har med knapparna att göra-->
+        <!--Skriv kod här som inte har med knapparna att göra-->
         <!--Hårdfakta-ruta här-->
         <div class="row w-100 my-4 py-2 bg-light">
           <div class="col-6">
@@ -219,7 +219,7 @@ class ObjektSida extends Base {
             </div>
           </div>
            `} 
-        </div>
+        
         <!--Om området-->
         <div class="row align-items-end" id="OmOmrådet">
           <div class="col-12 col-lg-4 mt-4">
