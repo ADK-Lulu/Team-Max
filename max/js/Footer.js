@@ -6,7 +6,8 @@ class Footer extends Base {
   render() {
     return /*html*/ `
   
-  <footer class="footer row w-100">
+  <footer class="footer col-12">
+  <div class="row">
   <div class="col-12 col-md-8 col-lg-4">
     <h1 class="h1-responsive">Dhyr & Rumson</h1>
     <h5>Adress</h5>
@@ -62,7 +63,7 @@ class Footer extends Base {
         </li>
       </ul>
     </div>
-  
+  </div>
   </footer>
     `;
   }
