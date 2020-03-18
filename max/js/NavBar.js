@@ -9,7 +9,7 @@ class NavBar extends Base {
   render() {
     return /*html*/`
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
+      <nav class="navbar navbar-expand-lg navbar-dark" >
       <a class="navbar-brand" href="/">
         <img src="/images/misc/logga_DR.png" width="270px" alt="">
           </a>

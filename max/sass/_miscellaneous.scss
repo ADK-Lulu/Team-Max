@@ -9,9 +9,11 @@
   max-height: 350px;
   margin-bottom: 1rem;
 }
-.navbar-bg{
-  background-color:#293844;
+.navbarbackground{
+  height: 100px;
+  background:linear-gradient(to bottom left, #a1a0a0,#040400);
 }
+
 
 .icon-filter {
   width:80px;
@@ -191,7 +193,7 @@ font-size: 3vw; }
   padding: 30px 30px 20px 30px;
   color: #2f2f2f;
   background-color: #fff;
-  border-top: 1px solid #e5e5e5;
+  border-top: 3px solid #D2AC47;
 }
 
 .list-group li {

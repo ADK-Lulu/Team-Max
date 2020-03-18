@@ -231,8 +231,13 @@ class KopSida extends Base {
                 </div>
               </div>
 
+              <!-- Fixed-bottom "Antal bostäder hittad för mobilvy"  -->
+              <div class="d-lg-none bg-light row shadow fixed-bottom">
+                <p class="col pt-3 ml-3">${this.results ? '<strong>' + this.results.length + '</strong> bostäder till salu just nu' : ''}</p>
+              </div>
+
               <!-- Sökresultat -->
-                ${this.results ? this.results.map(object => /*html*/`
+                ${this.results && this.results.length >0 ? this.results.map(object => /*html*/`
                 <a class="text-dark" href="/objekt-sida/${object.objektId}">
                   <div class="row mb-4 bg-grey">
                     <div class="px-0 pr-md-0 p-xs-0 col-12 col-lg-8 col-xl-9">
@@ -259,7 +264,13 @@ class KopSida extends Base {
                     </div>
                   </div>
                 </a>
-              `) : ''}
+              `) : /*html*/`
+                <div class="row">
+                  <div class="col-12">
+                  <h3 class="text-center text-dark py-5 px-3">Tyvärr matchar din sökning inget av våra objekt, gör om din sökning eller kontakta en
+                  av våra mäklare för information om kommande försäljningar.</h3>
+                  </div>
+                </div> `}
 
           </div>
         </div>
