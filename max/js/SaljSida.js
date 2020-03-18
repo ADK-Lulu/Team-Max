@@ -61,37 +61,37 @@ class SaljSida extends Base {
          <form class="w-100 pr-3 pr-md-0" submit="collectFormData">
           <div class="row">
             <div class="col-8">
-              <label class="w-100">För- och efternamn:
-                <input name="namn" type="text" class="form-control" autocomplete="name" tabindex="1" placeholder="Ditt namn" required pattern=".{2,}">
+              <label class="w-100">Namn:
+                <input name="namn" type="text" class="form-control" autocomplete="name" tabindex="1" placeholder="för & efternamn" required pattern=".{2,}">
               </label>
             </div>
             <div class="col-4">
              <label>Område:
-                <input name="omrade" type="text" class="form-control" tabindex="4" placeholder="Område" required>
+                <input name="omrade" type="text" class="form-control" tabindex="4" placeholder="område" required>
               </label>                  
            </div>
          </div>
           <div class="row">
             <div class="col-8">
               <label class="w-100">Email:
-                <input name="epost" type="email" class="form-control" tabindex="2" placeholder="Email" required>
+                <input name="epost" type="email" class="form-control" tabindex="2" placeholder="namn@mail.com" required>
               </label>
             </div>
             <div class="col-4">
               <label>Kvm:
-                <input name="kvm" type="number" class="form-control" tabindex="5" placeholder="Kvm" required>
+                <input name="kvm" type="number" class="form-control" tabindex="5" placeholder="kvm" required>
               </label>
             </div>
           </div>
             <div class="row">
               <div class="col-8">
                 <label class="w-100">Telefonnummer:
-                  <input name="telefonnummer" type="number" class="form-control" tabindex="3" placeholder="Telefonnummer" required>
+                  <input name="telefonnummer" type="number" class="form-control" tabindex="3" placeholder="070-XXXXXX" required>
                 </label>
               </div>
               <div class="col-4">
                 <label>Antal rum:
-                  <input name="antalRum" type="number" class="form-control" tabindex="6" placeholder="Antal rum" >
+                  <input name="antalRum" type="number" class="form-control" tabindex="6" placeholder="1-10" >
                 </label>
               </div>
               <div class="col text">
