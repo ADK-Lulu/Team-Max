@@ -231,6 +231,11 @@ class KopSida extends Base {
                 </div>
               </div>
 
+              <!-- Fixed-bottom "Antal bostäder hittad för mobilvy"  -->
+              <div class="d-lg-none bg-light row shadow fixed-bottom">
+                <p class="col pt-3 ml-3">${this.results ? '<strong>' + this.results.length + '</strong> bostäder till salu just nu' : ''}</p>
+              </div>
+
               <!-- Sökresultat -->
                 ${this.results ? this.results.map(object => /*html*/`
                 <a class="text-dark" href="/objekt-sida/${object.objektId}">
