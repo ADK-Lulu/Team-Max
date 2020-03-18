@@ -5,13 +5,16 @@ class Footer extends Base {
 
   render() {
     return /*html*/ `
+  
   <footer class="footer row">
-  <div class="col-12 col-md-6 col-lg-4">
+  <div class="col-12 col-md-8 col-lg-4">
     <h1 class="h1-responsive">Dhyr & Rumson</h1>
     <h5>Adress</h5>
-    <p>Liljeholmsvägen 123, 12345 Liljeholmen</p>
+    <p>Liljeholmsvägen 123, 123 45 Liljeholmen</p>
     <a class="btn btn-secondary mb-4" href="mailto:dhyrochrumson@email.com">Maila oss</a>
-    <p>&copy; 2020 Dhyr & Rumson All rights reserved.</p>
+    <div class="col">
+    <p>&copy; 2020 Dhyr & Rumson</p>
+    </div>
   </div>
   
     <div class="col-6 col-md-3">
@@ -60,7 +63,7 @@ class Footer extends Base {
       </ul>
     </div>
   
-</footer>
+  </footer>
     `;
   }
 }

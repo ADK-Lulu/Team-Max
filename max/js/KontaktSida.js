@@ -49,24 +49,24 @@ class KontaktSida extends Base {
         </div>
               `:
          /*html*/`  
-          <div class="col-4 text-right bg-secondary px-4 py-3">
+          <div class="col-4 text-right bg-secondary px-4 py-3 mb-5">
             <h4>Kontakta oss:</h4>
           </div>
-          <div class="col-8 bg-secondary">
+          <div class="col-8 bg-secondary pt-3 mb-5">
             <form submit="collectFormData">
               <div class="form-group">
                 <label class="w-100">Namn:
-                  <input name="namn" type="text" class="form-control" placeholder="Ditt namn" required pattern=".{2,}">
+                  <input name="namn" type="text" class="form-control" placeholder="för & efternamn" required pattern=".{2,}">
                 </label>
               </div>
               <div class="form-group">
                 <label class="w-100">E-post:
-                  <input name="epost" type="email" class="form-control" placeholder="Din e-postadress" required>
+                  <input name="epost" type="email" class="form-control" placeholder="namn@mail.com" required>
                 </label>
               </div>
               <div class="form-group">
                 <label class="w-100">Meddelande:
-                  <textarea name="fritext" class="form-control" placeholder="Skriv ditt meddelande här" required></textarea>
+                  <textarea name="fritext" class="form-control" placeholder="skriv ditt meddelande här" required></textarea>
                 </label>
               </div>
                 <input class="btn btn-primary float-right mb-3" type="submit" value="Skicka">
