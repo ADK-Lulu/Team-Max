@@ -160,29 +160,34 @@ class ObjektSida extends Base {
         </div> 
         <!--Kod för bilderna-->
         <div class="row"><a id="AllaBilder"></a>
-          ${this.allPictures.map(image => /*html*/`
-          <div class="col-12 col-md-6">
-            <img class="img-fluid py-2" src="${image.bildUrl}">
-          </div>
+          <h3 class="col-12 pt-5 py-2">Alla bilder</h3>
+            ${this.allPictures.map(image => /*html*/`
+            <div class="col-12 col-md-6">
+              <img class="img-fluid py-2" src="${image.bildUrl}">
+            </div>
           `)}
         </div>
         <!--Kod för planritning-->
-        <div class="row">
-          <div class="col" id="Planritning">
-            <img src="${this.planImage.bildUrl}" class="img-fluid" alt="Planritning ${this.objektId}">
-          </div>
+        <div class="row"><a id="Planritning"></a>
+          <h3 class="col-12 pt-5 py-2">Planritning</h3>
+            <div class="col-12 col-med-6">
+              <img src="${this.planImage.bildUrl}" class="img-fluid py-2" alt="Planritning ${this.objektId}">
+            </div>
         </div>
+
         <!--Fakta om-->
         <div class="row">
-          <div class="col mt-3 pt-5" id="FaktaOm">
-            <p>${this.objektBeskrivning}</p>
-          </div>
+          <h3 class="col-12 text-align-center pt-5 py-2">Fakta om</h3> 
+            <div class="col" id="FaktaOm">
+              <p>${this.objektBeskrivning}</p>
+            </div>
         </div>
         <!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
         <div class="row align-items-end py-5">
-          <div class="col-6 col-md-3" id="AnmälIntresse">
-            <img class="card-img" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
-          </div>
+          <h3 class="col-12 text-align-center pt-5 py-2">Anmäl intresse</h3>
+            <div class="col-6 col-md-3" id="AnmälIntresse">
+              <img class="card-img" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
+            </div>
           <!--mäklarinfo start-->
           <div class="col-6 col-md-3">
             <ul class="list-group list-group-flush">
@@ -222,7 +227,7 @@ class ObjektSida extends Base {
 
           <div class="row align-items-end" id="OmOmrådet"><!--Om området-->
            <div class="col-12 col-lg-4 mt-4">
-            <h4>Om ${this.namn}:</h4>
+            <h3>Om ${this.namn}:</h3>
              ${this.omradesBeskrivning}
            </div>
            <div class="col-12 col-lg-8 mt-4">
