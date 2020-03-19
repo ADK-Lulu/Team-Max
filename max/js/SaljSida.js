@@ -50,19 +50,19 @@ class SaljSida extends Base {
         </div>
       `:
       /*html*/`
-      <div class="col-12 mb-5">
+      <div class="col-12">
         <div class="row">
           <h1 class="h1-responsive mt-3">Redo att sälja?</h1>
-          <h1 class="h1-responsive">Fyll i formuläret så kontaktar vi dig!</h1>
+          <h1 class="h1-responsive mb-3">Fyll i formuläret så kontaktar vi dig!</h1>
         </div>
       </div>
-      <div class="col-12 col-md-8 bg-secondary">
+      <div class="col-12 col-md-8 bg-secondary mb-2">
        <div class="row px-4 py-3">
          <form class="w-100 pr-3 pr-md-0" submit="collectFormData">
           <div class="row">
             <div class="col-8">
               <label class="w-100">Namn:
-                <input name="namn" type="text" class="form-control" autocomplete="name" tabindex="1" placeholder="för & efternamn" required pattern=".{2,}">
+                <input name="namn" type="text" class="form-control" autocomplete="name" tabindex="1" placeholder="för- & efternamn" required pattern=".{2,}">
               </label>
             </div>
             <div class="col-4">
@@ -94,7 +94,7 @@ class SaljSida extends Base {
                   <input name="antalRum" type="number" class="form-control" tabindex="6" placeholder="1-10" >
                 </label>
               </div>
-              <div class="col text">
+              <div class="col text mt-2">
                 <input class="btn btn-primary m-0" type="submit" value="Skicka">
               </div>
             </div>
@@ -105,7 +105,7 @@ class SaljSida extends Base {
           </div>
         </div> 
       </div>
-      <div class="col-4 d-none d-md-block">
+      <div class="col-4 d-none d-md-block mb-2">
         <img class="img-fluid" src="images/misc/saljsida_door.jpg">
       </div>
       <div><!--Gör en modal som kommer upp så man slipper gå in på en ny sida för att läsa GDPR-relaterad info.-->

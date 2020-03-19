@@ -112,18 +112,18 @@ class ObjektSida extends Base {
         <div class="row justify-content-center" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
          
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 mt-4">
             <img src="${this.frontImage.bildUrl}" class="img-fluid crop-image"  alt="Frontbild ${this.objektId}">
           </div>
          </div> 
 
          <div class="row">
            <div class="col-12"> 
-            <h1 class="text-center m-3 h1-responsive">${this.saljRubrik}</h1> 
+            <h1 class="text-center mt-3 mb-4 h1-responsive">${this.saljRubrik}</h1> 
            </div>
          </div>
 
-         <div class="row w-100 sticky-top">
+         <div class="row w-100 sticky-top mb-3">
           <div class="col-12 text-center"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
             <div class="btn-group btn-group-lg text-center tab-choices-object-page" role="group" aria-label="Basic-example"> <!--Kod för button group -->
                 <div class="row">
@@ -233,11 +233,11 @@ class ObjektSida extends Base {
           </div><!--mäklarinfo start-->
 
           <div class="row align-items-end" id="OmOmrådet"><!--Om området-->
-           <div class="col-12 col-lg-4 mt-4">
+           <div class="col-12 col-lg-4 my-3">
             <h4>Om ${this.namn}:</h4>
              ${this.omradesBeskrivning}
            </div>
-           <div class="col-12 col-lg-8 mt-4">
+           <div class="col-12 col-lg-8 mt-3 mb-2">
             <img class="crop-image" src="${this.bildUrl}">
            </div>
           </div>

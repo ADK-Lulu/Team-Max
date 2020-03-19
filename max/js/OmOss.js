@@ -20,7 +20,7 @@ class OmOss extends Base {
 <div class="row" route="/om-oss" page-title="Om oss">
   
     <!--infofält om företaget o chefen-->
-    <div class="col-md-6 col-xl-6 bg-secondary">
+    <div class="col-md-6 col-xl-6 bg-secondary my-4">
       <div class="card mt-3 col-my-2">
         <div class="card-body">
           <h4 class="card-title">Vår story</h4>
@@ -40,7 +40,7 @@ class OmOss extends Base {
     </div>
 
     <!--info om samt bilder från db om mäklarna.-->
-    <div class="col-md-6 col-xl-6">
+    <div class="col-md-6 col-xl-6 my-4">
       <div class="row card-columns">
         ${this.maklarInfo.map(info =>/*html*/`
         <div class="col-md-6 card-mb-2">

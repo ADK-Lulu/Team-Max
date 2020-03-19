@@ -25,12 +25,12 @@ class KontaktSida extends Base {
     return /*html*/`
       <div class="row" route="/kontakt-sida" page-title="Kontakta oss">
       <div class="row">
-        <div class="col d-none d-lg-block">
-          <div class="p-3"><img src="images/misc/office.jpg" class="card-img-top" alt="">
+        <div class="col-6 d-none d-lg-block">
+          <div class="mt-3"><img src="images/misc/office.jpg" class="card-img-top" alt="">
           </div>
         </div>
-        <div class="col">
-          <div class="p-3">
+        <div class="col-6">
+          <div class="mt-3">
             <h2>Dhyr & Rumson</h2><br>Adress: Liljeholmsgatan 123, Liljeholmen
             <br>Telefon: +46 23 456 78 90<br>Email: <a class="text-dark" href="mailto:dhyrochrumson@email.com">dhyrochrumson@email.com</a><br>
             <br><p>Öppettider:<br>Måndag-Fredag: 10-16<br>Lördag-Söndag: Stängt</p>
@@ -49,14 +49,14 @@ class KontaktSida extends Base {
         </div>
               `:
          /*html*/`  
-          <div class="col-4 text-right bg-secondary px-4 py-3 mb-5">
+          <div class="col-4 text-right bg-secondary pt-3 mb-4">
             <h4>Kontakta oss:</h4>
           </div>
-          <div class="col-8 bg-secondary pt-3 mb-5">
+          <div class="col-8 bg-secondary px-4 pt-3 mb-4">
             <form submit="collectFormData">
               <div class="form-group">
                 <label class="w-100">Namn:
-                  <input name="namn" type="text" class="form-control" placeholder="för & efternamn" required pattern=".{2,}">
+                  <input name="namn" type="text" class="form-control" placeholder="för- & efternamn" required pattern=".{2,}">
                 </label>
               </div>
               <div class="form-group">

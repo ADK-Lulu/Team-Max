@@ -124,10 +124,10 @@ class KopSida extends Base {
         <div class="row" route="/kop-sida" page-title="Köpa bostad">
           <div class="col-12">
             <div class="row">
-              <h1 class="h1-responsive py-3">Bostäder till salu ${this.sokOrd ? 'i ' + this.sokOrd : ''}</h1>
+              <h1 class="h1-responsive mt-4">Bostäder till salu ${this.sokOrd ? 'i ' + this.sokOrd : ''}</h1>
             </div>
         
-            <div class="row py-3">${this.sokning}</div>
+            <div class="row py-3 mb-4">${this.sokning}</div>
     
               <!-- Filterknappar-->
             	<form class="row bg-secondary rounded mb-4">
@@ -220,7 +220,7 @@ class KopSida extends Base {
                             
               <!-- Sortering -->
               <div class="row">
-                <div class="form-group col-4">
+                <div class="form-group col-4 mb-4">
                 <label for="sort-by">${this.results ? '(' + this.results.length + ')' : ''} Sortera efter</label>
                   <select class="form-control" id="sort-by" click="sortera">
                     <option value="nyast">Nyast först</option>
