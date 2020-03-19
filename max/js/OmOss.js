@@ -11,7 +11,11 @@ class OmOss extends Base {
     telefonnummer,
     epost,
     personligt
-    FROM Maklare`)
+    FROM Maklare
+    ORDER BY
+     telefonnummer DESC
+    `)
+
   }
 
 

@@ -10,10 +10,15 @@
   margin-bottom: 1rem;
 }
 .navbarbackground{
-  height: 100px;
   background:linear-gradient(to bottom left, #a1a0a0,#040400);
 }
 
+.svg-icon {
+  max-height: 25px;
+  fill: #ffffff;
+  padding-right: 10px;
+  margin-top: -5px;
+}
 
 .icon-filter {
   width:80px;
@@ -26,12 +31,11 @@
 
 .tab-choices-object-page button.btn {
   // xs, sm, md, lg, xl boostrap breakpoints
-  font-size: 1.5vw;
-  @include media-breakpoint-down(sm) {
+  font-size: 1.2vw;
+  white-space: nowrap;
+  @include media-breakpoint-down(md) {
     font-size: 3vw;
   }
-
-  
 }
 
 .textarea.form-control{
@@ -177,7 +181,7 @@ font-size: 3vw; }
 
 .sticky-menu-right {
    margin-top: -5px;
-   @include media-breakpoint-up(md) {
+   @include media-breakpoint-up(lg) {
     margin-left:-5px;
     margin-top: 0px;
   }
@@ -224,4 +228,76 @@ input[type=number] {
 }
 .large-text{
   font-size: 84pt;
+}
+//"infoclippå objektsidan "visning idag"
+.notify-badge{
+    position: relative;
+    background:linear-gradient(to right,#BF953F, #FCF6BA, #B38728,#AA771C);
+    height:5rem;
+    top:4rem;
+    left:3rem;
+    width:10rem;
+    text-align: center;
+    border-radius: 25%;
+    border:2px solid,#AA771C;
+    transform: rotate(20deg);
+}
+//nedan - "visning idag" på köpsidan
+.onsale-section {
+  position: absolute;
+  top: -6px;
+  right: 15px;
+}
+
+.onsale-section:after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+
+}
+
+.onsale {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  color: black;
+  background: linear-gradient(to right,#BF953F, #FCF6BA, #B38728,#AA771C);
+  font-size: 14px;
+  line-height: 1;
+  padding: 12px 8px 6px;
+  border-top-right-radius: 8px;
+  width: 84px;
+  text-transform: uppercase
+}
+
+.onsale:before,
+.onsale:after {
+  position: absolute;
+  content: '';
+  display: block;
+}
+
+.onsale:before {
+  background: rgb(223, 210, 186);
+  height: 7px;
+  width: 6px;
+  left: -6px;
+  top: 0;
+}
+
+.onsale:after {
+  background: rgb(194, 154, 74);
+  height: 7px;
+  width: 8px;
+  border-radius: 8px 8px 0 0;
+  left: -8px;
+  top: 0;
+}
+
+.product img {
+  display: block;
 }

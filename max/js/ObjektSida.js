@@ -68,6 +68,8 @@ class ObjektSida extends Base {
     this.allPictures = this.images.filter(pictures => !pictures.framsidebild && !pictures.planritning);
     //Plocka ut mäklarobjektet
     this.maklare = this.maklarinfo[0];
+    //Dagens datum - att använda till "visning idag"
+    this.todayDate = new Date();
 
   }
 
@@ -109,8 +111,7 @@ class ObjektSida extends Base {
 
   render() {
     return /*html*/`
-        <div class="row justify-content-center" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
-         
+      <div class="row justify-content-center" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
         <div class="row">
           <div class="col-12 mt-4">
             <img src="${this.frontImage.bildUrl}" class="img-fluid crop-image"  alt="Frontbild ${this.objektId}">
@@ -124,101 +125,127 @@ class ObjektSida extends Base {
          </div>
 
          <div class="row w-100 sticky-top mb-3">
+          <div class="col-12">
+          <!--Badge "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
+            ${this.visning === this.todayDate.toISOString().split("").slice(0, 10).join("") ? /*html*/`
+              <div class="float-right notify-badge m-2">
+                <h3 class="text-dark pt-1 px-1">Visning idag</h3>
+              </div>
+              ` : ''}
+          <img src="${this.frontImage.bildUrl}" class="img-fluid crop-image"  alt="Frontbild ${this.objektId}">
+          </div>
+        </div> 
+        <div class="row">
+          <div class="col-12"> 
+            <h1 class="text-center m-3 h1-responsive">${this.saljRubrik}</h1> 
+          </div>
+        </div>
+        <div class="row w-100 sticky-top">
           <div class="col-12 text-center"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
             <div class="btn-group btn-group-lg text-center tab-choices-object-page" role="group" aria-label="Basic-example"> <!--Kod för button group -->
-                <div class="row">
-                  <div class="btn-group col-12 p-0 col-md-6 pr-md-0">
-                    <button type="button" class="btn btn-secondary py-3"><a href="#AllaBilder">Alla bilder</a></button>
-                    <button type="button" class="btn btn-secondary py-3"><a href="#Planritning">Planritning</a></button> 
-                    <button type="button" class="btn btn-secondary py-3"><a href="#FaktaOm">Fakta om</a></button>
-                  </div>
-                  <div class="btn-group col-12 p-0 col-md-6 pl-md-0 sticky-menu-right">
-                    <button type="button" class="btn btn-secondary py-3"><a href="#AnmälIntresse">Anmäl intresse</a></button> 
-                    <button type="button" class="btn btn-secondary py-3"><a href="#OmOmrådet">Om området</a></button>
-                    <button type="button" class="btn btn-secondary py-3 white-btn-text" click="showModal">Dela</button>
-                  </div>
+              <div class="row">
+                <div class="btn-group col-12 p-0 col-lg-6 pr-lg-0">
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#AllaBilder'">
+                    <img class="svg-icon" src="/images/iconer/sticky-bilder.svg">Alla bilder
+                  </button>
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#Planritning'">
+                    <img class="svg-icon" src="/images/iconer/sticky-plan.svg">Planritning
+                  </button> 
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#FaktaOm'">
+                    <img class="svg-icon" src="/images/iconer/sticky-fakta.svg">Fakta om
+                  </button>
+                </div>
+                <div class="btn-group col-12 p-0 col-lg-6 pl-lg-0 sticky-menu-right">
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#AnmälIntresse'">
+                    <img class="svg-icon" src="/images/iconer/sticky-anmal.svg">Anmäl intresse
+                  </button> 
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#OmOmrådet'">
+                   <img class="svg-icon" src="/images/iconer/sticky-omrade.svg">Om området
+                  </button>
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" click="showModal">
+                    <img class="svg-icon" src="/images/iconer/sticky-dela.svg">Dela
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-
-         <!--Skriv kod här som inte har med knapparna att göra-->
-            <!--Hårdfakta-ruta här-->
-            <div class="row w-100 my-4 py-2 bg-light">
-              <div class="col-6">
-                <div class="col-auto pb-1 "><span class="font-weight-bold">Storlek: </span> ${this.kvm} kvm</div>
-                <div class="col-auto pb-1"><span class="font-weight-bold">Garage: </span>${this.garage ? 'finns' : 'finns ej'}</div>
-                <div class="col-auto pb-1"><span class="font-weight-bold">Hiss: </span>${this.hiss ? 'finns' : 'finns ej'}</div>
-              </div>
-              <div class="col-6">
-                <div class="col-auto pb-1"><span class="font-weight-bold">Antal rum: </span>${this.antalRum}</div>
-                <div class="col-auto pb-1"><span class="font-weight-bold">Område: </span> ${this.namn}</div>
-                <div class="col-auto pb-1"><span class="font-weight-bold">Pris: </span>${app.formateraPris(this.pris)} kr</div>
-              </div>
+        </div>
+    <!--Skriv kod här som inte har med knapparna att göra-->
+        <!--Hårdfakta-ruta här-->
+        <div class="row w-100 my-4 py-2 bg-light">
+          <div class="col-6">
+            <div class="col-auto pb-1 "><span class="font-weight-bold">Storlek: </span> ${this.kvm} kvm</div>
+            <div class="col-auto pb-1"><span class="font-weight-bold">Garage: </span>${this.garage ? 'finns' : 'finns ej'}</div>
+            <div class="col-auto pb-1"><span class="font-weight-bold">Hiss: </span>${this.hiss ? 'finns' : 'finns ej'}</div>
+          </div>
+          <div class="col-6">
+            <div class="col-auto pb-1"><span class="font-weight-bold">Antal rum: </span>${this.antalRum}</div>
+            <div class="col-auto pb-1"><span class="font-weight-bold">Område: </span> ${this.namn}</div>
+            <div class="col-auto pb-1"><span class="font-weight-bold">Pris: </span>${app.formateraPris(this.pris)} kr</div>
+          </div>
+        </div>
+        <!--Kod för säljtext-->
+        <div class="row">
+          <div class="col-12">
+            <p>${this.saljText}</p>
+          </div>
+        </div> 
+        <!--Kod för bilderna-->
+        <div class="row"><a id="AllaBilder"></a>
+          <h3 class="col-12 pt-5 py-2">Alla bilder</h3>
+            ${this.allPictures.map(image => /*html*/`
+            <div class="col-12 col-md-6">
+              <img class="img-fluid py-2" src="${image.bildUrl}">
             </div>
-
-            <div class="row">
-              <div class="col-12">
-              <p>${this.saljText}</p>
-              </div>
-            </div>  
-
-            <div class="row"><a id="AllaBilder"></a><!--Kod för bilderna-->
-              ${this.allPictures.map(image => /*html*/`
-                    <div class="col-12 col-md-6">
-                    <img class="img-fluid py-2" src="${image.bildUrl}">
-                    </div>
-                  `)}
+          `)}
+        </div>
+        <!--Kod för planritning-->
+        <div class="row"><a id="Planritning"></a>
+          <h3 class="col-12 pt-5 py-2">Planritning</h3>
+            <div class="col-12 col-med-6">
+              <img src="${this.planImage.bildUrl}" class="img-fluid py-2" alt="Planritning ${this.objektId}">
             </div>
+        </div>
 
-            <div class="row">
-             <div class="col" id="Planritning"><!--Planritning-->
-              <img src="${this.planImage.bildUrl}" class="img-fluid" alt="Planritning ${this.objektId}">
-             </div>
+        <!--Fakta om-->
+        <div class="row" id="FaktaOm">
+          <h3 class="col-12 text-align-center pt-5 py-2">Fakta om</h3> 
+          <div class="col">
+            <p>${this.objektBeskrivning}</p>
+          </div>
+        </div>     
+        <!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
+        <div class="row align-items-end py-5" id="AnmälIntresse">
+          <h3 class="col-12 text-align-center pt-5 py-2">Anmäl intresse</h3>
+            <div class="col-6 col-md-3">
+              <img class="card-img" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
             </div>
-
-            <div class="row">
-             <div class="col mt-3 pt-5" id="FaktaOm"><!--Fakta om-->
-              <p>${this.objektBeskrivning}</p>
-             </div>
-            </div>
-
-            <!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
-            <div class="row align-items-end py-5">
-              <div class="col-6 col-md-3" id="AnmälIntresse">
-               <img class="card-img" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
-              </div>
-         
-
-            <!--mäklarinfo start-->
-              <div class="col-6 col-md-3">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">${this.maklare.namn}</li>
-                  <li class="list-group-item">${this.maklare.telefonnummer}</li>
-                  <li class="list-group-item">${this.maklare.epost}</li>
-                </ul>
-              </div>
-            
-    <!--Tack för visat intresse (svar på intresseformulär)-->
-
+          <!--mäklarinfo start-->
+          <div class="col-6 col-md-3">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${this.maklare.namn}</li>
+              <li class="list-group-item">${this.maklare.telefonnummer}</li>
+              <li class="list-group-item">${this.maklare.epost}</li>
+            </ul>
+          </div>        
+          <!--Tack för visat intresse (svar på intresseformulär)-->
             ${this.formSent ? /*html*/`
             <div class="col-6">
-            <h1>Tack för att du kontaktar oss!</h1>
+              <h1>Tack för att du kontaktar oss!</h1>
             </div>
              ` :
             //Intresseformulär
           /*html*/`
-
-            <div class="col-12 col-md-6">
-             <div class="col mt-2 pr-0">
-               <h4>Intresseanmälan:</h4>
-                <form submit="collectFormData">
-                 <div class="form-group">
-                  <label class="w-100">Namn:
-                   <input name="namn" type="text" class="form-control" autocomplete="name" placeholder="för & efternamn" required pattern=".{2,}">
-                  </label>
-                 </div>
-                 <div class="form-group">
+          <div class="col-12 col-md-6">
+           <div class="col mt-2 pr-0">
+             <h4>Intresseanmälan:</h4>
+              <form submit="collectFormData">
+               <div class="form-group">
+                <label class="w-100">Namn:
+                 <input name="namn" type="text" class="form-control" autocomplete="name" placeholder="för & efternamn" required pattern=".{2,}">
+                </label>
+                </div>
+                <div class="form-group">
                   <label class="w-100">E-post:
                    <input name="epost" type="email" class="form-control" autocomplete="email" placeholder="namn@mail.com" required>
                   </label>
@@ -228,22 +255,20 @@ class ObjektSida extends Base {
              </div>
              </div>
            `}
-            
-           
-          </div><!--mäklarinfo start-->
+          </div><!--mäklarinfo slut-->
 
           <div class="row align-items-end" id="OmOmrådet"><!--Om området-->
            <div class="col-12 col-lg-4 my-3">
-            <h4>Om ${this.namn}:</h4>
+            <h3>Om ${this.namn}:</h3>
              ${this.omradesBeskrivning}
            </div>
            <div class="col-12 col-lg-8 mt-3 mb-2">
             <img class="crop-image" src="${this.bildUrl}">
            </div>
           </div>
-          
+          <!--Koden för dela-knappen-->
           <div id="Dela">
-              <div class="modal-backdrop ${this.shown ? 'show' : 'd-none'}"></div>
+            <div class="modal-backdrop ${this.shown ? 'show' : 'd-none'}"></div>
               <div class="modal ${this.shown ? 'd-block open' : ''}" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -268,5 +293,4 @@ class ObjektSida extends Base {
           </div>
           `;
   }
-
 }
