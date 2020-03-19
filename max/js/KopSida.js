@@ -249,7 +249,7 @@ class KopSida extends Base {
                           <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
                         </div>
                       ` : ''}
-              <!--Badge "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
+              <!--"infoclip" "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
               ${object.visning === this.todayDate.toISOString().split("").slice(0, 10).join("") ? /*html*/`
               <div>
                 <span class="onsale-section text-dark pt-1 px-1"><span class="onsale">Visning idag</span></span>
