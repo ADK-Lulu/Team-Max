@@ -124,15 +124,27 @@ class ObjektSida extends Base {
           <div class="col-12 text-center"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
             <div class="btn-group btn-group-lg text-center tab-choices-object-page" role="group" aria-label="Basic-example"> <!--Kod för button group -->
               <div class="row">
-                <div class="btn-group col-12 p-0 col-md-6 pr-md-0">
-                  <button type="button" class="btn btn-secondary py-3"><a href="#AllaBilder">Alla bilder</a></button>
-                  <button type="button" class="btn btn-secondary py-3"><a href="#Planritning">Planritning</a></button> 
-                  <button type="button" class="btn btn-secondary py-3"><a href="#FaktaOm">Fakta om</a></button>
+                <div class="btn-group col-12 p-0 col-lg-6 pr-lg-0">
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#AllaBilder'">
+                    <img class="svg-icon" src="/images/iconer/sticky-bilder.svg">Alla bilder
+                  </button>
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#Planritning'">
+                    <img class="svg-icon" src="/images/iconer/sticky-plan.svg">Planritning
+                  </button> 
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#FaktaOm'">
+                    <img class="svg-icon" src="/images/iconer/sticky-fakta.svg">Fakta om
+                  </button>
                 </div>
-                <div class="btn-group col-12 p-0 col-md-6 pl-md-0 sticky-menu-right">
-                  <button type="button" class="btn btn-secondary py-3"><a href="#AnmälIntresse">Anmäl intresse</a></button> 
-                  <button type="button" class="btn btn-secondary py-3"><a href="#OmOmrådet">Om området</a></button>
-                  <button type="button" class="btn btn-secondary py-3 white-btn-text" click="showModal">Dela</button>
+                <div class="btn-group col-12 p-0 col-lg-6 pl-lg-0 sticky-menu-right">
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#AnmälIntresse'">
+                    <img class="svg-icon" src="/images/iconer/sticky-anmal.svg">Anmäl intresse
+                  </button> 
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#OmOmrådet'">
+                   <img class="svg-icon" src="/images/iconer/sticky-omrade.svg">Om området
+                  </button>
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" click="showModal">
+                    <img class="svg-icon" src="/images/iconer/sticky-dela.svg">Dela
+                  </button>
                 </div>
               </div>
             </div>
