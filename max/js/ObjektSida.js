@@ -113,18 +113,6 @@ class ObjektSida extends Base {
     return /*html*/`
       <div class="row justify-content-center" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
         <div class="row">
-          <div class="col-12 mt-4">
-            <img src="${this.frontImage.bildUrl}" class="img-fluid crop-image"  alt="Frontbild ${this.objektId}">
-          </div>
-         </div> 
-
-         <div class="row">
-           <div class="col-12"> 
-            <h1 class="text-center mt-3 mb-4 h1-responsive">${this.saljRubrik}</h1> 
-           </div>
-         </div>
-
-         <div class="row w-100 sticky-top mb-3">
           <div class="col-12">
           <!--Badge "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
             ${this.visning === this.todayDate.toISOString().split("").slice(0, 10).join("") ? /*html*/`
@@ -144,27 +132,15 @@ class ObjektSida extends Base {
           <div class="col-12 text-center"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
             <div class="btn-group btn-group-lg text-center tab-choices-object-page" role="group" aria-label="Basic-example"> <!--Kod för button group -->
               <div class="row">
-                <div class="btn-group col-12 p-0 col-lg-6 pr-lg-0">
-                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#AllaBilder'">
-                    <img class="svg-icon" src="/images/iconer/sticky-bilder.svg">Alla bilder
-                  </button>
-                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#Planritning'">
-                    <img class="svg-icon" src="/images/iconer/sticky-plan.svg">Planritning
-                  </button> 
-                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#FaktaOm'">
-                    <img class="svg-icon" src="/images/iconer/sticky-fakta.svg">Fakta om
-                  </button>
+                <div class="btn-group col-12 p-0 col-md-6 pr-md-0">
+                  <button type="button" class="btn btn-secondary py-3"><a href="#AllaBilder">Alla bilder</a></button>
+                  <button type="button" class="btn btn-secondary py-3"><a href="#Planritning">Planritning</a></button> 
+                  <button type="button" class="btn btn-secondary py-3"><a href="#FaktaOm">Fakta om</a></button>
                 </div>
-                <div class="btn-group col-12 p-0 col-lg-6 pl-lg-0 sticky-menu-right">
-                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#AnmälIntresse'">
-                    <img class="svg-icon" src="/images/iconer/sticky-anmal.svg">Anmäl intresse
-                  </button> 
-                  <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#OmOmrådet'">
-                   <img class="svg-icon" src="/images/iconer/sticky-omrade.svg">Om området
-                  </button>
-                  <button type="button" class="btn btn-secondary py-3 white-btn-text" click="showModal">
-                    <img class="svg-icon" src="/images/iconer/sticky-dela.svg">Dela
-                  </button>
+                <div class="btn-group col-12 p-0 col-md-6 pl-md-0 sticky-menu-right">
+                  <button type="button" class="btn btn-secondary py-3"><a href="#AnmälIntresse">Anmäl intresse</a></button> 
+                  <button type="button" class="btn btn-secondary py-3"><a href="#OmOmrådet">Om området</a></button>
+                  <button type="button" class="btn btn-secondary py-3 white-btn-text" click="showModal">Dela</button>
                 </div>
               </div>
             </div>
@@ -206,7 +182,6 @@ class ObjektSida extends Base {
               <img src="${this.planImage.bildUrl}" class="img-fluid py-2" alt="Planritning ${this.objektId}">
             </div>
         </div>
-
         <!--Fakta om-->
         <div class="row" id="FaktaOm">
           <h3 class="col-12 text-align-center pt-5 py-2">Fakta om</h3> 
@@ -256,13 +231,12 @@ class ObjektSida extends Base {
              </div>
            `}
           </div><!--mäklarinfo slut-->
-
           <div class="row align-items-end" id="OmOmrådet"><!--Om området-->
-           <div class="col-12 col-lg-4 my-3">
+           <div class="col-12 col-lg-4 mt-4">
             <h3>Om ${this.namn}:</h3>
              ${this.omradesBeskrivning}
            </div>
-           <div class="col-12 col-lg-8 mt-3 mb-2">
+           <div class="col-12 col-lg-8 mt-4">
             <img class="crop-image" src="${this.bildUrl}">
            </div>
           </div>
