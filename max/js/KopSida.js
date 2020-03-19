@@ -5,6 +5,8 @@ class KopSida extends Base {
 
     this.sokning = new Sokning();
 
+    //Dagens datum - att använda till "visning idag"
+    this.todayDate = new Date();
   }
 
   // Fånga upp sökordet från Sokning.js
@@ -19,6 +21,7 @@ class KopSida extends Base {
       SaljObjekt.objektId, 
       SaljObjekt.pris, 
       SaljObjekt.saljText,
+      SaljObjekt.visning,
       ObjektProfiler.kvm, 
       ObjektProfiler.antalRum, 
       ObjektBilder.framsidebild, 
@@ -237,7 +240,7 @@ class KopSida extends Base {
               </div>
 
               <!-- Sökresultat -->
-                ${this.results && this.results.length >0 ? this.results.map(object => /*html*/`
+                ${this.results && this.results.length > 0 ? this.results.map(object => /*html*/`
                 <a class="text-dark" href="/objekt-sida/${object.objektId}">
                   <div class="row mb-4 bg-grey">
                     <div class="px-0 pr-md-0 p-xs-0 col-12 col-lg-8 col-xl-9">
@@ -246,35 +249,42 @@ class KopSida extends Base {
                           <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
                         </div>
                       ` : ''}
-                    <img class="img-fluid crop-image mb-0" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
-                    </div>
-                    <div class="py-sm-3 col-12 col-lg-4 col-xl-3">
-                      <div class="row p-2 mt-1 p-md-1 pl-md-0">
-                        <div class="col-7 col-lg-12">
-                          <h2>${object.gata} ${object.gatunummer}</h2>
-                          <h3>${object.namn}</h3> 
-                        </div>
-                        <div class="col-5 col-lg-12">
-                          <p class="mb-1"><span class="font-weight-bold">Boarea:</span> ${object.kvm} kvm</p>
-                          <p class="mb-1"><span class="font-weight-bold">Pris:</span> ${app.formateraPris(object.pris)} kr</p>
-                          <p class="mb-1"><span class="font-weight-bold">Rum:</span> ${object.antalRum}</p>
-                          <p class="mb-1"><span class="font-weight-bold">Typ:</span> ${object.typNamn}</p>
-                        </div>
-                      </div>
-                    </div>
+              <!--Badge "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
+              ${object.visning === this.todayDate.toISOString().split("").slice(0, 10).join("") ? /*html*/`
+              <div>
+                <span class="onsale-section text-dark pt-1 px-1"><span class="onsale">Visning idag</span></span>
+              </div>
+              ` : ''}
+              <img class="img-fluid crop-image mb-0" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
+              </div>
+              <div class="py-sm-3 col-12 col-lg-4 col-xl-3">
+                <div class="row p-2 mt-1 p-md-1 pl-md-0">
+                  <div class="col-7 col-lg-12">
+                    <h2>${object.gata} ${object.gatunummer}</h2>
+                    <h3>${object.namn}</h3>
                   </div>
-                </a>
+                  <div class="col-5 col-lg-12">
+                    <p class="mb-1"><span class="font-weight-bold">Boarea:</span> ${object.kvm} kvm</p>
+                    <p class="mb-1"><span class="font-weight-bold">Pris:</span> ${app.formateraPris(object.pris)} kr</p>
+                    <p class="mb-1"><span class="font-weight-bold">Rum:</span> ${object.antalRum}</p>
+                    <p class="mb-1"><span class="font-weight-bold">Typ:</span> ${object.typNamn}</p>
+                  </div>
+                </div>
+              </div>
+              </div>
+              </a>
               `) : /*html*/`
-                <div class="row">
-                  <div class="col-12">
-                  <h3 class="text-center text-dark py-5 px-3">Tyvärr matchar din sökning inget av våra objekt, gör om din sökning eller kontakta en
-                  av våra mäklare för information om kommande försäljningar.</h3>
-                  </div>
-                </div> `}
+              <div class="row">
+                <div class="col-12">
+                  <h3 class="text-center text-dark py-5 px-3">Tyvärr matchar din sökning inget av våra objekt, gör om din sökning
+                    eller kontakta en
+                    av våra mäklare för information om kommande försäljningar.</h3>
+                </div>
+              </div> `}
 
-          </div>
-        </div>
-    `;
+              </div>
+              </div>
+              `;
   }
 
 }
