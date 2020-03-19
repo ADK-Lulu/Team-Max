@@ -24,19 +24,20 @@ class KontaktSida extends Base {
   render() {
     return /*html*/`
       <div class="row" route="/kontakt-sida" page-title="Kontakta oss">
-      <div class="row">
-        <div class="col-6 d-none d-lg-block">
-          <div class="mt-3"><img src="images/misc/office.jpg" class="card-img-top" alt="">
+        <div class="row">
+          <div class="col-6 d-none d-lg-block">
+            <div class="mt-3">
+              <img src="images/misc/office.jpg" class="card-img-top" alt="">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mt-3">
+              <h2>Dhyr & Rumson</h2><br>Adress: Liljeholmsgatan 123, Liljeholmen
+              <br>Telefon: +46 23 456 78 90<br>Email: <a class="text-dark" href="mailto:dhyrochrumson@email.com">dhyrochrumson@email.com</a><br>
+              <br><p>Öppettider:<br>Måndag-Fredag: 10-16<br>Lördag-Söndag: Stängt</p>
+            </div>
           </div>
         </div>
-        <div class="col-6">
-          <div class="mt-3">
-            <h2>Dhyr & Rumson</h2><br>Adress: Liljeholmsgatan 123, Liljeholmen
-            <br>Telefon: +46 23 456 78 90<br>Email: <a class="text-dark" href="mailto:dhyrochrumson@email.com">dhyrochrumson@email.com</a><br>
-            <br><p>Öppettider:<br>Måndag-Fredag: 10-16<br>Lördag-Söndag: Stängt</p>
-          </div>
-        </div>
-      </div>
 
         <div class="row w-100 pt-5">
           ${this.formSent ? /*html*/`
@@ -46,7 +47,6 @@ class KontaktSida extends Base {
                 <p>Vi återkommer till dig så snabbt som möjligt.</p>
               </h2>
             </div>
-        </div>
               `:
          /*html*/`  
           <div class="col-4 text-right bg-secondary pt-3 mb-4">
@@ -73,8 +73,8 @@ class KontaktSida extends Base {
             </form>
           </div>
             `}
-        
         </div>
+      </div>
     `;
   }
 
