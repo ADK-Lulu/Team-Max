@@ -68,6 +68,8 @@ class ObjektSida extends Base {
     this.allPictures = this.images.filter(pictures => !pictures.framsidebild && !pictures.planritning);
     //Plocka ut mäklarobjektet
     this.maklare = this.maklarinfo[0];
+    //Dagens datum - att använda till "visning idag"
+    this.todayDate = new Date();
 
   }
 
@@ -112,7 +114,13 @@ class ObjektSida extends Base {
       <div class="row justify-content-center" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
         <div class="row">
           <div class="col-12">
-            <img src="${this.frontImage.bildUrl}" class="img-fluid crop-image"  alt="Frontbild ${this.objektId}">
+          <!--Badge "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
+            ${this.visning === this.todayDate.toISOString().split("").slice(0, 10).join("") ? /*html*/`
+              <div class="float-right notify-badge m-2">
+                <h3 class="text-dark pt-1 px-1">Visning idag</h3>
+              </div>
+              ` : ''}
+          <img src="${this.frontImage.bildUrl}" class="img-fluid crop-image"  alt="Frontbild ${this.objektId}">
           </div>
         </div> 
         <div class="row">
