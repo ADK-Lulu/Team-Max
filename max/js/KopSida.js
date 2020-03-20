@@ -133,10 +133,10 @@ class KopSida extends Base {
 
           <div class="col-12">
             <div class="row">
-              <h1 class="h1-responsive py-3">Bostäder till salu i ${this.sokOrd === undefined ? "Storstockholm" : this.sokOrd}</h1>
+              <h1 class="m-3 m-sm-0 h1-responsive py-3">Bostäder till salu i ${this.sokOrd === undefined ? "Storstockholm" : this.sokOrd}</h1>
             </div>
         
-            <div class="row py-3 mb-4">${this.sokning}</div>
+            <div class="row p-3 mb-4">${this.sokning}</div>
     
               <!-- Filterknappar-->
             	<form class="row bg-secondary rounded mb-4">
@@ -262,8 +262,8 @@ class KopSida extends Base {
                     <div class="py-sm-3 col-12 col-lg-4 col-xl-3">
                       <div class="row p-2 mt-1 p-md-1 pl-md-0">
                         <div class="col-7 col-lg-12">
-                          <h2>${object.gata} ${object.gatunummer}</h2>
-                          <h3>${object.namn}</h3>
+                          <h2 class="sokresultat-title">${object.gata} ${object.gatunummer}</h2>
+                          <h3 class="sokresultat-title">${object.namn}</h3>
                         </div>
                         <div class="col-5 col-lg-12">
                           <p class="mb-1"><span class="font-weight-bold">Boarea:</span> ${object.kvm} kvm</p>
