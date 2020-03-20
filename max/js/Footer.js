@@ -45,10 +45,6 @@ class Footer extends Base {
         </li>
 
         <li>
-          <a class="text-muted" href="notFound">Personuppgiftspolicy</a>
-        </li>
-
-        <li>
           <a class="text-muted" href="notFound">Sitemap</a>
         </li>
       </ul>
