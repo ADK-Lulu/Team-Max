@@ -205,8 +205,11 @@ font-size: 3vw; }
   padding-bottom: 10px;
 }
 
-
-
+//Fixar så att paragrafer inte blir för långa. 
+.par-short {
+  word-wrap: break-word;
+  width: 520px;
+}
 
 //Hindrar en från att skriva in bokstäver i nummerfält - men genom "none" så slipper vi ha lilla högerscrollen i formulären
 input[type=number] {
