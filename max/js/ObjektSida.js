@@ -175,7 +175,7 @@ class ObjektSida extends Base {
         <!--Kod för säljtext-->
         <div class="row">
           <div class="col-12">
-            <p>${this.saljText}</p>
+            <p class="par-short">${this.saljText}</p>
           </div>
         </div> 
         <!--Kod för bilderna-->
@@ -198,7 +198,7 @@ class ObjektSida extends Base {
         <div class="row" id="FaktaOm">
           <h3 class="col-12 text-align-center pt-5 py-2">Fakta om</h3> 
           <div class="col">
-            <p>${this.objektBeskrivning}</p>
+            <p class="par-short">${this.objektBeskrivning}</p>
           </div>
         </div>     
         <!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
