@@ -24,8 +24,8 @@ class KontaktSida extends Base {
   render() {
     return /*html*/`
       <div class="row" route="/kontakt-sida" page-title="Kontakta oss">
-        <div class="row px-4 py-3">
-          <div class="col-sm-6 d-none d-md-block pl-2">
+        <div class="row m-3 m-sm-0">
+          <div class="col-sm-6 d-none d-md-block">
             <div class="mt-3">
               <img src="images/misc/office.jpg" class="img-fluid crop-image">
             </div>
@@ -49,8 +49,8 @@ class KontaktSida extends Base {
             </div>
               `:
          /*html*/`  
-          <div class="col-4 d-none d-sm-block text-right pl-2 bg-secondary pt-3 mb-4">
-            <h4>Kontakta oss:</h4>
+         <div class="col-4 d-none d-sm-block text-right bg-secondary pt-3 mb-4">
+            <h4 class="h1-responsive ml-3">Kontakta oss:</h4>
           </div>
           <div class="col-sm-8 bg-secondary px-4 pt-3 mb-4">
             <form submit="collectFormData">
