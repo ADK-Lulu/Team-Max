@@ -106,7 +106,7 @@ class SaljSida extends Base {
         </div> 
       </div>
       <div class="col-4 d-none d-md-block mb-2">
-        <img class="img-fluid" src="images/misc/saljsida_door.jpg">
+        <img class="img-fluid" src="images/misc/saljsida_door1.jpg">
       </div>
       <div><!--Gör en modal som kommer upp så man slipper gå in på en ny sida för att läsa GDPR-relaterad info.-->
         <div class="modal-backdrop ${this.shown ? 'show' : 'd-none'}"></div>
