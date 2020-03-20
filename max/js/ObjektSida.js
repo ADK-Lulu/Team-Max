@@ -57,7 +57,7 @@ class ObjektSida extends Base {
       {
         objektSidaId: this.objektId
       });
-
+    console.log(this);
     //Hämta detaljer
 
     //Hitta bilden som är framsidebild för aktuell SaljObjekt
@@ -161,23 +161,28 @@ class ObjektSida extends Base {
     <!--Skriv kod här som inte har med knapparna att göra-->
         <!--Hårdfakta-ruta här-->
         <div class="row w-100 my-4 py-2 bg-light">
-          <div class="col-6">
+          <div class="col-3 mt-2">
+            <div class="col-auto pb-1"><span class="font-weight-bold">Pris: </span>${app.formateraPris(this.pris)} kr</div>
             <div class="col-auto pb-1 "><span class="font-weight-bold">Storlek: </span> ${this.kvm} kvm</div>
+            <div class="col-auto pb-1"><span class="font-weight-bold">Antal rum: </span>${this.antalRum}</div>
+            ${this.typId === 2 || this.typId === 3 ? /*html*/`<div class="col-auto pb-1"><span class="font-weight-bold">Avgift: </span>${this.avgift} kr/mån</div>`
+        :/*html*/`<div class="col-auto pb-1"><span class="font-weight-bold">Driftkostnad: </span>${this.driftKostnad} kr/år</div>`}
+            <div class="col-auto pb-1"><span class="font-weight-bold">Visningsdatum: </span>${this.visning}</div>
+          </div>
+          <div class="col-3 mt-2">
+            <div class="col-auto pb-1"><span class="font-weight-bold">Område: </span> ${this.namn}</div>
+            <div class="col-auto pb-1"><span class="font-weight-bold">Byggår:  </span>${this.byggAr}</div>
             <div class="col-auto pb-1"><span class="font-weight-bold">Garage: </span>${this.garage ? 'finns' : 'finns ej'}</div>
             <div class="col-auto pb-1"><span class="font-weight-bold">Hiss: </span>${this.hiss ? 'finns' : 'finns ej'}</div>
+            ${this.typId === 2 ? '' : /*html*/`<div class="col-auto pb-1"><span class="font-weight-bold">Tomtarea: </span>${this.tomtArea} m2</div>` }
           </div>
-          <div class="col-6">
-            <div class="col-auto pb-1"><span class="font-weight-bold">Antal rum: </span>${this.antalRum}</div>
-            <div class="col-auto pb-1"><span class="font-weight-bold">Område: </span> ${this.namn}</div>
-            <div class="col-auto pb-1"><span class="font-weight-bold">Pris: </span>${app.formateraPris(this.pris)} kr</div>
-          </div>
-        </div>
+        
         <!--Kod för säljtext-->
-        <div class="row">
-          <div class="col-12">
-            <p class="par-short">${this.saljText}</p>
+        
+          <div class="col-6">
+            <p class="par-short text-left mt-2">${this.saljText}</p>
           </div>
-        </div> 
+         </div>
         <!--Kod för bilderna-->
         <div class="row"><a id="AllaBilder"></a>
           <h3 class="col-12 pt-5 py-2">Alla bilder</h3>
