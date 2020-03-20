@@ -24,13 +24,13 @@ class KontaktSida extends Base {
   render() {
     return /*html*/`
       <div class="row" route="/kontakt-sida" page-title="Kontakta oss">
-        <div class="row">
-          <div class="col-6 d-none d-lg-block">
+        <div class="row px-4 py-3">
+          <div class="col-sm-6 d-none d-md-block pl-2">
             <div class="mt-3">
-              <img src="images/misc/office.jpg" class="card-img-top" alt="">
+              <img src="images/misc/office.jpg" class="img-fluid crop-image">
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-md-6">
             <div class="mt-3">
               <h1 class="h1-responsive">Dhyr & Rumson</h1><br>Adress: Liljeholmsgatan 123, Liljeholmen
               <br>Telefon: +46 23 456 78 90<br>Email: <a class="text-dark" href="mailto:dhyrochrumson@email.com">dhyrochrumson@email.com</a><br>
@@ -39,7 +39,7 @@ class KontaktSida extends Base {
           </div>
         </div>
 
-        <div class="row w-100 pt-5">
+        <div class="row w-100 pt-3 px-4 py-3">
           ${this.formSent ? /*html*/`
             <div class="col-12">
               <h2 class="text-center text-dark py-5 px-3">
@@ -49,10 +49,10 @@ class KontaktSida extends Base {
             </div>
               `:
          /*html*/`  
-          <div class="col-4 text-right bg-secondary pt-3 mb-4">
+          <div class="col-4 d-none d-sm-block text-right pl-2 bg-secondary pt-3 mb-4">
             <h4>Kontakta oss:</h4>
           </div>
-          <div class="col-8 bg-secondary px-4 pt-3 mb-4">
+          <div class="col-sm-8 bg-secondary px-4 pt-3 mb-4">
             <form submit="collectFormData">
               <div class="form-group">
                 <label class="w-100">Namn:

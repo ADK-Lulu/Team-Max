@@ -13,9 +13,7 @@ class Footer extends Base {
     <h5>Adress</h5>
     <p>Liljeholmsvägen 123, 123 45 Liljeholmen</p>
     <a class="btn btn-secondary mb-4" href="mailto:dhyrochrumson@email.com">Maila oss</a>
-    <div class="col">
     <p>&copy; 2020 Dhyr & Rumson</p>
-    </div>
   </div>
   
     <div class="col-6 col-md-3">
