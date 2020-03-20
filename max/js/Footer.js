@@ -44,8 +44,8 @@ class Footer extends Base {
       </ul>
     </div>
 
-    <div class="col-´12 col-sm-6 col-md-6 col-lg-2">
-      <h4 class="mb-3 px-1 text-nowrap">Följ oss på:</h4>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-2 mt-2 mt-sm-0">
+      <h4 class="mb-3 text-nowrap">Följ oss på:</h4>
       <ul class="list-group">
         <li>
          <span class="mx-3"> <a href="http://www.facebook.com" target="_blank"><img src="/images/iconer/facebook.png"></a></span>
