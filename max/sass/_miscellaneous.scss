@@ -226,9 +226,7 @@ input[type=number] {
     }
   }
 }
-.not-found{
-  font-family: 'Satisfy', cursive;
-}
+
 .large-text{
   font-size: 84pt;
 }
@@ -303,4 +301,35 @@ input[type=number] {
 
 .product img {
   display: block;
+}
+
+.navbar-brand img {
+  width: 270px;
+  @include media-breakpoint-up(md) {
+    width:190px;
+  }
+    @include media-breakpoint-up(xs) {
+    width:241px;
+  }
+}
+
+//gör sökiconsförstoringsglaset gyllene :) 
+.icofont-search-property:before {
+
+color: goldenrod;
+
+}
+
+//guldbakgrund på "om oss"
+.bg-gold {
+
+background-color: goldenrod;
+
+}
+
+// responsiv titel för sökresultatsobjekt
+.sokresultat-title {
+  @media (max-width: 575.98px) { 
+    font-size: 6vw;
+   }
 }
