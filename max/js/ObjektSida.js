@@ -159,36 +159,36 @@ class ObjektSida extends Base {
           </div>
         </div>
     <!--Skriv kod här som inte har med knapparna att göra-->
-        <!--Hårdfakta-ruta här-->
+        
+          <!--Hårdfakta-ruta här-->
         <div class="row w-100 my-4 py-2 bg-light">
-          <div class="col-3 mt-2">
-            <div class="col-auto pb-1"><span class="font-weight-bold">Pris: </span>${app.formateraPris(this.pris)} kr</div>
-            <div class="col-auto pb-1 "><span class="font-weight-bold">Storlek: </span> ${this.kvm} kvm</div>
-            <div class="col-auto pb-1"><span class="font-weight-bold">Antal rum: </span>${this.antalRum}</div>
-            ${this.typId === 2 || this.typId === 3 ? /*html*/`<div class="col-auto pb-1"><span class="font-weight-bold">Avgift: </span>${this.avgift} kr/mån</div>`
-        :/*html*/`<div class="col-auto pb-1"><span class="font-weight-bold">Driftkostnad: </span>${this.driftKostnad} kr/år</div>`}
-            <div class="col-auto pb-1"><span class="font-weight-bold">Visningsdatum: </span>${this.visning}</div>
+          <div class="col-12 col-md-4 mt-3">
+            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/money.png"> Pris: </span>${app.formateraPris(this.pris)} kr</div>
+            <div class="col-auto pb-2 "><span class="font-weight-bold"><img src="/images/iconer/linjal.png"> Boarea: </span> ${this.kvm} kvm</div>
+            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/door.png"> Antal rum: </span>${this.antalRum}</div>
+            ${this.typId === 2 ? '' : /*html*/`<div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/fence.png"> Tomtarea: </span>${this.tomtArea} kvm</div>` }
+            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/kalender.png"> Visningsdatum: </span>${this.visning}</div>
           </div>
-          <div class="col-3 mt-2">
-            <div class="col-auto pb-1"><span class="font-weight-bold">Område: </span> ${this.namn}</div>
-            <div class="col-auto pb-1"><span class="font-weight-bold">Byggår:  </span>${this.byggAr}</div>
-            <div class="col-auto pb-1"><span class="font-weight-bold">Garage: </span>${this.garage ? 'finns' : 'finns ej'}</div>
-            <div class="col-auto pb-1"><span class="font-weight-bold">Hiss: </span>${this.hiss ? 'finns' : 'finns ej'}</div>
-            ${this.typId === 2 ? '' : /*html*/`<div class="col-auto pb-1"><span class="font-weight-bold">Tomtarea: </span>${this.tomtArea} m2</div>` }
+          <div class="col-12 col-md-4 mt-3">
+            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/location.png"> Område: </span> ${this.namn}</div>
+            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/spade.png"> Byggnadsår:  </span>${this.byggAr}</div>
+            ${this.typId === 2 || this.typId === 3 ? /*html*/`<div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Avgift: </span>${this.avgift} kr/mån</div>`
+            :/*html*/`<div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Driftkostnad: </span>${this.driftKostnad} kr/år</div>`}
+            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/car.png"> Garage: </span>${this.garage ? 'finns' : 'finns ej'}</div>
+            <div class="col-auto pb-2"><span class="font-weight-bold"> <img src="/images/iconer/hiss.png"> Hiss: </span>${this.hiss ? 'finns' : 'finns ej'}</div>
           </div>
-        
-        <!--Kod för säljtext-->
-        
-          <div class="col-6">
-            <p class="par-short text-left mt-2">${this.saljText}</p>
+           <!--Kod för säljtext-->
+          <div class="col-12 col-md-4">
+            <p class="text-left mt-3">${this.saljText}</p>
           </div>
-         </div>
+        </div>
+      
         <!--Kod för bilderna-->
         <div class="row"><a id="AllaBilder"></a>
           <h3 class="col-12 pt-5 py-2">Alla bilder</h3>
             ${this.allPictures.map(image => /*html*/`
             <div class="col-12 col-md-6">
-              <img class="img-fluid py-2" src="${image.bildUrl}">
+              <img class="crop-image py-2" src="${image.bildUrl}">
             </div>
           `)}
         </div>
@@ -201,7 +201,7 @@ class ObjektSida extends Base {
         </div>
         <!--Fakta om-->
         <div class="row" id="FaktaOm">
-          <h3 class="col-12 text-align-center pt-5 py-2">Fakta om</h3> 
+          <h3 class="col-12 text-align-center pt-5 py-2">Fakta om</h3>
           <div class="col">
             <p class="par-short">${this.objektBeskrivning}</p>
           </div>
