@@ -86,12 +86,12 @@ class SaljSida extends Base {
             <div class="row">
               <div class="col-8">
                 <label class="w-100">Telefonnummer:
-                  <input name="telefonnummer" type="number" class="form-control" tabindex="3" placeholder="070-XXXXXX" required>
+                  <input name="telefonnummer" type="number" class="form-control" tabindex="3" placeholder="070-XXX XX XX" required>
                 </label>
               </div>
               <div class="col-4">
                 <label>Antal rum:
-                  <input name="antalRum" type="number" class="form-control" tabindex="6" placeholder="1-10" >
+                  <input name="antalRum" type="number" class="form-control" tabindex="6" placeholder="1–10" >
                 </label>
               </div>
               <div class="col text mt-2">
