@@ -30,9 +30,10 @@ class KontaktSida extends Base {
               <img src="images/misc/office.jpg" class="img-fluid crop-image">
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <div class="mt-3">
-              <h1 class="h1-responsive">Dhyr & Rumson</h1><br>Adress: Liljeholmsgatan 123, Liljeholmen
+              <img src="images/misc/logga_DR.png" class="img-fluid">
+              <br>Adress: Liljeholmsgatan 123, Liljeholmen
               <br>Telefon: +46 23 456 78 90<br>Email: <a class="text-dark" href="mailto:dhyrochrumson@email.com">dhyrochrumson@email.com</a><br>
               <br><p>Öppettider:<br>Måndag-Fredag: 10-16<br>Lördag-Söndag: Stängt</p>
             </div>
