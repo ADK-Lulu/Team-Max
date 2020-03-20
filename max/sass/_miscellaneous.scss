@@ -304,3 +304,13 @@ input[type=number] {
 .product img {
   display: block;
 }
+
+.navbar-brand img {
+  width: 270px;
+  @include media-breakpoint-up(md) {
+    width:190px;
+  }
+    @include media-breakpoint-up(xs) {
+    width:241px;
+  }
+}

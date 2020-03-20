@@ -53,7 +53,7 @@ class OmOss extends Base {
             <h5 class="card-title">${info.namn}</h5>
               <ul class="list-unstyled">
                 <li>${info.telefonnummer}</li>
-                <li>${info.epost}</li>
+                <li class="text-break">${info.epost}</li>
               </ul>
             <p class="card-text"><small class="text-muted">${info.personligt}</small></p>
           </div>
