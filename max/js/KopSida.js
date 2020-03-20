@@ -278,7 +278,7 @@ class KopSida extends Base {
               `) : /*html*/`
               <div class="row">
                 <div class="col-12">
-                  <h3 class="text-center text-dark py-5 px-3">Tyvärr matchar din sökning inget av våra objekt, gör om din sökning
+                  <h3 class="text-center text-dark py-2 px-3">Tyvärr matchar din sökning inget av våra objekt, gör om din sökning
                     eller kontakta en
                     av våra mäklare för information om kommande försäljningar.</h3>
                 </div>
