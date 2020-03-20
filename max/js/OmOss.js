@@ -24,8 +24,8 @@ class OmOss extends Base {
 <div class="row" route="/om-oss" page-title="Om oss">
   
     <!--infofält om företaget o chefen-->
-    <div class="col-md-6 col-xl-6 bg-secondary my-4">
-      <div class="card mt-3 col-my-2">
+    <div class="col-md-6 col-xl-6 bg-gold my-4">
+      <div class="card mt-1 col-my-1">
         <div class="card-body">
           <h4 class="card-title">Vår story</h4>
           <p class="card-text">Redan när vår grundare <strong>Fiona</strong> var en liten flicka så älskade hon hus. Hon
