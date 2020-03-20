@@ -51,12 +51,11 @@ class KopSida extends Base {
       AND pris <= $maxPris * 100000
       AND framsidebild = true
       AND namn LIKE $sokOmrade
-      AND ObjektProfiler.nyproduktion IN (CASE WHEN $sokNybygge=false THEN 0 END,1)
+      AND ObjektProfiler.nyproduktion IN (CASE WHEN $sokNybygge=false THEN 0 END, 1)
       AND ObjektTyper.typId IN (
-        CASE WHEN $sokBostadsratt=true THEN 2 END, 
-        CASE WHEN $sokRadhus=true THEN 3 END, 
-        CASE WHEN $sokVilla=true THEN 1 END
-        )
+        CASE WHEN $sokBostadsratt=true OR $sokVilla=false AND $sokRadhus=false AND $sokBostadsratt=false AND $sokNybygge=true THEN 2 END,
+        CASE WHEN $sokRadhus=true OR $sokVilla=false AND $sokRadhus=false AND $sokBostadsratt=false AND $sokNybygge=true THEN 3 END,
+        CASE WHEN $sokVilla=true OR $sokVilla=false AND $sokRadhus=false AND $sokBostadsratt=false AND $sokNybygge=true THEN 1 END)
 
       ORDER BY 
         CASE WHEN $sortering='nyast' THEN SaljObjekt.objektId END DESC,
