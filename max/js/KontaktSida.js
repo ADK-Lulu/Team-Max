@@ -32,7 +32,7 @@ class KontaktSida extends Base {
           </div>
           <div class="col-6">
             <div class="mt-3">
-              <h2>Dhyr & Rumson</h2><br>Adress: Liljeholmsgatan 123, Liljeholmen
+              <h1 class="h1-responsive">Dhyr & Rumson</h1><br>Adress: Liljeholmsgatan 123, Liljeholmen
               <br>Telefon: +46 23 456 78 90<br>Email: <a class="text-dark" href="mailto:dhyrochrumson@email.com">dhyrochrumson@email.com</a><br>
               <br><p>Öppettider:<br>Måndag-Fredag: 10-16<br>Lördag-Söndag: Stängt</p>
             </div>
@@ -42,9 +42,9 @@ class KontaktSida extends Base {
         <div class="row w-100 pt-5">
           ${this.formSent ? /*html*/`
             <div class="col-12">
-              <h2>
-                <p>Tack för ditt meddelande!</p>
-                <p>Vi återkommer till dig så snabbt som möjligt.</p>
+              <h2 class="text-center text-dark py-5 px-3">
+                Tack för ditt meddelande!<br>
+                Vi återkommer till dig så snabbt som möjligt.
               </h2>
             </div>
               `:

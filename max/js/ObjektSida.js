@@ -218,7 +218,10 @@ class ObjektSida extends Base {
           <!--Tack för visat intresse (svar på intresseformulär)-->
             ${this.formSent ? /*html*/`
             <div class="col-6">
-              <h1>Tack för att du kontaktar oss!</h1>
+              <h2 class="text-center text-dark py-5 px-3">
+                Tack för ditt meddelande!<br>
+                Vi återkommer till dig så snabbt som möjligt.
+              </h2>
             </div>
              ` :
             //Intresseformulär
@@ -229,7 +232,7 @@ class ObjektSida extends Base {
               <form submit="collectFormData">
                <div class="form-group">
                 <label class="w-100">Namn:
-                 <input name="namn" type="text" class="form-control" autocomplete="name" placeholder="för & efternamn" required pattern=".{2,}">
+                 <input name="namn" type="text" class="form-control" autocomplete="name" placeholder="för- & efternamn" required pattern=".{2,}">
                 </label>
                 </div>
                 <div class="form-group">

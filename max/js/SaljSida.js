@@ -43,9 +43,9 @@ class SaljSida extends Base {
       <div class="row pb-3 pl-3" route="/salj-sida" page-title="Sälja bostad">
         ${this.formSent ? /*html*/`
         <div class="col-12">
-          <h2>
-            <p>Tack!</p>
-            <p>Vi återkommer till dig så snabbt som möjligt.</p>
+          <h2 class="text-center text-dark py-5 px-3">
+            Va kul att du vill sälja med oss!<br>
+            En av våra mäklare kommer höra av sig till dig!
           </h2>
         </div>
       `:
