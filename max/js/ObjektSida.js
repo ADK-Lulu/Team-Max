@@ -111,7 +111,7 @@ class ObjektSida extends Base {
 
   render() {
     return /*html*/`
-      <div class="row justify-content-center" route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
+      <div route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
         <div class="row">
           <div class="col-12">
           <!--Badge "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
@@ -128,11 +128,11 @@ class ObjektSida extends Base {
             <h1 class="text-center m-3 h1-responsive">${this.saljRubrik}</h1> 
           </div>
         </div>
-        <div class="row w-100 sticky-top">
+        <div class="row sticky-top">
           <div class="col-12 text-center"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
             <div class="btn-group btn-group-lg text-center tab-choices-object-page" role="group" aria-label="Basic-example"> <!--Kod för button group -->
               <div class="row">
-                <div class="btn-group col-12 p-0 col-lg-6 pr-lg-0">
+                <div class="btn-group col-12 col-lg-6">
                   <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#AllaBilder'">
                     <img class="svg-icon" src="/images/iconer/sticky-bilder.svg">Alla bilder
                   </button>
@@ -143,7 +143,7 @@ class ObjektSida extends Base {
                     <img class="svg-icon" src="/images/iconer/sticky-fakta.svg">Fakta om
                   </button>
                 </div>
-                <div class="btn-group col-12 p-0 col-lg-6 pl-lg-0 sticky-menu-right">
+                <div class="btn-group col-12 col-lg-6 sticky-menu-right">
                   <button type="button" class="btn btn-secondary py-3 white-btn-text" onclick="window.location.href='#AnmälIntresse'">
                     <img class="svg-icon" src="/images/iconer/sticky-anmal.svg">Anmäl intresse
                   </button> 
@@ -161,25 +161,25 @@ class ObjektSida extends Base {
     <!--Skriv kod här som inte har med knapparna att göra-->
         
           <!--Hårdfakta-ruta här-->
-        <div class="row w-100 my-4 py-2 bg-light">
-          <div class="col-12 col-md-4 mt-3">
-            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/money.png"> Pris: </span>${app.formateraPris(this.pris)} kr</div>
-            <div class="col-auto pb-2 "><span class="font-weight-bold"><img src="/images/iconer/linjal.png"> Boarea: </span> ${this.kvm} kvm</div>
-            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/door.png"> Antal rum: </span>${this.antalRum}</div>
-            ${this.typId === 2 ? '' : /*html*/`<div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/fence.png"> Tomtarea: </span>${this.tomtArea} kvm</div>` }
-            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/kalender.png"> Visningsdatum: </span>${this.visning}</div>
+        <div class="row no-gutters mt-4 pt-3 px-3 pb-lg-3 bg-light">
+          <div class="col-12 col-md-6 col-lg-4">
+              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/money.png"> Pris: </span>${app.formateraPris(this.pris)} kr</div>
+              <div class="pb-2 "><span class="font-weight-bold"><img src="/images/iconer/linjal.png"> Boarea: </span> ${this.kvm} kvm</div>
+              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/door.png"> Antal rum: </span>${this.antalRum}</div>
+              ${this.typId === 2 ? '' : /*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/fence.png"> Tomtarea: </span>${this.tomtArea} kvm</div>`}
+              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/kalender.png"> Visningsdatum: </span>${this.visning}</div>
           </div>
-          <div class="col-12 col-md-4 mt-3">
-            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/location.png"> Område: </span> ${this.namn}</div>
-            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/spade.png"> Byggnadsår:  </span>${this.byggAr}</div>
-            ${this.typId === 2 || this.typId === 3 ? /*html*/`<div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Avgift: </span>${this.avgift} kr/mån</div>`
-            :/*html*/`<div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Driftkostnad: </span>${this.driftKostnad} kr/år</div>`}
-            <div class="col-auto pb-2"><span class="font-weight-bold"><img src="/images/iconer/car.png"> Garage: </span>${this.garage ? 'finns' : 'finns ej'}</div>
-            <div class="col-auto pb-2"><span class="font-weight-bold"> <img src="/images/iconer/hiss.png"> Hiss: </span>${this.hiss ? 'finns' : 'finns ej'}</div>
+          <div class="col-12 col-md-6 col-lg-4">
+              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/location.png"> Område: </span> ${this.namn}</div>
+              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/spade.png"> Byggnadsår:  </span>${this.byggAr}</div>
+              ${this.typId === 2 || this.typId === 3 ? /*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Avgift: </span>${this.avgift} kr/mån</div>`
+        :/*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Driftkostnad: </span>${this.driftKostnad} kr/år</div>`}
+              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/car.png"> Garage: </span>${this.garage ? 'finns' : 'finns ej'}</div>
+              <div class="pb-2"><span class="font-weight-bold"> <img src="/images/iconer/hiss.png"> Hiss: </span>${this.hiss ? 'finns' : 'finns ej'}</div>
           </div>
            <!--Kod för säljtext-->
-          <div class="col-12 col-md-4">
-            <p class="text-left mt-3">${this.saljText}</p>
+          <div class="col-12 col-lg-4 pt-3 pt-lg-0">
+              <p class="text-left text-break">${this.saljText}</p>
           </div>
         </div>
       
@@ -202,12 +202,12 @@ class ObjektSida extends Base {
         <!--Fakta om-->
         <div class="row" id="FaktaOm">
           <h3 class="col-12 text-align-center pt-5 py-2">Fakta om</h3>
-          <div class="col">
-            <p class="par-short">${this.objektBeskrivning}</p>
+          <div class="col-12 col-lg-8">
+            <p class="text-break">${this.objektBeskrivning}</p>
           </div>
         </div>     
         <!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
-        <div class="row align-items-end py-5" id="AnmälIntresse">
+        <div class="row align-items-center py-5" id="AnmälIntresse">
           <h3 class="col-12 text-align-center pt-5 py-2">Anmäl intresse</h3>
             <div class="col-6 col-md-3">
               <img class="card-img" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
@@ -231,7 +231,7 @@ class ObjektSida extends Base {
              ` :
             //Intresseformulär
           /*html*/`
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 mt-3 mt-md-0">
            <div class="col mt-2 pr-0">
              <h4>Intresseanmälan:</h4>
               <form submit="collectFormData">
