@@ -207,7 +207,7 @@ class ObjektSida extends Base {
           </div>
         </div>     
         <!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
-        <div class="row align-items-center py-5" id="AnmälIntresse">
+        <div class="row align-items-end py-5" id="AnmälIntresse">
           <h3 class="col-12 text-align-center pt-5 py-2">Anmäl intresse</h3>
             <div class="col-6 col-md-3">
               <img class="card-img" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
@@ -217,7 +217,7 @@ class ObjektSida extends Base {
             <ul class="list-group list-group-flush">
               <li class="list-group-item">${this.maklare.namn}</li>
               <li class="list-group-item">${this.maklare.telefonnummer}</li>
-              <li class="list-group-item">${this.maklare.epost}</li>
+              <li class="list-group-item text-break">${this.maklare.epost}</li>
             </ul>
           </div>        
           <!--Tack för visat intresse (svar på intresseformulär)-->
