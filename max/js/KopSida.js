@@ -216,16 +216,6 @@ class KopSida extends Base {
                   </div>
                 `}
 
-              <!-- Knapp för att visa/dölja filter -->
-              <div class="row row-h-25">
-                <div class="col-12">
-                  <div click="visaDoljFilter" class="sort-trigger">
-                    <i class="icofont-arrow-${!this.visaFilter ? 'down' : 'up'}"></i>
-                    <span>${!this.visaFilter ? 'Fler filter' : 'Dölj filter'}</span>
-                  </div>
-                </div>
-              </div>
-                            
               <!-- Sortering -->
               <div class="row">
                 <div class="form-group col-4 mb-4">
@@ -236,6 +226,16 @@ class KopSida extends Base {
                     <option value="billigastPris">Billigast först</option>
                     <option value="dyrastPris">Dyrast först</option>
                   </select>
+                </div>
+              </div>
+
+              <!-- Knapp för att visa/dölja filter -->
+              <div class="row">
+                <div class="col-12">
+                  <div click="visaDoljFilter" class="sort-trigger">
+                    <i class="icofont-arrow-${!this.visaFilter ? 'down' : 'up'}"></i>
+                    <span>${!this.visaFilter ? 'Fler filter' : 'Dölj filter'}</span>
+                  </div>
                 </div>
               </div>
 
@@ -260,15 +260,16 @@ class KopSida extends Base {
                     </div>
                     <div class="py-sm-3 col-12 col-lg-4 col-xl-3">
                       <div class="row p-2 mt-1 p-md-1 pl-md-0">
-                        <div class="col-7 col-lg-12">
-                          <h2 class="sokresultat-title">${object.gata} ${object.gatunummer}</h2>
+                        <div class="col-6 col-lg-12">
+                          <h2 class="sokresultat-title text-break">${object.gata} ${object.gatunummer}</h2>
                           <h3 class="sokresultat-title">${object.namn}</h3>
                         </div>
-                        <div class="col-5 col-lg-12">
+                        <div class="col-6 col-lg-12">
                           <p class="mb-1"><span class="font-weight-bold">Boarea:</span> ${object.kvm} kvm</p>
                           <p class="mb-1"><span class="font-weight-bold">Pris:</span> ${app.formateraPris(object.pris)} kr</p>
                           <p class="mb-1"><span class="font-weight-bold">Rum:</span> ${object.antalRum}</p>
                           <p class="mb-1"><span class="font-weight-bold">Typ:</span> ${object.typNamn}</p>
+                          <p class="mb-1"><span class="font-weight-bold">Visning:</span> ${object.visning}</p>
                         </div>
                       </div>
                     </div>
