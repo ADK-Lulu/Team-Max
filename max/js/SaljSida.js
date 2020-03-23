@@ -40,57 +40,59 @@ class SaljSida extends Base {
 
   render() {
     return /*html*/`
-    <div class="container">
-      <div class="row pb-3 pl-md-3" route="/salj-sida" page-title="Sälja bostad">
+      <div class="pb-3" route="/salj-sida" page-title="Sälja bostad">
         ${this.formSent ? /*html*/`
-        <div class="col-12">
-          <h2 class="text-center text-dark py-5 px-3">
-            Va kul att du vill sälja med oss!<br>
-            En av våra mäklare kommer höra av sig till dig!
-          </h2>
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-center text-dark py-5 px-3">
+              Va kul att du vill sälja med oss!<br>
+              En av våra mäklare kommer höra av sig till dig!
+            </h2>
+          </div>
         </div>
       `:
       /*html*/`
-      <div class="col-12">
-        <div class="row">
+      <div class="row">
+        <div class="col-12">
           <h1 class="h1-responsive pl-3 pl-sm-0 pr-3">Redo att sälja?</h1>
           <h1 class="h1-responsive pl-3 pl-sm-0 pb-3">Fyll i formuläret så kontaktar vi dig!</h1>
         </div>
       </div>
-      <div class="col-12 col-md-8 bg-secondary mb-2">
-       <div class="pr-0 pl-2 px-md-4 pt-3 pb-0">
-         <form class="w-100 pr-3 pr-md-0" submit="collectFormData">
+      <div class="row">
+        <div class="col-12 col-md-8 p-3">
+         <form class="row bg-secondary no-gutters p-3" submit="collectFormData">
+         <div class="col-12">
           <div class="row">
-            <div class="col-8">
+            <div class="col-7">
               <label class="w-100">Namn:
                 <input name="namn" type="text" class="form-control" autocomplete="name" tabindex="1" placeholder="för- & efternamn" required pattern=".{2,}">
               </label>
             </div>
-            <div class="col-4">
+            <div class="col-5">
              <label>Område:
                 <input name="omrade" type="text" class="form-control" tabindex="4" placeholder="område" required>
               </label>                  
            </div>
          </div>
           <div class="row">
-            <div class="col-8">
+            <div class="col-7">
               <label class="w-100">Email:
                 <input name="epost" type="email" class="form-control" tabindex="2" placeholder="namn@mail.com" required>
               </label>
             </div>
-            <div class="col-4">
-              <label>Kvm:
+            <div class="col-5">
+              <label>Boarea:
                 <input name="kvm" type="number" class="form-control" tabindex="5" placeholder="kvm" required>
               </label>
             </div>
           </div>
             <div class="row">
-              <div class="col-8">
+              <div class="col-7">
                 <label class="w-100">Telefonnummer:
                   <input name="telefonnummer" type="number" class="form-control" tabindex="3" placeholder="070-XXX XX XX" required>
                 </label>
               </div>
-              <div class="col-4">
+              <div class="col-5">
                 <label>Antal rum:
                   <input name="antalRum" type="number" class="form-control" tabindex="6" placeholder="1–10" >
                 </label>
@@ -99,15 +101,16 @@ class SaljSida extends Base {
                 <input class="btn btn-primary m-0" type="submit" value="Skicka">
               </div>
             </div>
+            </div>
           </form>
           <!--Gör en text under skicka knappen där man kan läsa mer om GDPR-relaterat-->      
-          <div class="mt-3"> 
+          <div class="p-3 bg-secondary"> 
             <p>Genom att klicka på <b>skicka</b> knappen godkänner du våra <a click="showModal"><b>användarvillkor och personuppgiftspolicy.</b></a></p>
           </div>
         </div> 
-      </div>
-      <div class="col-4 d-none d-md-block mb-2">
-        <img class="img-fluid" src="images/misc/saljsida_door1.jpg">
+        <div class="col-4 d-none d-md-block mb-2 pt-3 pl-0">
+          <img class="img-fluid crop-image-h" src="images/misc/saljsida_door1.jpg">
+        </div>
       </div>
       <div><!--Gör en modal som kommer upp så man slipper gå in på en ny sida för att läsa GDPR-relaterad info.-->
         <div class="modal-backdrop ${this.shown ? 'show' : 'd-none'}"></div>
@@ -182,7 +185,6 @@ class SaljSida extends Base {
           </div>
         </div>
       </div>
-    </div>
     `}
     
 
