@@ -40,6 +40,7 @@ class SaljSida extends Base {
 
   render() {
     return /*html*/`
+    <div class="container">
       <div class="row pb-3 pl-md-3" route="/salj-sida" page-title="Sälja bostad">
         ${this.formSent ? /*html*/`
         <div class="col-12">
@@ -57,7 +58,7 @@ class SaljSida extends Base {
         </div>
       </div>
       <div class="col-12 col-md-8 bg-secondary mb-2">
-       <div class="row pr-0 pl-2 px-md-4 pt-3 pb-0">
+       <div class="pr-0 pl-2 px-md-4 pt-3 pb-0">
          <form class="w-100 pr-3 pr-md-0" submit="collectFormData">
           <div class="row">
             <div class="col-8">
@@ -181,6 +182,7 @@ class SaljSida extends Base {
           </div>
         </div>
       </div>
+    </div>
     `}
     
 
