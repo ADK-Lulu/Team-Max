@@ -6,7 +6,7 @@ class StartSida extends Base {
   }
   render() {
     return /*html*/`
-        <div class="row" route="/" page-title="Startsida">
+        <div route="/" page-title="Startsida">
           <div class="col-12 mt-4">
             <div class="row w-100">
               <div class="position-absolute pt-6 pt-md-7 col-lg-12">
