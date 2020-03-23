@@ -9,6 +9,16 @@
   max-height: 350px;
   margin-bottom: 1rem;
 }
+
+.crop-image-h{
+  object-fit: cover; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  width: 100%;
+  height: 384px;
+  margin-bottom: 1rem;
+}
+
+
 .navbarbackground{
   background:linear-gradient(to bottom left, #a1a0a0,#040400);
 }
