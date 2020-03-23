@@ -23,7 +23,7 @@ class KontaktSida extends Base {
 
   render() {
     return /*html*/`
-      <div class="row" route="/kontakt-sida" page-title="Kontakta oss">
+      <div route="/kontakt-sida" page-title="Kontakta oss">
         <div class="row m-3 m-sm-0">
           <div class="col-sm-6 d-none d-md-block">
             <div class="mt-3">
@@ -40,7 +40,7 @@ class KontaktSida extends Base {
           </div>
         </div>
 
-        <div class="row w-100 pt-3 px-4 py-3">
+        <div class="row pt-3 px-4 py-3">
           ${this.formSent ? /*html*/`
             <div class="col-12">
               <h2 class="text-center text-dark py-5 px-3">
