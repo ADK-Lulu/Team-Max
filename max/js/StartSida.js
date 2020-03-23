@@ -16,7 +16,7 @@ class StartSida extends Base {
             <img src="images/misc/startsida_stamningsbild.jpg" class="img-fluid crop-image" alt="Ditt nya hem?">
           </div>
           <div class="row justify-content-center">
-            <div class="col-md-8 mx-3 py-3">
+            <div class="col-md-8 py-3">
               <h4>Stockholm i vårt hjärta. Vi på Dhyr & Rumson säljer allt ifrån slott till koja i Storstockholm. 
               Oavsett om du har en stor eller liten plånbok så är du alltid välkommen att höra av dig till oss. Vi gillar alla pengar.</h4>
             </div>
