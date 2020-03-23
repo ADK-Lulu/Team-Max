@@ -177,23 +177,23 @@ class ObjektSida extends Base {
           <!--Hårdfakta-ruta här-->
         <div class="row no-gutters mt-4 pt-3 px-3 pb-lg-3 bg-light">
           <div class="col-12 col-md-6 col-lg-4">
-              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/money.png"> Pris: </span>${app.formateraPris(this.pris)} kr</div>
-              <div class="pb-2 "><span class="font-weight-bold"><img src="/images/iconer/linjal.png"> Boarea: </span> ${this.kvm} kvm</div>
-              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/door.png"> Antal rum: </span>${this.antalRum}</div>
-              ${this.typId === 2 ? '' : /*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/fence.png"> Tomtarea: </span>${this.tomtArea} kvm</div>`}
-              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/kalender.png"> Visningsdatum: </span>${this.visning}</div>
+            <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/money.png"> Pris: </span>${app.formateraPris(this.pris)} kr</div>
+            <div class="pb-2 "><span class="font-weight-bold"><img src="/images/iconer/linjal.png"> Boarea: </span> ${this.kvm} kvm</div>
+            <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/door.png"> Antal rum: </span>${this.antalRum}</div>
+            ${this.typId === 2 ? '' : /*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/fence.png"> Tomtarea: </span>${this.tomtArea} kvm</div>`}
+            <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/kalender.png"> Visningsdatum: </span>${this.visning}</div>
           </div>
           <div class="col-12 col-md-6 col-lg-4">
-              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/location.png"> Område: </span> ${this.namn}</div>
-              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/spade.png"> Byggnadsår:  </span>${this.byggAr}</div>
-              ${this.typId === 2 || this.typId === 3 ? /*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Avgift: </span>${this.avgift} kr/mån</div>`
-        :/*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Driftkostnad: </span>${this.driftKostnad} kr/år</div>`}
-              <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/car.png"> Garage: </span>${this.garage ? 'finns' : 'finns ej'}</div>
-              <div class="pb-2"><span class="font-weight-bold"> <img src="/images/iconer/hiss.png"> Hiss: </span>${this.hiss ? 'finns' : 'finns ej'}</div>
+            <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/location.png"> Område: </span> ${this.namn}</div>
+            <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/spade.png"> Byggnadsår:  </span>${this.byggAr}</div>
+            ${this.typId === 2 || this.typId === 3 ? /*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Avgift: </span>${this.avgift} kr/mån</div>`
+            :/*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Driftkostnad: </span>${this.driftKostnad} kr/år</div>`}
+            <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/car.png"> Garage: </span>${this.garage ? 'finns' : 'finns ej'}</div>
+            <div class="pb-2"><span class="font-weight-bold"> <img src="/images/iconer/hiss.png"> Hiss: </span>${this.hiss ? 'finns' : 'finns ej'}</div>
           </div>
            <!--Kod för säljtext-->
           <div class="col-12 col-lg-4 pt-3 pt-lg-0">
-              <p class="text-left text-break">${this.saljText}</p>
+            <p class="text-left text-break">${this.saljText}</p>
           </div>
         </div>
       
