@@ -36,10 +36,10 @@ class Footer extends Base {
       <h4>Information</h4>
       <ul class="list-group">
         <li>
-          <a class="text-muted" href="/notFound">Användarvillkor</a>
+          <a class="text-muted" href="">Användarvillkor</a>
         </li>
         <li>
-          <a class="text-muted" href="notFound">Sitemap</a>
+          <a class="text-muted" href="">Sitemap</a>
         </li>
       </ul>
     </div>
