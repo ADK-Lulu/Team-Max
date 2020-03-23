@@ -255,7 +255,7 @@ class KopSida extends Base {
                 ` : ''}
                 <img class="img-fluid crop-image mb-0" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
               </div>
-              <div class="py-sm-3 col-12 col-lg-4 col-xl-3">
+              <div class="p-sm-3 col-12 col-lg-4 col-xl-3">
                 <div class="row p-2 mt-1 p-md-1 pl-md-0">
                   <div class="col-6 col-lg-12">
                     <h2 class="sokresultat-title text-break">${object.gata} ${object.gatunummer}</h2>
