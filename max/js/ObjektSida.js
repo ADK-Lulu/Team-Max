@@ -202,12 +202,12 @@ class ObjektSida extends Base {
         <!--Fakta om-->
         <div class="row" id="FaktaOm">
           <h3 class="col-12 text-align-center pt-5 py-2">Fakta om</h3>
-          <div class="col-12 col-lg-8">
+          <div class="col-12 col-lg-6">
             <p class="text-break">${this.objektBeskrivning}</p>
           </div>
         </div>     
         <!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
-        <div class="row align-items-end py-5" id="AnmälIntresse">
+        <div class="row align-items-center py-5" id="AnmälIntresse">
           <h3 class="col-12 text-align-center pt-5 py-2">Anmäl intresse</h3>
             <div class="col-6 col-md-3">
               <img class="card-img" src="${this.maklare.bildUrl}" alt="Mäklarinfo">
