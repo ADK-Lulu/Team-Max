@@ -35,8 +35,7 @@
   @media (max-width: 767.98px) {
     width:40px;
     margin-top: -10px;
-   }
-
+  }
 }
 
 .tab-choices-object-page button.btn {
@@ -54,12 +53,13 @@
 
 //justerar h1 så de inte blir så hysteriskt stora
 .h1-responsive{
-
-font-size: 4vw;
-@media (min-width: 992px) {
-font-size: 3vw; }
+  font-size: 4vw;
+  @media (min-width: 992px) {
+    font-size: 3vw; 
+  }
 
 }
+
 .bg-white-50 {
   background-color: #fff;
   opacity: 0.8;
@@ -78,7 +78,6 @@ font-size: 3vw; }
 }
 
 // Visa/dölj filter
-
 .sort-trigger{
   position: absolute;
   z-index: 10;
@@ -118,8 +117,12 @@ font-size: 3vw; }
 
 .text-shadow{
   color: #fff;
-  font-size:50px;
   text-shadow: 0 1px 1px #000;
+  font-size: 50px;
+  @media (max-width: 480px) {
+    font-size: 28px!important;
+    padding-left: 25px;
+  }
 }
 
 // Stylar checkboxar i filterfunktionen START
@@ -132,7 +135,7 @@ font-size: 3vw; }
 }
 
 .checkmark input[type="checkbox"]:checked + label{
-    border: $primary 2px solid;
+  border: $primary 2px solid;
 }
 
 .checkmark input[type="checkbox"]:checked + label span{
@@ -177,9 +180,8 @@ font-size: 3vw; }
 // Stylar checkboxar i filterfunktionen END
 
 // Style för objekt images
-
 .front-side-picture {
-   height: 400px; 
+  height: 400px; 
 }
 
 .are-we-the-key {
@@ -189,12 +191,13 @@ font-size: 3vw; }
     font-size: 10vw;
   }
 }
+
 #stickyTop {
   transition: top 0.3s;
 }
 
 .sticky-menu-right {
-   margin-top: -5px;
+  margin-top: -5px;
    @include media-breakpoint-up(lg) {
     margin-left:-28px;
     margin-top: 0px;
@@ -248,16 +251,16 @@ input[type=number] {
 }
 //"infoclippå objektsidan "visning idag"
 .notify-badge{
-    position: relative;
-    background:linear-gradient(to right,#BF953F, #FCF6BA, #B38728,#AA771C);
-    height:5rem;
-    top:4rem;
-    left:3rem;
-    width:10rem;
-    text-align: center;
-    border-radius: 25%;
-    border:2px solid,#AA771C;
-    transform: rotate(20deg);
+  position: relative;
+  background:linear-gradient(to right,#BF953F, #FCF6BA, #B38728,#AA771C);
+  height:5rem;
+  top:4rem;
+  left:3rem;
+  width:10rem;
+  text-align: center;
+  border-radius: 25%;
+  border:2px solid,#AA771C;
+  transform: rotate(20deg);
 }
 //nedan - "visning idag" på köpsidan
 .onsale-section {
@@ -331,16 +334,12 @@ input[type=number] {
 
 //gör sökiconsförstoringsglaset gyllene :) 
 .icofont-search-property:before {
-
-color: goldenrod;
-
+  color: goldenrod;
 }
 
 //guldbakgrund på "om oss"
 .bg-gold {
-
-background-color: goldenrod;
-
+  background-color: goldenrod;
 }
 
 // responsiv titel för sökresultatsobjekt
