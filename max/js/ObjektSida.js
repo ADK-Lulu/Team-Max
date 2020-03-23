@@ -71,6 +71,17 @@ class ObjektSida extends Base {
     //Dagens datum - att använda till "visning idag"
     this.todayDate = new Date();
 
+
+    //Sticky-top ska försvinna vid nerscrollning och återuppstå vid uppscroll
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+      let currentScrollPos = window.pageYOffset;
+      prevScrollpos > currentScrollPos ?
+        document.getElementById("stickyTop").style.top = "0" :
+        document.getElementById("stickyTop").style.top = "-60px";
+      prevScrollpos = currentScrollPos;
+    }
+
   }
 
   // Fånga upp infon från formuläret "Anmäl intresse", längre ner i denna komponent
@@ -109,6 +120,9 @@ class ObjektSida extends Base {
   }
 
 
+
+
+
   render() {
     return /*html*/`
       <div route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
@@ -128,7 +142,7 @@ class ObjektSida extends Base {
             <h1 class="text-center m-3 h1-responsive">${this.saljRubrik}</h1> 
           </div>
         </div>
-        <div class="row sticky-top">
+        <div class="row sticky-top" id="stickyTop">
           <div class="col-12 text-center"><!--Kod för att knapparna ska vara centrerade och sticky när man scrollar.-->
             <div class="btn-group btn-group-lg text-center tab-choices-object-page" role="group" aria-label="Basic-example"> <!--Kod för button group -->
               <div class="row">

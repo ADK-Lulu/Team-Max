@@ -179,6 +179,9 @@ font-size: 3vw; }
     font-size: 10vw;
   }
 }
+#stickyTop {
+  transition: top 0.3s;
+}
 
 .sticky-menu-right {
    margin-top: -5px;
