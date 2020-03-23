@@ -187,7 +187,7 @@ class ObjektSida extends Base {
               <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/location.png"> Område: </span> ${this.namn}</div>
               <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/spade.png"> Byggnadsår:  </span>${this.byggAr}</div>
               ${this.typId === 2 || this.typId === 3 ? /*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Avgift: </span>${this.avgift} kr/mån</div>`
-        :/*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Driftkostnad: </span>${this.driftKostnad} kr/år</div>`}
+              :/*html*/`<div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/drift.png">  Driftkostnad: </span>${this.driftKostnad} kr/år</div>`}
               <div class="pb-2"><span class="font-weight-bold"><img src="/images/iconer/car.png"> Garage: </span>${this.garage ? 'finns' : 'finns ej'}</div>
               <div class="pb-2"><span class="font-weight-bold"> <img src="/images/iconer/hiss.png"> Hiss: </span>${this.hiss ? 'finns' : 'finns ej'}</div>
           </div>
