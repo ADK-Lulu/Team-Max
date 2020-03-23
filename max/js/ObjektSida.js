@@ -78,7 +78,7 @@ class ObjektSida extends Base {
       let currentScrollPos = window.pageYOffset;
       prevScrollpos > currentScrollPos ?
         document.getElementById("stickyTop").style.top = "0" :
-        document.getElementById("stickyTop").style.top = "-60px";
+        document.getElementById("stickyTop").style.top = "-110px";
       prevScrollpos = currentScrollPos;
     }
 
