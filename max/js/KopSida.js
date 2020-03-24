@@ -131,7 +131,7 @@ class KopSida extends Base {
         </div>
 
         <div class="row">
-          <h1 class="m-3 m-sm-0 h1-responsive py-3">Bostäder till salu i ${this.sokOrd === undefined ? "Storstockholm" : this.sokOrd}</h1>
+          <h1 class="m-3 h1-responsive py-3">Bostäder till salu i ${this.sokOrd === undefined ? "Storstockholm" : this.sokOrd}</h1>
         </div>
 
         <div class="row p-3 mb-4">${this.sokning}</div>
@@ -261,7 +261,7 @@ class KopSida extends Base {
                     <h2 class="sokresultat-title text-break">${object.gata} ${object.gatunummer}</h2>
                     <h3 class="sokresultat-title">${object.namn}</h3>
                   </div>
-                  <div class="col-6 col-lg-12">
+                  <div class="col-6 col-lg-12 pr-0">
                     <p class="mb-1"><span class="font-weight-bold">Boarea:</span> ${object.kvm} kvm</p>
                     <p class="mb-1"><span class="font-weight-bold">Pris:</span> ${app.formateraPris(object.pris)} kr</p>
                     <p class="mb-1"><span class="font-weight-bold">Rum:</span> ${object.antalRum}</p>
