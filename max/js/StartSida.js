@@ -9,7 +9,7 @@ class StartSida extends Base {
         <div route="/" page-title="Startsida">
           <div class="col-12 mt-4  px-0">
             <div class="row w-100">
-              <div class="position-absolute pt-6 pt-md-7 col-lg-12">
+              <div class="ml-3 position-absolute pt-6 pt-md-7 col-lg-12">
                 <h1 class="h1-responsive text-center text-shadow">Är vi nyckeln till ditt nya hem?</h1>
               </div>
             </div>
