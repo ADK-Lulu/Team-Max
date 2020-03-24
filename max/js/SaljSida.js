@@ -124,7 +124,7 @@ class SaljSida extends Base {
                   </button>
                 </div>
                 <div class="modal-body">
-                  <H1>Personuppgiftspolicy</H1>
+                  <h2>Personuppgiftspolicy</h2>
                   <p>Ansvarig för personuppgiftsbehandlingen är Dhyr & Rumson, org. nr. 123456-1234, Liljeholmsgatan 123, Liljeholmen. (”Dhyr & Rumson”). 
                      Dhyr & Rumson behandlar personuppgifter i enlighet med gällande lag, inklusive EU:s dataskyddsförordning.
                      Med benämningarna ”vi, våra, vårt och oss” nedan avses Dhyr & Rumson.
