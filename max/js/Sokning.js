@@ -20,11 +20,29 @@ class Sokning extends Base {
   }
 
   gotoByPage() {
+    if (!this.chosen) { this.chosen = '%' }
     if (location.pathname === '/kop-sida') {
       app.kopSida.fangaSokord(this.chosen);
       app.kopSida.search();
       app.kopSida.render();
-      console.log(this.chosen)
+    }
+    else {
+      // Tell the framework to go to another page
+      app.goto('/kop-sida');
+      app.kopSida.fangaSokord(this.chosen);
+      app.kopSida.search();
+      Base.router();
+    }
+  }
+
+  // Söka med sökknappen
+  gotoByButton() {
+    this.chosen = document.getElementsByTagName("input")[0].value;
+    if (!this.chosen) { this.chosen = '%' }
+    if (location.pathname === '/kop-sida') {
+      app.kopSida.fangaSokord(this.chosen);
+      app.kopSida.search();
+      app.kopSida.render();
     }
     else {
       // Tell the framework to go to another page
@@ -71,9 +89,9 @@ class Sokning extends Base {
 
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
-            <button click="gotoByPage" type="submit" class="input-group-text btn-info" id="inputGroup-sizing-lg"><div class="mr-1">Sök</div> <i class="icofont-search-property"></i></button>
+            <button click="gotoByButton" type="submit" class="input-group-text btn-info" id="inputGroup-sizing-lg"><div class="mr-1">Sök</div> <i class="icofont-search-property"></i></button>
           </div>
-          <input type="text" class="form-control search" type="text" placeholder="Område" keyup="searchCity" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
+          <input type="text" class="form-control search" placeholder="Område" keyup="searchCity" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
            ${this.foundCities.length < 1 ? '' : /*html*/`
                 <div class="dropdown-menu show w-100 position-absolute">
                   ${this.foundCities.map((city, index) => /*html*/`

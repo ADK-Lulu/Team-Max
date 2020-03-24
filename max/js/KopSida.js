@@ -131,7 +131,7 @@ class KopSida extends Base {
         </div>
 
         <div class="row">
-          <h1 class="m-3 h1-responsive py-3">Bostäder till salu i ${this.sokOrd === undefined ? "Storstockholm" : this.sokOrd}</h1>
+          <h1 class="m-3 h1-responsive py-3">Bostäder till salu i ${!this.sokOrd || this.sokOrd === '%' ? "Storstockholm" : this.sokOrd}</h1>
         </div>
 
         <div class="row p-3 mb-4">${this.sokning}</div>
