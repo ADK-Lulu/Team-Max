@@ -105,7 +105,7 @@ class SaljSida extends Base {
           </form>
           <!--Gör en text under skicka knappen där man kan läsa mer om GDPR-relaterat-->      
           <div class="p-3 bg-secondary"> 
-            <p>Genom att klicka på <b>skicka</b> knappen godkänner du våra <a click="showModal"><b>användarvillkor och personuppgiftspolicy.</b></a></p>
+            <p>Genom att klicka på <b>skicka</b> knappen godkänner du våra <a click ="showModal"><b class="gdprColor">användarvillkor och personuppgiftspolicy.</b></a></p>
           </div>
         </div> 
         <div class="col-4 d-none d-md-block mb-2 pt-3 pl-0">
