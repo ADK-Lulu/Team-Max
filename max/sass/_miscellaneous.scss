@@ -54,12 +54,12 @@
 //justerar h1 så de inte blir så hysteriskt stora
 .h1-responsive{
   font-size: 4vw;
+  font-family:'Cinzel', serif;
   @media (min-width: 992px) {
     font-size: 3vw; 
   }
 
 }
-
 .bg-white-50 {
   background-color: #fff;
   opacity: 0.8;
