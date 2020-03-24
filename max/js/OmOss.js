@@ -46,13 +46,13 @@ class OmOss extends Base {
       ${this.maklarInfo.map(info =>/*html*/`
         <div class="col-6 col-md-6 card-mb-2">
           <img class="card-img-top" src="${info.bildUrl}" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">${info.namn}</h5>
+          <div class="card-body text-center">
+            <h5 class="card-title-gold">${info.namn}</h5>
+            <p class="card-text text-muted">"${info.personligt}"</p>
             <ul class="list-unstyled">
-              <li>${info.telefonnummer}</li>
               <li class="text-break mt-2"><a class="text-dark" href="mailto:${info.epost}">${info.epost}</a></li>
+              <li>${info.telefonnummer}</li>
             </ul>
-            <p class="card-text"><small class="text-muted">${info.personligt}</small></p>
           </div>
         </div>
       `)}
