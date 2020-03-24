@@ -221,6 +221,9 @@ class ObjektSida extends Base {
           <div class="col-12 col-lg-6">
             <p class="text-break">${this.objektBeskrivning}</p>
           </div>
+          <div class="col-12 col-lg-6">
+            <p class="text-break">${this.objektBeskrivning2}</p>
+          </div>
         </div>     
         <!--Aktuell mäklare för objektet presenteras, Marit parprogr med Sören (i något skede)-->
         <div class="row align-items-center py-5" id="AnmälIntresse">
