@@ -130,15 +130,15 @@ class ObjektSida extends Base {
       <div route="/objekt-sida/${this.objektId}" page-title="Visa objekt ${this.objektId}">
         <div class="row">
           <div class="col-12">
-          <!--Badge "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
+            <img src="${this.frontImage.bildUrl}" class="img-fluid crop-image"  alt="Frontbild ${this.objektId}">
+            <!--Badge "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
             ${this.visning === this.todayDate.toISOString().split("").slice(0, 10).join("") ? /*html*/`
-              <div class="float-right notify-badge m-2">
-                <h3 class="text-dark pt-1 px-1">Visning idag</h3>
+              <div class="position-absolute notify-badge">
+                <h3 class="text-dark mt-3 px-1 pt-1">Visning idag</h3>
               </div>
-              ` : ''}
-          <img src="${this.frontImage.bildUrl}" class="img-fluid crop-image"  alt="Frontbild ${this.objektId}">
+            ` : ''}
           </div>
-        </div> 
+        </div>
         <div class="row">
           <div class="col-12"> 
             <h1 class="text-center m-3 h1-responsive">${this.saljRubrik}</h1> 
