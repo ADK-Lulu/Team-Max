@@ -57,7 +57,7 @@ class ObjektSida extends Base {
       {
         objektSidaId: this.objektId
       });
-    console.log(this);
+   
     //Hämta detaljer
 
     //Hitta bilden som är framsidebild för aktuell SaljObjekt
@@ -121,7 +121,20 @@ class ObjektSida extends Base {
     document.getElementById("kopieratLank").innerHTML = "Länk kopierad till clipboard!";
   }
 
+  favorit() {
+    if (!store.favoriter.includes(this.objektId)) {
+      store.favoriter.push(this.objektId);
+      store.save();
+      
+    } else if (store.favoriter.includes(this.objektId)) {
+      let indexToRemove = store.favoriter.indexOf(this.objektID);
+      store.favoriter.splice(indexToRemove, 1);
+      store.save();
 
+    }
+    this.render();
+  }
+  
 
 
 
@@ -139,6 +152,10 @@ class ObjektSida extends Base {
             ` : ''}
           </div>
         </div>
+        <div class="row">
+         <div click="favorit">${store.favoriter.includes(this.objektId) ?  /*html*/`<i class="icofont-heart text-danger icon-text"></i> Ta bort från favoriter`
+          :/*html*/`<i class="icofont-heart icon-text"></i> Spara som favorit`}</div>
+         </div>
         <div class="row">
           <div class="col-12"> 
             <h1 class="text-center m-3 h1-responsive">${this.saljRubrik}</h1> 

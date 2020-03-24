@@ -1,6 +1,9 @@
 class App extends Base {
 
   async mount() {
+    
+    this.sparaFavorit();
+
     this.navBarLinks = [
       { label: 'Sälja bostad', route: '/salj-sida' },
       { label: 'Köpa bostad', route: '/kop-sida' },
@@ -51,6 +54,11 @@ class App extends Base {
   // Metod som formaterar pris snyggare
   formateraPris(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
+  }
+
+  sparaFavorit() {
+    store.use('favorit-lista');
+    store.favoriter = store.favoriter || [];
   }
 
   render() {
