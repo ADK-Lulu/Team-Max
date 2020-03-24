@@ -250,18 +250,37 @@ input[type=number] {
   font-size: 84pt;
 }
 //"infoclippå objektsidan "visning idag"
+//"infoclippå objektsidan "visning idag"
 .notify-badge{
   position: relative;
   background:linear-gradient(to right,#BF953F, #FCF6BA, #B38728,#AA771C);
   height:5rem;
-  top:4rem;
-  left:3rem;
+  top:0rem;
+  right:0rem;
   width:10rem;
   text-align: center;
   border-radius: 25%;
   border:2px solid,#AA771C;
   transform: rotate(20deg);
+
+  @include media-breakpoint-down(md) {
+  top:0.3rem;
+  right:0.5rem;
+  }
+
+  @include media-breakpoint-down(sm) {
+  width:8rem;
+  height:4rem;
+  }
+
 }
+
+.notify-badge h3{
+  @include media-breakpoint-down(sm) {
+  font-size: 1.2rem;
+  }
+}
+
 //nedan - "visning idag" på köpsidan
 .onsale-section {
   position: absolute;
