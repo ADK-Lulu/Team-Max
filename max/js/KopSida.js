@@ -133,6 +133,7 @@ class KopSida extends Base {
     }
 
     this.render();
+    app.fav.fetchFav();
   }
 
   render() {
@@ -288,7 +289,7 @@ class KopSida extends Base {
                         </div>
                   </a>
                       <div class="mt-2 ml-2">${store.favoriter.includes(object.objektId) ?  /*html*/`<i class="icofont-heart text-danger icon-text" click="resultatFavorit" value="${object.objektId}"></i> Ta bort från favoriter`
-                      :/*html*/`<i class="icofont-heart text-secondary icon-text" click="resultatFavorit" value="${object.objektId}"></i> Spara som favorit`}
+        :/*html*/`<i class="icofont-heart text-secondary icon-text" click="resultatFavorit" value="${object.objektId}"></i> Spara som favorit`}
                       </div>
                      </div>
                    </div>
