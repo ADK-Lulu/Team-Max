@@ -35,7 +35,6 @@ class KontaktSida extends Base {
               <br><p>Öppettider:<br>Måndag-Fredag: 10-16<br>Lördag-Söndag: Stängt</p>
           </div>
         </div>
-
         <div class="row pt-3 px-2 py-3">
           ${this.formSent ? /*html*/`
             <div class="col-12">
@@ -58,7 +57,7 @@ class KontaktSida extends Base {
               </div>
               <div class="form-group">
                 <label class="w-100">E-post:
-                  <input name="epost" type="email" class="form-control" placeholder="namn@mail.com" required>
+                  <input name="epost" type="email" class="form-control" placeholder="namn@email.com" required>
                 </label>
               </div>
               <div class="form-group">

@@ -16,10 +16,13 @@ class StartSida extends Base {
             <img src="images/misc/startsida_stamningsbild.jpg" class="img-fluid crop-image" alt="Ditt nya hem?">
           </div>
           <div class="row justify-content-center">
-            <div class="col-md-8 py-3">
-              <h4>Stockholm i vårt hjärta. Vi på Dhyr & Rumson säljer allt ifrån slott till koja i Storstockholm. 
-              Oavsett om du har en stor eller liten plånbok så är du alltid välkommen att höra av dig till oss. Vi gillar alla pengar.</h4>
-            </div>
+            <blockquote class="blockquote col-md-8 py-3">
+              <p class="mb-0">Vi på Dhyr & Rumson säljer allt ifrån slott till koja i Storstockholm. 
+                Oavsett om du har en stor eller liten plånbok så är du alltid välkommen att höra av dig till oss.
+                Vi vill gärna vara mäklarfirman som låser upp din framtid.
+              </p>
+              <footer class="blockquote-footer">Fiona <cite title="Source Title">Dhyr & Rumson</cite></footer>
+            </blockquote>
           </div>
           <div class="row mt-4 px-0">
             ${this.carousel}
