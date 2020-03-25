@@ -152,9 +152,9 @@ class ObjektSida extends Base {
             ` : ''}
           </div>
         </div>
-        <div class="row">
+        <div class="row ml-3">
          <div click="favorit">${store.favoriter.includes(this.objektId) ?  /*html*/`<i class="icofont-heart text-danger icon-text"></i> Ta bort från favoriter`
-          :/*html*/`<i class="icofont-heart icon-text"></i> Spara som favorit`}</div>
+          :/*html*/`<i class="icofont-heart text-secondary icon-text"></i> Spara som favorit`}
          </div>
         <div class="row">
           <div class="col-12"> 
