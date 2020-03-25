@@ -104,7 +104,7 @@ class SaljSida extends Base {
             </div>
           </form>      
           <div class="p-3 bg-secondary"> 
-            <p>Genom att klicka på <b>skicka</b> knappen godkänner du våra <a click ="showModal"><b class="gdprColor">användarvillkor och personuppgiftspolicy.</b></a></p>
+            <p>Genom att klicka på <b>skicka</b> knappen godkänner du våra <a click ="showModal"><b class="text-light">användarvillkor och personuppgiftspolicy.</b></a></p>
           </div>
         </div> 
         <div class="col-4 d-none d-md-block mb-2 pt-3 pl-0">
