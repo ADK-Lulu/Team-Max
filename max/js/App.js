@@ -1,12 +1,13 @@
 class App extends Base {
 
   async mount() {
-    
+
     this.sparaFavorit();
 
     this.navBarLinks = [
       { label: 'Sälja bostad', route: '/salj-sida' },
       { label: 'Köpa bostad', route: '/kop-sida' },
+      { label: 'Mina favoriter', route: '/mina-favoriter' },
       {
         label: 'Kontakt',
         route: '#kontakt',
@@ -40,6 +41,7 @@ class App extends Base {
     this.saljSida = new SaljSida();
     this.sokning = new Sokning();
     this.kontaktSida = new KontaktSida();
+    this.fav = new Fav();
 
 
     // Använd databasen max
@@ -74,6 +76,7 @@ class App extends Base {
           ${this.omOss}
           ${this.objektSidor}
           ${this.kontaktSida}
+          ${this.fav}
         </main>
         ${this.footer}
       </div>
