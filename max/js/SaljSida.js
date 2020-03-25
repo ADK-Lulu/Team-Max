@@ -12,7 +12,6 @@ class SaljSida extends Base {
   }
 
   closeModal() {
-    // Needed to stop scrolling when the modal is shown
     this.shown = false;
     setTimeout(() => $('body').removeClass('modal-open'), 0);
     this.render();
@@ -47,7 +46,7 @@ class SaljSida extends Base {
           <div class="col-12">
             <h2 class="text-center text-dark py-5 px-3">
               Va kul att du vill sälja med oss!<br>
-              En av våra mäklare kommer höra av sig till dig!
+              En av våra mäklare kommer höra av sig till dig inom kort!
             </h2>
           </div>
         </div>
@@ -78,7 +77,7 @@ class SaljSida extends Base {
           <div class="row">
             <div class="col-7">
               <label class="w-100">Email:
-                <input name="epost" type="email" class="form-control" tabindex="2" placeholder="namn@mail.com" required>
+                <input name="epost" type="email" class="form-control" tabindex="2" placeholder="namn@email.com" required>
               </label>
             </div>
             <div class="col-5">
@@ -90,7 +89,7 @@ class SaljSida extends Base {
             <div class="row">
               <div class="col-7">
                 <label class="w-100">Telefonnummer:
-                  <input name="telefonnummer" type="number" class="form-control" tabindex="3" placeholder="070-XXX XX XX" required>
+                  <input name="telefonnummer" type="number" class="form-control" tabindex="3" placeholder="07X XXX XX XX" required>
                 </label>
               </div>
               <div class="col-5">
@@ -103,8 +102,7 @@ class SaljSida extends Base {
               </div>
             </div>
             </div>
-          </form>
-          <!--Gör en text under skicka knappen där man kan läsa mer om GDPR-relaterat-->      
+          </form>      
           <div class="p-3 bg-secondary"> 
             <p>Genom att klicka på <b>skicka</b> knappen godkänner du våra <a click ="showModal"><b class="text-light">användarvillkor och personuppgiftspolicy.</b></a></p>
           </div>
@@ -172,8 +170,8 @@ class SaljSida extends Base {
                     <p>Vi är så pass bra att vi tar hand om alla dina rättigheter åt dig och därför behöver du inte veta vilka rättigheter du har :) 
                        Men om du ändå skulle vilja prata med någon kan du höra av dig till datainspektionen.
                        Datainspektionen / Integritetsskyddsmyndigheten (myndigheten kommer att byta namn till Integritetsskyddsmyndigheten)
-                       Box 8114
-                       104 20 Stockholm
+                       Box 8114, 
+                       104 20 Stockholm, 
                        datainspektionen@datainspektionen.se
                     </p>
                   </div>

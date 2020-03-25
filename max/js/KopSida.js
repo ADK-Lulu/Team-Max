@@ -119,6 +119,21 @@ class KopSida extends Base {
     this.render();
   }
 
+  resultatFavorit(e) {
+    let objektId = +e.target.getAttribute("value");
+    if (!store.favoriter.includes(objektId)) {
+      store.favoriter.push(objektId);
+      store.save();
+
+    } else if (store.favoriter.includes(objektId)) {
+      let indexToRemove = store.favoriter.indexOf(objektId);
+      store.favoriter.splice(indexToRemove, 1);
+      store.save();
+
+    }
+
+    this.render();
+  }
 
   render() {
     let s = app.settings;
@@ -237,50 +252,59 @@ class KopSida extends Base {
         </div>
 
         <!-- Sökresultat -->
-        ${this.results && this.results.length > 0 ? this.results.map(object => /*html*/`
-          <a class="text-dark" href="/objekt-sida/${object.objektId}">
-            <div class="row no-gutters mb-4 bg-grey">
-              <div class="px-0 pr-md-0 p-xs-0 col-12 col-lg-8 col-xl-9">
-                <!-- Nyproduktions-badge -->
-                ${object.nyproduktion ? /*html*/`
-                  <div class="position-absolute float-left badge badge-secondary m-2">
-                    <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
+        <div class="row">
+          <div class="col-12">
+            ${this.results && this.results.length > 0 ? this.results.map(object => /*html*/`
+                <div class="row no-gutters mb-4 bg-grey">
+                  <div class="px-0 pr-md-0 p-xs-0 col-12 col-lg-8 col-xl-9">
+                    <!-- Nyproduktions-badge -->
+                    ${object.nyproduktion ? /*html*/`
+                      <div class="position-absolute float-left badge badge-secondary m-2">
+                        <h3 class="text-light pt-1 px-1">Nyproduktion</h3>
+                      </div>
+                    ` : ''}
+                    <!--"infoclip" "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
+                    ${object.visning === this.todayDate.toISOString().split("").slice(0, 10).join("") ? /*html*/`
+                    <div>
+                      <span class="onsale-section text-dark pt-1 px-1"><span class="onsale">Visning idag</span></span>
+                    </div>
+                    ` : ''}
+                    <a class="text-dark" href="/objekt-sida/${object.objektId}">
+                    <img class="img-fluid crop-image mb-0" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}"></a>
                   </div>
-                ` : ''}
-                <!--"infoclip" "Visning idag" ifall dagens datum stämmer med visningsdatumet i db -->
-                ${object.visning === this.todayDate.toISOString().split("").slice(0, 10).join("") ? /*html*/`
-                <div>
-                  <span class="onsale-section text-dark pt-1 px-1"><span class="onsale">Visning idag</span></span>
+                  <a class="text-dark" href="/objekt-sida/${object.objektId}">
+                   <div class="p-sm-3 col-12 col-lg-4 col-xl-3">
+                     <div class="row p-2 mt-1 p-md-1 pl-md-0">
+                        <div class="col-6 col-lg-12">
+                          <h2 class="sokresultat-title text-break">${object.gata} ${object.gatunummer}</h2>
+                          <h3 class="sokresultat-title">${object.namn}</h3>
+                        </div>
+                        <div class="col-6 col-lg-12 pr-0">
+                          <p class="mb-1"><span class="font-weight-bold">Boarea:</span> ${object.kvm} kvm</p>
+                          <p class="mb-1"><span class="font-weight-bold">Pris:</span> ${app.formateraPris(object.pris)} kr</p>
+                          <p class="mb-1"><span class="font-weight-bold">Rum:</span> ${object.antalRum}</p>
+                          <p class="mb-1"><span class="font-weight-bold">Typ:</span> ${object.typNamn}</p>
+                          <p class="mb-1"><span class="font-weight-bold">Visning:</span> ${object.visning}</p>
+                        </div>
+                  </a>
+                      <div class="mt-2 ml-2">${store.favoriter.includes(object.objektId) ?  /*html*/`<i class="icofont-heart text-danger icon-text" click="resultatFavorit" value="${object.objektId}"></i> Ta bort från favoriter`
+                      :/*html*/`<i class="icofont-heart text-secondary icon-text" click="resultatFavorit" value="${object.objektId}"></i> Spara som favorit`}
+                      </div>
+                     </div>
+                   </div>
                 </div>
-                ` : ''}
-                <img class="img-fluid crop-image mb-0" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}">
-              </div>
-              <div class="p-sm-3 col-12 col-lg-4 col-xl-3">
-                <div class="row p-2 mt-1 p-md-1 pl-md-0">
-                  <div class="col-6 col-lg-12">
-                    <h2 class="sokresultat-title text-break">${object.gata} ${object.gatunummer}</h2>
-                    <h3 class="sokresultat-title">${object.namn}</h3>
-                  </div>
-                  <div class="col-6 col-lg-12 pr-0">
-                    <p class="mb-1"><span class="font-weight-bold">Boarea:</span> ${object.kvm} kvm</p>
-                    <p class="mb-1"><span class="font-weight-bold">Pris:</span> ${app.formateraPris(object.pris)} kr</p>
-                    <p class="mb-1"><span class="font-weight-bold">Rum:</span> ${object.antalRum}</p>
-                    <p class="mb-1"><span class="font-weight-bold">Typ:</span> ${object.typNamn}</p>
-                    <p class="mb-1"><span class="font-weight-bold">Visning:</span> ${object.visning}</p>
-                  </div>
+              
+              `) : /*html*/`
+              <div class="row">
+                <div class="col-12">
+                  <h3 class="text-center text-dark py-2 px-3">Tyvärr matchar din sökning inget av våra objekt, gör om din sökning
+                    eller kontakta en
+                    av våra mäklare för information om kommande försäljningar.</h3>
                 </div>
-              </div>
-            </div>
-          </a>
-          `) : /*html*/`
-          <div class="row">
-            <div class="col-12">
-              <h3 class="text-center text-dark py-2 px-3">Tyvärr matchar din sökning inget av våra objekt, gör om din sökning
-                eller kontakta en
-                av våra mäklare för information om kommande försäljningar.</h3>
-            </div>
-          </div> 
-        `}
+              </div> 
+            `}
+          </div>
+        </div>
       </div>
   `}
 
