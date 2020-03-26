@@ -3,7 +3,6 @@ class Fav extends Base {
   async mount() {
 
     this.fetchFav();
-
   }
 
   pushFav(objektId) {
@@ -18,6 +17,12 @@ class Fav extends Base {
 
     }
     this.fetchFav();
+    console.log(objektId)
+  }
+
+  removeFav(e) {
+    let objectId = +e.target.getAttribute("value");
+    this.pushFav(objectId);
   }
 
   //Hämtar hem info från databasen för favoritobjekten: frontbild, pris, visningsdatum o pushar in i favAfterSQL
@@ -48,6 +53,13 @@ class Fav extends Base {
     this.render();
   }
 
+  emptyFav() {
+    store.favoriter = [];
+    store.save();
+    this.fetchFav();
+    this.render();
+  }
+
   render() {
     return /*html*/`
       <div route="/mina-favoriter" page-title="Mina favoriter">
@@ -55,27 +67,31 @@ class Fav extends Base {
           <div class="col-12">
             <h1 class="h1-responsive py-3 ppl-3 pl-sm-0 pr-3">Mina sparade favoriter</h1>
           </div>
+          ${store.favoriter.length > 0 ? `<p click="emptyFav" class="ml-3"><i class="icofont-bin"></i> Ta bort alla mina favoriter</p>` : ''}
         </div>
         <!-- Listade favoriter -->
 
           <div class="row">
-            <div class="col-12 card-columns">
-                ${this.favAfterSQL.length > 0 ? this.favAfterSQL.map(object =>/*html*/`
-                <a class="text-dark" href="/objekt-sida/${object.objektId}">
-                    <img class=" card-image-hight" src="${object.bildUrl}" alt="Card image cap">
-                    <div class="card-body text-center">
-                      <h5 class="card-title-gold">${object.visning}</h5>
-                      <h5 class="card-title">${app.formateraPris(object.pris)} kr</h5>
+            <div class="col-12">
+               ${this.favAfterSQL.length > 0 ? /*html*/`<div class="row">` + this.favAfterSQL.map(object =>/*html*/`
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                  <i click="removeFav" value="${object.objektId}" class="icofont-close icofont-2x position-absolute zindex-fixed"></i>
+                  <a class="card border-0" href="/objekt-sida/${object.objektId}">
+                    <div class="card">
+                      <img class="card-image-hight" src="${object.bildUrl}" alt="Card image cap">
+                      <div class="card-img-overlay p-1">
+                        <h5 class="card-title text-dark text-center"><i class="icofont-calendar"></i> ${object.visning} <i class="icofont-money-bag"></i> ${app.formateraPris(object.pris)} kr</h5>
+                      </div>
                     </div>
-                </a>
-                `) : /*html*/`
+                  </a>
+                </div>
+                `) + '</div>' : /*html*/`
                 <div class="row">
                   <div class="col-12">
-                    <h3 class="text-dark py-2 px-3">Du har inte markerat några favoritobjekt ännu.</h3>
+                    <h3 class="text-dark py-2">Du har inte markerat några favoritobjekt ännu.</h3>
                   </div>
-                </div> 
+                </div>
               `}
-
             <div>    
           </div>
       </div>
