@@ -7,7 +7,6 @@ class App extends Base {
     this.navBarLinks = [
       { label: 'Sälja bostad', route: '/salj-sida' },
       { label: 'Köpa bostad', route: '/kop-sida' },
-      { label: 'Mina favoriter', route: '/mina-favoriter' },
       {
         label: 'Kontakt',
         route: '#kontakt',
