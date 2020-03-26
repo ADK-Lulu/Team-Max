@@ -122,18 +122,8 @@ class ObjektSida extends Base {
   }
 
   favorit() {
-    if (!store.favoriter.includes(this.objektId)) {
-      store.favoriter.push(this.objektId);
-      store.save();
-
-    } else if (store.favoriter.includes(this.objektId)) {
-      let indexToRemove = store.favoriter.indexOf(this.objektID);
-      store.favoriter.splice(indexToRemove, 1);
-      store.save();
-
-    }
+    app.fav.pushFav(this.objektId);
     this.render();
-    app.fav.fetchFav();
   }
 
 

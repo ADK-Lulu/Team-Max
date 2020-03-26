@@ -6,6 +6,20 @@ class Fav extends Base {
 
   }
 
+  pushFav(objektId) {
+    if (!store.favoriter.includes(objektId)) {
+      store.favoriter.push(objektId);
+      store.save();
+
+    } else if (store.favoriter.includes(objektId)) {
+      let indexToRemove = store.favoriter.indexOf(objektId);
+      store.favoriter.splice(indexToRemove, 1);
+      store.save();
+
+    }
+    this.fetchFav();
+  }
+
   //Hämtar hem info från databasen för favoritobjekten: frontbild, pris, visningsdatum o pushar in i favAfterSQL
   async fetchFav() {
 
