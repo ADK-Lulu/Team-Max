@@ -2,9 +2,7 @@ class KopSida extends Base {
 
   // Läs in databasen max
   async mount() {
-
     this.sokning = new Sokning();
-
     //Dagens datum - att använda till "visning idag"
     this.todayDate = new Date();
   }
@@ -98,16 +96,6 @@ class KopSida extends Base {
     this.render();
   }
 
-  // Sätter värdena till sig själva fixa en mysko bugg med startvärdet på slidern
-  setSliderValuesHackish() {
-    for (let setting in app.settings) {
-      // Sörens fix för en bugg där sidan gav error när man bytte från köpsidan till en annan sida
-      if (document.querySelector("#" + setting) != null) {
-        document.querySelector("#" + setting).value = app.settings[setting];
-      }
-    }
-  }
-
   sortera(e) {
     app.settings.sortering = e.target.value;
     this.search();
@@ -134,11 +122,9 @@ class KopSida extends Base {
         <div class="row d-lg-none bg-light shadow fixed-bottom">
           <p class="col pt-3 ml-3">${this.results ? '<strong>' + this.results.length + '</strong> bostäder till salu just nu' : ''}</p>
         </div>
-
         <div class="row">
           <h1 class="m-3 h1-responsive py-3">Bostäder till salu i ${!this.sokOrd || this.sokOrd === '%' ? "Storstockholm" : this.sokOrd}</h1>
         </div>
-
         <div class="row p-3 mb-4">${this.sokning}</div>
 
         <!-- Filterknappar-->
@@ -262,14 +248,17 @@ class KopSida extends Base {
                     <a class="text-dark" href="/objekt-sida/${object.objektId}">
                     <img class="img-fluid crop-image mb-0" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}"></a>
                   </div>
-                  <div class="p-sm-3 col-12 col-lg-4 col-xl-3">
-                    <div class="row p-2 mt-1 p-md-1 pl-md-0">
+                  <div class="p-2 col-12 col-lg-4 col-xl-3">
+                    <div class="row p-2 p-md-1 pl-md-0">
+                      <div click="resultatFavorit" value="${object.objektId}" class="mb-2 col-12">
+                        ${store.favoriter.includes(object.objektId) ?  /*html*/`<i class="icofont-heart text-danger icon-text"></i> Ta bort från favoriter` : /*html*/`<i class="icofont-heart text-secondary icon-text"></i> Spara som favorit`}
+                      </div>
                       <a class="text-dark" href="/objekt-sida/${object.objektId}">
-                        <div class="col-6 col-lg-12">
-                          <h2 class="sokresultat-title text-break">${object.gata} ${object.gatunummer}</h2>
+                        <div class="col-12 col-lg-6">
+                          <h2 class="sokresultat-title mr-0">${object.gata} ${object.gatunummer}</h2>
                           <h3 class="sokresultat-title">${object.namn}</h3>
                         </div>
-                        <div class="col-6 col-lg-12 pr-0">
+                        <div class="col-12 pr-0">
                           <p class="mb-1"><span class="font-weight-bold">Boarea:</span> ${object.kvm} kvm</p>
                           <p class="mb-1"><span class="font-weight-bold">Pris:</span> ${app.formateraPris(object.pris)} kr</p>
                           <p class="mb-1"><span class="font-weight-bold">Rum:</span> ${object.antalRum}</p>
@@ -277,9 +266,6 @@ class KopSida extends Base {
                           <p class="mb-1"><span class="font-weight-bold">Visning:</span> ${object.visning}</p>
                         </div>
                       </a>
-                      <div click="resultatFavorit" value="${object.objektId}" class="mt-2 ml-2">
-                        ${store.favoriter.includes(object.objektId) ?  /*html*/`<i class="icofont-heart text-danger icon-text"></i> Ta bort från favoriter` : /*html*/`<i class="icofont-heart text-secondary icon-text"></i> Spara som favorit`}
-                      </div>
                     </div>
                   </div>
                 </div>
