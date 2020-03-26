@@ -2,9 +2,7 @@ class KopSida extends Base {
 
   // Läs in databasen max
   async mount() {
-
     this.sokning = new Sokning();
-
     //Dagens datum - att använda till "visning idag"
     this.todayDate = new Date();
   }
@@ -98,16 +96,6 @@ class KopSida extends Base {
     this.render();
   }
 
-  // Sätter värdena till sig själva fixa en mysko bugg med startvärdet på slidern
-  setSliderValuesHackish() {
-    for (let setting in app.settings) {
-      // Sörens fix för en bugg där sidan gav error när man bytte från köpsidan till en annan sida
-      if (document.querySelector("#" + setting) != null) {
-        document.querySelector("#" + setting).value = app.settings[setting];
-      }
-    }
-  }
-
   sortera(e) {
     app.settings.sortering = e.target.value;
     this.search();
@@ -134,11 +122,9 @@ class KopSida extends Base {
         <div class="row d-lg-none bg-light shadow fixed-bottom">
           <p class="col pt-3 ml-3">${this.results ? '<strong>' + this.results.length + '</strong> bostäder till salu just nu' : ''}</p>
         </div>
-
         <div class="row">
           <h1 class="m-3 h1-responsive py-3">Bostäder till salu i ${!this.sokOrd || this.sokOrd === '%' ? "Storstockholm" : this.sokOrd}</h1>
         </div>
-
         <div class="row p-3 mb-4">${this.sokning}</div>
 
         <!-- Filterknappar-->
