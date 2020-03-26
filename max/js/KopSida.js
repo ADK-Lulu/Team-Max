@@ -251,7 +251,7 @@ class KopSida extends Base {
                   <div class="p-2 col-12 col-lg-4 col-xl-3">
                     <div class="row p-2 p-md-1 pl-md-0">
                       <div click="resultatFavorit" value="${object.objektId}" class="mb-2 col-12">
-                        ${store.favoriter.includes(object.objektId) ?  /*html*/`<i class="icofont-heart text-danger icon-text"></i> Ta bort från favoriter` : /*html*/`<i class="icofont-heart text-secondary icon-text"></i> Spara som favorit`}
+                        ${store.favoriter.includes(object.objektId) ?  /*html*/`<i class="icofont-heart card-title-gold icon-text" value="${object.objektId}"></i> Ta bort från favoriter` : /*html*/`<i class="icofont-heart text-secondary icon-text" value="${object.objektId}"></i> Spara som favorit`}
                       </div>
                       <a class="text-dark" href="/objekt-sida/${object.objektId}">
                         <div class="col-12 col-lg-6">
