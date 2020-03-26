@@ -1,18 +1,20 @@
-// Cursor pointer on all elements with the click attribute
+// Klick muspekare på alla klick element
 [click]{ 
   cursor: pointer;
 }
+
+// Croppa bilder
 .crop-image{
-  object-fit: cover; /* Do not scale the image */
-  object-position: center; /* Center the image within the element */
+  object-fit: cover; /* Skala inte bilden */
+  object-position: center; /* Centrera bilden */
   width: 100%;
   max-height: 350px;
   margin-bottom: 1rem;
 }
 
 .crop-image-h{
-  object-fit: cover; /* Do not scale the image */
-  object-position: center; /* Center the image within the element */
+  object-fit: cover; /* Skala inte bilden */
+  object-position: center; /* Centrera bilden */
   width: 100%;
   height: 384px;
   margin-bottom: 1rem;
@@ -22,10 +24,12 @@
 }
 
 
+// Navbar classes
 .navbarbackground{
   background:linear-gradient(to bottom left, #a1a0a0,#040400);
 }
 
+// Stickybar objecktsida
 .svg-icon {
   max-height: 25px;
   fill: #ffffff;
@@ -33,6 +37,7 @@
   margin-top: -5px;
 }
 
+// Köpsidans
 .icon-filter {
   width:80px;
   @media (max-width: 767.98px) {
@@ -54,14 +59,13 @@
   height:200px!important;
 }
 
-//justerar h1 så de inte blir så hysteriskt stora
+// Justerar h1 så de inte blir så hysteriskt stora
 .h1-responsive{
   font-size: 4vw;
   font-family:'Cinzel', serif;
   @media (min-width: 992px) {
     font-size: 3vw; 
   }
-
 }
 .bg-white-50 {
   background-color: #fff;
@@ -182,17 +186,18 @@
 
 // Stylar checkboxar i filterfunktionen END
 
-// Style för objekt images
-.front-side-picture {
-  height: 400px; 
-}
-
+// Style för startside bilden
 .are-we-the-key {
   margin-left: -15px !important;
   font-size: 45px;
   @media (max-width: 575.98px) {
     font-size: 10vw;
   }
+}
+
+// Style för objekt images
+.front-side-picture {
+  height: 400px; 
 }
 
 #stickyTop {
@@ -227,13 +232,13 @@
   padding-bottom: 10px;
 }
 
-//Fixar så att paragrafer inte blir för långa. 
+// Fixar så att paragrafer inte blir för långa. 
 .par-short {
   word-wrap: break-word;
   width: 520px;
 }
 
-//Hindrar en från att skriva in bokstäver i nummerfält - men genom "none" så slipper vi ha lilla högerscrollen i formulären
+// Hindrar en från att skriva in bokstäver i nummerfält - men genom "none" så slipper vi ha lilla högerscrollen i formulären
 input[type=number] {
   &,
   &::-webkit-inner-spin-button,
@@ -252,8 +257,8 @@ input[type=number] {
 .large-text{
   font-size: 84pt;
 }
-//"infoclippå objektsidan "visning idag"
-//"infoclippå objektsidan "visning idag"
+// "infoclippå objektsidan "visning idag"
+// "infoclippå objektsidan "visning idag"
 .notify-badge{
   position: relative;
   background:linear-gradient(to right,#BF953F, #FCF6BA, #B38728,#AA771C);
@@ -284,7 +289,7 @@ input[type=number] {
   }
 }
 
-//nedan - "visning idag" på köpsidan
+// Nedan - "visning idag" på köpsidan
 .onsale-section {
   position: absolute;
   top: -6px;
@@ -299,7 +304,6 @@ input[type=number] {
   height: 0;
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-
 }
 
 .onsale {
@@ -354,34 +358,34 @@ input[type=number] {
   }
 }
 
-//gör sökiconsförstoringsglaset gyllene :) 
+// Gör sökiconsförstoringsglaset gyllene :) 
 .icofont-search-property:before {
   color: goldenrod;
 }
 
-//guldbakgrund på "om oss"
+// Guldbakgrund på "om oss"
 .bg-gold {
   background-color: goldenrod;
 }
 
-// responsiv titel för sökresultatsobjekt
+// Responsiv titel för sökresultatsobjekt
 .sokresultat-title {
   @media (max-width: 575.98px) { 
     font-size: 6vw;
    }
 }
 
-//citat/kort
+// Citat/kort
 .card-title-gold { 
   color:goldenrod !important;
 }
 
-//hjärtikon
+// Hjärtikon
 .icon-text{
   font-size: 28px;
 }
 
-//favoritsidan inte för många bilder per rad
+// Favoritsidan inte för många bilder per rad
 .card-columns {
   @include media-breakpoint-only(xl) {
     column-count: 4;
@@ -396,17 +400,15 @@ input[type=number] {
     column-count: 1;
   }
 }
-//justerar storleken på bilderna på fav-sidan
+// Justerar storleken på bilderna på fav-sidan
 .card-image-hight {
-  object-fit: cover; /* Do not scale the image */
-  object-position: center; /* Center the image within the element */
+  object-fit: cover; /* Ska inte bilden */
+  object-position: center; /* Centrera bilden */
   width: 100%;
   max-height: 130px;
 
 }
 
 .nav-icon-heart {
-
 color: goldenrod;
-
 }
