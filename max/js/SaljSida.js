@@ -53,9 +53,9 @@ class SaljSida extends Base {
       `:
       /*html*/`
       <div class="row">
-        <div class="col-12">
-          <h1 class="h1-responsive pl-3 pl-sm-0 pr-3">Redo att sälja?</h1>
-          <h1 class="h1-responsive pl-3 pl-sm-0 pb-3">Fyll i formuläret så kontaktar vi dig!</h1>
+        <div class="col-12 mt-4"> 
+          <h1 class="h1-responsive px-0">Redo att sälja?</h1>
+          <h1 class="h1-responsive px-0">Fyll i formuläret så kontaktar vi dig!</h1>
         </div>
       </div>
       <div class="row">
@@ -82,14 +82,14 @@ class SaljSida extends Base {
             </div>
             <div class="col-5">
               <label>Boarea:
-                <input name="kvm" type="number" class="form-control" tabindex="5" placeholder="kvm" required>
+                <input name="kvm" type="number" class="form-control" autocomplete="off" tabindex="5" placeholder="kvm" required>
               </label>
             </div>
           </div>
             <div class="row">
               <div class="col-7">
                 <label class="w-100">Telefonnummer:
-                  <input name="telefonnummer" type="number" class="form-control" tabindex="3" placeholder="07X XXX XX XX" required>
+                  <input name="telefonnummer" type="number" autocomplete="tel" class="form-control" tabindex="3" placeholder="07X XXX XX XX" required>
                 </label>
               </div>
               <div class="col-5">
@@ -104,7 +104,7 @@ class SaljSida extends Base {
             </div>
           </form>      
           <div class="p-3 bg-secondary"> 
-            <p>Genom att klicka på <b>skicka</b> knappen godkänner du våra <a click ="showModal"><b class="text-light">användarvillkor och personuppgiftspolicy.</b></a></p>
+            <p>Genom att klicka på skicka godkänner du våra <a click ="showModal"><b class="text-light">användarvillkor och personuppgiftspolicy.</b></a></p>
           </div>
         </div> 
         <div class="col-4 d-none d-md-block mb-2 pt-3 pl-0">
@@ -142,23 +142,23 @@ class SaljSida extends Base {
                   <h4>VARFÖR BEHANDLAR VI DINA PERSONUPPGIFTER OCH VILKEN RÄTTSLIG GRUND HAR VI FÖR BEHANDLINGEN?</h4>
                    <p>Dhyr & Rumson kommer även att behandla ditt namn, adress, e-postadress, mobil- och telefonnummer som du lämnar till oss genom att ha kontakt med oss via e-post eller samtal. 
                       Vårt intresse av att behandla dina personuppgifter för detta ändamål går därför före ditt eventuella intresse av att skydda din personliga integritet.</p>
-                    <p>Försäljningar</p>
+                    <p><b>Försäljningar:</b></p>
                     <p>Om du köper, säljer eller överväger att sälja ett Objekt via oss kommer vi behandla ditt namn, adress, mobil- och telefonnummer, e-postadress, personnummer, dina bankuppgifter, köpeavtalet och bilder hänförliga till bostaden för att administrera försäljningen, såsom för att möjliggöra värdering, styling, fotografering, annonsering, visning, budgivning, slutpris, betalning och eventuellt bolån. 
                        Den rättsliga grunden för behandlingen är att Dhyr & Rumson ska kunna fullgöra ett avtal med dig. 
                        Personuppgiftsbehandlingen sker också mot bakgrund av den rättsliga grunden att Dhyr & Rumsons behandling är nödvändig för att fullgöra rättsliga förpliktelser som åvilar Dhyr & Rumson.</p>
-                    <p>Marknadsföring av vår verksamhet</p>
+                    <p><b>Marknadsföring av vår verksamhet:</b></p>
                     <p>Dhyr & Rumson kommer att behandla information om Objektet, nämligen adress, bilder och slutpris för att marknadsföra Dhyr & Rumson och Dhyr & Rumsons verksamhet. Marknadsföringen görs via våra egna och samarbetspartners kanaler och sociala medier. 
                        Den rättsliga grunden för vår behandling av dina personuppgifter är att den är nödvändig för ändamål som rör vårt berättigade intresse, vilket väger tyngre än dina intressen, rättigheter eller friheter. 
                        Dhyr & Rumsons intresse av att marknadsföra de försäljningar vi medverkat till går före ditt eventuella intresse av att skydda din personliga integritet.</p>
-                    <p>Kundvård och kvalitetssäkring</p>
+                    <p><b>Kundvård och kvalitetssäkring:</b></p>
                     <p>Dhyr & Rumson kommer att behandla ditt namn, adress, e-postadress, mobil- och telefonnummer samt datum och tid för vår kontakt med dig samt information om Objektet i syfte att vårda vår kundrelation med dig och kvalitetskontrollera vår verksamhet. 
                        Den rättsliga grunden för detta är att behandlingen är nödvändig för att Dhyr & Rumson ska kunna fullgöra ett avtal med dig eller för att vidta åtgärder innan ett sådant avtal ingås eller att den är nödvändig för ändamål som rör vårt berättigade intresse, vilket väger tyngre än dina intressen, rättigheter eller friheter. 
                        Dhyr & Rumsons intresse av att följa upp sin verksamhet går före ditt eventuella intresse av att skydda din personliga integritet.</p>
-                    <p>Bokföring</p>
+                    <p><b>Bokföring:</b></p>
                     <p>Dhyr & Rumson kommer för bokföringsändamål att behandla uppgifter om den transaktion som skett mellan Dhyr & Rumson och dig som säljare eller köpare av ett Objekt som vi förmedlar. 
                        Dhyr & Rumson kommer av den anledningen att behandla ditt namn, adress, mobil- och telefonnummer, e-postadress, personnummer och dina bankuppgifter. 
                        Den rättsliga grunden för Dhyr & Rumsons behandling av dina personuppgifter är att den är nödvändig för att fullgöra en rättslig förpliktelse som åvilar Dhyr & Rumson.</p>
-                    <p>Arkivering</p>
+                    <p><b>Arkivering:</b></p>
                     <p>Dhyr & Rumson kommer att behandla de uppgifter som vi tycker är roliga. 
                        Den rättsliga grunden för Dhyr & Rumsons behandling av dina personuppgifter är att den är nödvändig för att fullgöra en rättslig förpliktelse som åvilar Dhyr & Rumson, dvs. det vi tycker är roligt eller intressant.</p>
                     <h4>TILL VEM LÄMNAR VI VIDARE PERSONUPPGIFTERNA OCH VAR BEHANDLAR VI DEM GEOGRAFISKT?</h4>
@@ -169,10 +169,10 @@ class SaljSida extends Base {
                     <h4>DINA RÄTTIGHETER</h4>
                     <p>Vi är så pass bra att vi tar hand om alla dina rättigheter åt dig och därför behöver du inte veta vilka rättigheter du har :) 
                        Men om du ändå skulle vilja prata med någon kan du höra av dig till datainspektionen.
-                       Datainspektionen / Integritetsskyddsmyndigheten (myndigheten kommer att byta namn till Integritetsskyddsmyndigheten)
-                       Box 8114, 
-                       104 20 Stockholm, 
-                       datainspektionen@datainspektionen.se
+                       Datainspektionen / Integritetsskyddsmyndigheten (myndigheten kommer att byta namn till Integritetsskyddsmyndigheten)<br>
+                       Box 8114 <br> 
+                       104 20 Stockholm <br> 
+                       Eller maila till: "datainspektionen@datainspektionen.se"
                     </p>
                   </div>
                   <div class="modal-footer">
