@@ -154,9 +154,10 @@ class ObjektSida extends Base {
           </div>
         </div>
         <div class="row ml-3">
-         <div click="favorit">${store.favoriter.includes(this.objektId) ?  /*html*/`<i class="icofont-heart text-danger icon-text"></i> Ta bort från favoriter`
-        :/*html*/`<i class="icofont-heart text-secondary icon-text"></i> Spara som favorit`}
-         </div>
+         <button type="button" click="favorit" class="btn btn-secondary white-btn-text">${store.favoriter.includes(this.objektId) ?  /*html*/`<i class="icofont-heart card-title-gold icon-text"></i> Ta bort från favoriter`
+        :/*html*/`<i class="icofont-heart text-white icon-text"></i> Spara som favorit`}
+         </button>
+        </div>
         <div class="row">
           <div class="col-12"> 
             <h1 class="text-center m-3 h1-responsive">${this.saljRubrik}</h1> 

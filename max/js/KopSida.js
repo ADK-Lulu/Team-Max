@@ -288,7 +288,7 @@ class KopSida extends Base {
                           <p class="mb-1"><span class="font-weight-bold">Visning:</span> ${object.visning}</p>
                         </div>
                   </a>
-                      <div class="mt-2 ml-2">${store.favoriter.includes(object.objektId) ?  /*html*/`<i class="icofont-heart text-danger icon-text" click="resultatFavorit" value="${object.objektId}"></i> Ta bort från favoriter`
+                      <div class="mt-2 ml-2">${store.favoriter.includes(object.objektId) ?  /*html*/`<i class="icofont-heart card-title-gold icon-text" click="resultatFavorit" value="${object.objektId}"></i> Ta bort från favoriter`
         :/*html*/`<i class="icofont-heart text-secondary icon-text" click="resultatFavorit" value="${object.objektId}"></i> Spara som favorit`}
                       </div>
                      </div>
