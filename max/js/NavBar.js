@@ -33,6 +33,11 @@ class NavBar extends Base {
                   `)}
                 </div>
               </li>
+              <ul class="navbar-nav">
+                <li class="nav-item nav-icon-heart icofont-heart icofont-2x">
+                   <a class="nav-link" href='/mina-favoriter'> </a> 
+                </li>
+              </ul>
             `)}
           </ul>
         </div>
