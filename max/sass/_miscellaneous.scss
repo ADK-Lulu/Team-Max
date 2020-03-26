@@ -325,10 +325,25 @@ input[type=number] {
 .navbar-brand img {
   width: 270px;
   @include media-breakpoint-up(md) {
-    width:190px;
+    width:180px;
   }
-    @include media-breakpoint-up(xs) {
+  @include media-breakpoint-up(xs) {
     width:241px;
+  }
+  @include media-breakpoint-down(xs) {
+    width:186px;
+  }
+}
+
+input.search {
+  @media (max-width: 425px) {
+    width:227px!important;
+  }
+  @media (max-width: 375px) {
+    width:177px!important;
+  }
+  @media (max-width: 320px) {
+    width:122px!important;
   }
 }
 
@@ -356,8 +371,11 @@ input[type=number] {
 }
 
 .card-style{
-  @media(min-width: 575.98px){
+  @include media-breakpoint-up(md){
     width: 42rem;
+  }
+  @include media-breakpoint-up(sm){
+    width: 28rem;
   }
 }
 
