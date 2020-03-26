@@ -18,11 +18,13 @@
   width: 100%;
   height: 384px;
   margin-bottom: 1rem;
+  @include media-breakpoint-up(lg) {
+    height: 359px!important;
+  }
   @include media-breakpoint-up(xl) {
     height: 360px!important;
   }
 }
-
 
 // Navbar classes
 .navbarbackground{
@@ -53,10 +55,6 @@
   @include media-breakpoint-down(md) {
     font-size: 2.5vw;
   }
-}
-
-.textarea.form-control{
-  height:200px!important;
 }
 
 // Justerar h1 så de inte blir så hysteriskt stora
@@ -186,20 +184,6 @@
 
 // Stylar checkboxar i filterfunktionen END
 
-// Style för startside bilden
-.are-we-the-key {
-  margin-left: -15px !important;
-  font-size: 45px;
-  @media (max-width: 575.98px) {
-    font-size: 10vw;
-  }
-}
-
-// Style för objekt images
-.front-side-picture {
-  height: 400px; 
-}
-
 #stickyTop {
   transition: top 0.3s;
 }
@@ -232,12 +216,6 @@
   padding-bottom: 10px;
 }
 
-// Fixar så att paragrafer inte blir för långa. 
-.par-short {
-  word-wrap: break-word;
-  width: 520px;
-}
-
 // Hindrar en från att skriva in bokstäver i nummerfält - men genom "none" så slipper vi ha lilla högerscrollen i formulären
 input[type=number] {
   &,
@@ -254,7 +232,6 @@ input[type=number] {
   }
 }
 
-// "infoclippå objektsidan "visning idag"
 // "infoclippå objektsidan "visning idag"
 .notify-badge{
   position: relative;
@@ -357,12 +334,12 @@ input[type=number] {
 
 // Gör sökiconsförstoringsglaset gyllene :) 
 .icofont-search-property:before {
-  color: goldenrod;
+  color: $gold;
 }
 
 // Guldbakgrund på "om oss"
 .bg-gold {
-  background-color: goldenrod;
+  background-color: $gold;
 }
 
 // Responsiv titel för sökresultatsobjekt
@@ -375,35 +352,20 @@ input[type=number] {
 
 // Citat/kort
 .card-title-gold { 
-  color:goldenrod !important;
+  color: $gold !important;
 }
+
 .card-style{
   @media(min-width: 575.98px){
     width: 42rem;
   }
 }
-//hjärtikon
 
 // Hjärtikon
 .icon-text{
   font-size: 28px;
 }
 
-// Favoritsidan inte för många bilder per rad
-.card-columns {
-  @include media-breakpoint-only(xl) {
-    column-count: 3;
-  }
-  @include media-breakpoint-only(lg) {
-    column-count: 3;
-  }
-  @include media-breakpoint-only(md) {
-    column-count: 2;
-  }
-  @include media-breakpoint-only(sm) {
-    column-count: 1;
-  }
-}
 // Justerar storleken på bilderna på fav-sidan
 .card-image-hight {
   object-fit: cover; /* Ska inte bilden */
@@ -425,5 +387,5 @@ input[type=number] {
   color: $gold;
 }
 .nav-icon-heart {
-color: goldenrod;
+color: $gold;
 }
