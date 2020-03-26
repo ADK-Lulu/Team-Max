@@ -1,10 +1,10 @@
 class Fav extends Base {
 
-  async mount() {
-
+  mount() {
     this.fetchFav();
   }
 
+  // Tar bort/lägger till säljobjekt i store.favoriter
   pushFav(objektId) {
     if (!store.favoriter.includes(objektId)) {
       store.favoriter.push(objektId);
@@ -17,12 +17,20 @@ class Fav extends Base {
 
     }
     this.fetchFav();
-    console.log(objektId)
   }
 
+  // Tar bort enstacka favoriter
   removeFav(e) {
     let objectId = +e.target.getAttribute("value");
     this.pushFav(objectId);
+  }
+
+  // Tömmer store.favoriter
+  emptyFav() {
+    store.favoriter = [];
+    store.save();
+    this.fetchFav();
+    this.render();
   }
 
   //Hämtar hem info från databasen för favoritobjekten: frontbild, pris, visningsdatum o pushar in i favAfterSQL
@@ -48,15 +56,7 @@ class Fav extends Base {
         });
 
       this.favAfterSQL.push(this.object[0]);
-      console.log(this.favAfterSQL);
     }
-    this.render();
-  }
-
-  emptyFav() {
-    store.favoriter = [];
-    store.save();
-    this.fetchFav();
     this.render();
   }
 
@@ -69,8 +69,6 @@ class Fav extends Base {
           </div>
           ${store.favoriter.length > 0 ? `<p click="emptyFav" class="ml-3"><i class="icofont-bin"></i> Ta bort alla mina favoriter</p>` : ''}
         </div>
-        <!-- Listade favoriter -->
-
           <div class="row">
             <div class="col-12">
                ${this.favAfterSQL.length > 0 ? /*html*/`<div class="row">` + this.favAfterSQL.map(object =>/*html*/`
@@ -85,7 +83,7 @@ class Fav extends Base {
                     </div>
                   </a>
                 </div>
-                `) + '</div>' : /*html*/`
+                `) + `</div>` : /*html*/`
                 <div class="row">
                   <div class="col-12">
                     <h3 class="text-dark py-2">Du har inte markerat några favoritobjekt ännu.</h3>
