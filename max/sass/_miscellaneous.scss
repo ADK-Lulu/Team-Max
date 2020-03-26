@@ -392,7 +392,7 @@ input[type=number] {
 // Favoritsidan inte för många bilder per rad
 .card-columns {
   @include media-breakpoint-only(xl) {
-    column-count: 4;
+    column-count: 3;
   }
   @include media-breakpoint-only(lg) {
     column-count: 3;
@@ -409,10 +409,21 @@ input[type=number] {
   object-fit: cover; /* Ska inte bilden */
   object-position: center; /* Centrera bilden */
   width: 100%;
-  max-height: 130px;
+  height: 180px;
 
 }
 
+.card-img-overlay{
+  background-color: #fff;
+  opacity: 0.8;
+  top: auto!important;
+  height:30px;
+  width:100%;
+}
+.icofont-close{
+  z-index:999;
+  color: $gold;
+}
 .nav-icon-heart {
 color: goldenrod;
 }
