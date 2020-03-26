@@ -249,9 +249,6 @@ input[type=number] {
   }
 }
 
-.large-text{
-  font-size: 84pt;
-}
 //"infoclippå objektsidan "visning idag"
 //"infoclippå objektsidan "visning idag"
 .notify-badge{
@@ -375,7 +372,11 @@ input[type=number] {
 .card-title-gold { 
   color:goldenrod !important;
 }
-
+.card-style{
+  @media(min-width: 575.98px){
+    width: 42rem;
+  }
+}
 //hjärtikon
 .icon-text{
   font-size: 28px;
