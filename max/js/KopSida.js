@@ -121,19 +121,8 @@ class KopSida extends Base {
 
   resultatFavorit(e) {
     let objektId = +e.target.getAttribute("value");
-    if (!store.favoriter.includes(objektId)) {
-      store.favoriter.push(objektId);
-      store.save();
-
-    } else if (store.favoriter.includes(objektId)) {
-      let indexToRemove = store.favoriter.indexOf(objektId);
-      store.favoriter.splice(indexToRemove, 1);
-      store.save();
-
-    }
-
+    app.fav.pushFav(objektId);
     this.render();
-    app.fav.fetchFav();
   }
 
   render() {
@@ -273,9 +262,9 @@ class KopSida extends Base {
                     <a class="text-dark" href="/objekt-sida/${object.objektId}">
                     <img class="img-fluid crop-image mb-0" src="${object.bildUrl}" alt="Husets bild objektnummer: ${object.objektId}"></a>
                   </div>
-                  <a class="text-dark" href="/objekt-sida/${object.objektId}">
-                   <div class="p-sm-3 col-12 col-lg-4 col-xl-3">
-                     <div class="row p-2 mt-1 p-md-1 pl-md-0">
+                  <div class="p-sm-3 col-12 col-lg-4 col-xl-3">
+                    <div class="row p-2 mt-1 p-md-1 pl-md-0">
+                      <a class="text-dark" href="/objekt-sida/${object.objektId}">
                         <div class="col-6 col-lg-12">
                           <h2 class="sokresultat-title text-break">${object.gata} ${object.gatunummer}</h2>
                           <h3 class="sokresultat-title">${object.namn}</h3>
@@ -287,12 +276,12 @@ class KopSida extends Base {
                           <p class="mb-1"><span class="font-weight-bold">Typ:</span> ${object.typNamn}</p>
                           <p class="mb-1"><span class="font-weight-bold">Visning:</span> ${object.visning}</p>
                         </div>
-                  </a>
-                      <div class="mt-2 ml-2">${store.favoriter.includes(object.objektId) ?  /*html*/`<i class="icofont-heart card-title-gold icon-text" click="resultatFavorit" value="${object.objektId}"></i> Ta bort från favoriter`
-        :/*html*/`<i class="icofont-heart text-secondary icon-text" click="resultatFavorit" value="${object.objektId}"></i> Spara som favorit`}
+                      </a>
+                      <div click="resultatFavorit" value="${object.objektId}" class="mt-2 ml-2">
+                        ${store.favoriter.includes(object.objektId) ?  /*html*/`<i class="icofont-heart text-danger icon-text"></i> Ta bort från favoriter` : /*html*/`<i class="icofont-heart text-secondary icon-text"></i> Spara som favorit`}
                       </div>
-                     </div>
-                   </div>
+                    </div>
+                  </div>
                 </div>
               
               `) : /*html*/`
