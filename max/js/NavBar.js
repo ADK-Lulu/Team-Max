@@ -36,9 +36,16 @@ class NavBar extends Base {
             `)}
           </ul>
         </div>
-        <div class="form-inline">${this.sokning}</div>
         <div>
-          <ul class="navbar-nav">
+          <ul class="navbar-nav d-block d-md-none pl-3">
+            <a class="nav-link" href='/mina-favoriter'>
+              <li class="nav-item nav-icon-heart icofont-heart icofont-2x"></li>
+            </a> 
+          </ul>
+        </div>
+        <div class="form-inline mt-2 mt-md-0">${this.sokning}</div>
+        <div>
+          <ul class="navbar-nav d-none d-md-block pl-3">
             <a class="nav-link" href='/mina-favoriter'>
               <li class="nav-item nav-icon-heart icofont-heart icofont-2x"></li>
             </a> 
