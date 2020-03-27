@@ -72,8 +72,8 @@ class App extends Base {
           ${this.startSida}
           ${this.saljSida}
           ${this.kopSida}
-          ${this.omOss}
           ${this.objektSidor}
+          ${this.omOss}
           ${this.kontaktSida}
           ${this.fav}
         </main>

@@ -1,5 +1,9 @@
 class KontaktSida extends Base {
 
+  mount() {
+
+  }
+
   async collectFormData(e) {
 
     e.preventDefault();
@@ -29,10 +33,10 @@ class KontaktSida extends Base {
             <img src="images/misc/office.jpg" class="img-fluid crop-image">
           </div>
           <div class="col-md-6 mt-3">
-              <img src="images/misc/logga_DR.png" class="img-fluid">
-              <br>Adress: Liljeholmsgatan 123, Liljeholmen
-              <br>Telefon: +46 23 456 78 90<br>Email: <a class="text-dark" href="mailto:dhyrochrumson@email.com">dhyrochrumson@email.com</a><br>
-              <br><p>Öppettider:<br>Måndag-Fredag: 10-16<br>Lördag-Söndag: Stängt</p>
+            <img src="images/misc/logga_DR.png" class="img-fluid">
+            <br>Adress: Liljeholmsgatan 123, Liljeholmen
+            <br>Telefon: +46 23 456 78 90<br>Email: <a class="text-dark" href="mailto:dhyrochrumson@email.com">dhyrochrumson@email.com</a><br>
+            <br><p>Öppettider:<br>Måndag-Fredag: 10-16<br>Lördag-Söndag: Stängt</p>
           </div>
         </div>
         <div class="row pt-3 px-2 py-3">
@@ -45,7 +49,7 @@ class KontaktSida extends Base {
             </div>
               `:
          /*html*/`  
-         <div class="col-4 col-md-6 text-right bg-secondary pt-3 mb-4">
+          <div class="col-4 col-md-6 text-right bg-secondary pt-3 mb-4">
             <h1 class="h1-responsive">Kontakta oss:</h1>
           </div>
           <div class="col-8 col-md-6 bg-secondary pt-3 mb-4 ">
@@ -71,7 +75,6 @@ class KontaktSida extends Base {
             `}
         </div>
       </div>
-    `;
-  }
+    `}
 
 }
