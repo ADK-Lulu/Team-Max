@@ -57,7 +57,11 @@ function sleep(ms) {
 }
 
 let chokTime = Date.now();
-chokidar.watch([www, 'sass']).on('all', async () => {
+chokidar.watch([www, 'sass']).on('all', async (...args) => {
+  if (args[0] === 'change' && (args[1] + '').includes('databases')) {
+    // Do not hotreload on db changes
+    return;
+  }
   if (Date.now() - chokTime > 500) {
     await sleep(1500);
     hotChangeRes && hotChangeRes.end();
