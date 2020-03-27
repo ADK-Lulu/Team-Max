@@ -18,11 +18,13 @@
   width: 100%;
   height: 384px;
   margin-bottom: 1rem;
+  @include media-breakpoint-up(lg) {
+    height: 359px!important;
+  }
   @include media-breakpoint-up(xl) {
     height: 360px!important;
   }
 }
-
 
 // Navbar classes
 .navbarbackground{
@@ -55,10 +57,6 @@
   }
 }
 
-.textarea.form-control{
-  height:200px!important;
-}
-
 // Justerar h1 så de inte blir så hysteriskt stora
 .h1-responsive{
   font-size: 4vw;
@@ -67,6 +65,7 @@
     font-size: 3vw; 
   }
 }
+
 .bg-white-50 {
   background-color: #fff;
   opacity: 0.8;
@@ -186,20 +185,6 @@
 
 // Stylar checkboxar i filterfunktionen END
 
-// Style för startside bilden
-.are-we-the-key {
-  margin-left: -15px !important;
-  font-size: 45px;
-  @media (max-width: 575.98px) {
-    font-size: 10vw;
-  }
-}
-
-// Style för objekt images
-.front-side-picture {
-  height: 400px; 
-}
-
 #stickyTop {
   transition: top 0.3s;
 }
@@ -232,12 +217,6 @@
   padding-bottom: 10px;
 }
 
-// Fixar så att paragrafer inte blir för långa. 
-.par-short {
-  word-wrap: break-word;
-  width: 520px;
-}
-
 // Hindrar en från att skriva in bokstäver i nummerfält - men genom "none" så slipper vi ha lilla högerscrollen i formulären
 input[type=number] {
   &,
@@ -254,7 +233,6 @@ input[type=number] {
   }
 }
 
-// "infoclippå objektsidan "visning idag"
 // "infoclippå objektsidan "visning idag"
 .notify-badge{
   position: relative;
@@ -277,7 +255,6 @@ input[type=number] {
   width:8rem;
   height:4rem;
   }
-
 }
 
 .notify-badge h3{
@@ -348,21 +325,36 @@ input[type=number] {
 .navbar-brand img {
   width: 270px;
   @include media-breakpoint-up(md) {
-    width:190px;
+    width:180px;
   }
-    @include media-breakpoint-up(xs) {
+  @include media-breakpoint-up(xs) {
     width:241px;
+  }
+  @include media-breakpoint-down(xs) {
+    width:186px;
+  }
+}
+
+input.search {
+  @media (max-width: 425px) {
+    width:227px!important;
+  }
+  @media (max-width: 375px) {
+    width:177px!important;
+  }
+  @media (max-width: 320px) {
+    width:122px!important;
   }
 }
 
 // Gör sökiconsförstoringsglaset gyllene :) 
 .icofont-search-property:before {
-  color: goldenrod;
+  color: $gold;
 }
 
 // Guldbakgrund på "om oss"
 .bg-gold {
-  background-color: goldenrod;
+  background-color: $gold;
 }
 
 // Responsiv titel för sökresultatsobjekt
@@ -370,47 +362,24 @@ input[type=number] {
   @media (max-width: 575.98px) { 
     font-size: 8vw;
    }
-
 }
 
 // Citat/kort
 .card-title-gold { 
-  color:goldenrod !important;
+  color: $gold !important;
 }
-.card-style{
-  @media(min-width: 575.98px){
-    width: 42rem;
-  }
-}
-//hjärtikon
 
 // Hjärtikon
 .icon-text{
   font-size: 28px;
 }
 
-// Favoritsidan inte för många bilder per rad
-.card-columns {
-  @include media-breakpoint-only(xl) {
-    column-count: 3;
-  }
-  @include media-breakpoint-only(lg) {
-    column-count: 3;
-  }
-  @include media-breakpoint-only(md) {
-    column-count: 2;
-  }
-  @include media-breakpoint-only(sm) {
-    column-count: 1;
-  }
-}
 // Justerar storleken på bilderna på fav-sidan
 .card-image-hight {
   object-fit: cover; /* Ska inte bilden */
   object-position: center; /* Centrera bilden */
   width: 100%;
   height: 180px;
-
 }
 
 .card-img-overlay{
@@ -420,10 +389,12 @@ input[type=number] {
   height:30px;
   width:100%;
 }
+
 .icofont-close{
   z-index:999;
   color: $gold;
 }
+
 .nav-icon-heart {
-color: goldenrod;
+color: $gold;
 }

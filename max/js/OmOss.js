@@ -22,11 +22,11 @@ class OmOss extends Base {
   render() {
     return /*html*/`
 <div class="row" route="/om-oss" page-title="Om oss">
-  <div class="row">
+  
     <div class="col-12">
       <h1 class="h1-responsive pl-3 pl-sm-0 pr-3 mt-3">Vi är Dhyr & Rumson</h1>
     </div>
-  </div>
+  
 
   <!--info om samt bilder från db om mäklarna.-->
   <div class="col-12 my-4">
@@ -49,24 +49,21 @@ class OmOss extends Base {
     
   
       <!--infofält om företaget o chefen-->
-      <div class="justify-content-end">
-        <div class="col-12 mt-5 my-1 col-my-1">
-          <div class="card-style">
-            <div class="card-body border border-warning">
-              <h1 class="h1-responsive pl-3 pl-sm-0 pr-3">Vår story</h1>
-              <p class="card-text">Redan när vår grundare <strong>Fiona</strong> var en liten flicka så älskade hon hus.
-              Hon byggde pepparkakshus som hon sedan sålde till högstbjudande.<br>
-              Nu får hon jobba med det hon älskar mest.<br> Tillsammans med sina fantastiska medarbetare omvandlar hon hus till pengar.<br> 
-              Eller med hennes egna ord: 
-              </p>
-              <p class="card-text"><small class="text-muted">
-                <h4 class="blockquote"><i>"Dina besparingar - mitt semesterparadis på Rhodos."</i></h4></small>
-              </p>
-            </div>  
+      
+        <div class="col-12  col-md-8 mt-5 mb-1 col-my-1"> 
+          <div class="card-body border border-warning">
+            <h1 class="h1-responsive pl-3 pl-sm-0 pr-3">Vår story</h1>
+            <p class="card-text">Redan när vår grundare <strong>Fiona</strong> var en liten flicka så älskade hon hus.
+            Hon byggde pepparkakshus som hon sedan sålde till högstbjudande.<br>
+            Nu får hon jobba med det hon älskar mest.<br> Tillsammans med sina fantastiska medarbetare omvandlar hon hus till pengar.<br> 
+            Eller med hennes egna ord: 
+            </p>
+            <p class="card-text"><small class="text-muted">
+              <h4 class="blockquote"><i>"Dina besparingar - mitt semesterparadis på Rhodos."</i></h4></small>
+            </p>
           </div>
         </div>
-      </div>
-
+   
     </div>
   </div>
 </div>
