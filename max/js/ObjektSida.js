@@ -130,11 +130,11 @@ class ObjektSida extends Base {
             ` : ''}
           </div>
         </div>
-        <div class="row">
-         <button type="button" click="favorit" class="btn btn-secondary white-btn-text">${store.favoriter.includes(this.objektId) ?  /*html*/`
+        <div class="row mt-1 mb-2 ml-2">
+         <div click="favorit">${store.favoriter.includes(this.objektId) ?  /*html*/`
          <i class="icofont-heart card-title-gold icon-text"></i> Ta bort från favoriter`
-        :/*html*/`<i class="icofont-heart text-white icon-text"></i> Spara som favorit`}
-         </button>
+        :/*html*/`<i class="icofont-heart text-secondary icon-text"></i> Spara som favorit`}
+         </div>
         </div>
         <div class="row">
           <div class="col-12"> 
